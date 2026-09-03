@@ -5,7 +5,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Product } from '@org/models';
+import { Product } from '@mercatura/models';
 
 @Component({
   selector: 'shop-product-card',

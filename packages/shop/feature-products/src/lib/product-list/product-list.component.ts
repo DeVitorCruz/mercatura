@@ -9,13 +9,13 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProductsService } from '@org/shop/data';
-import { Product, ProductFilter } from '@org/models';
+import { ProductsService } from '@mercatura/shop/data';
+import { Product, ProductFilter } from '@mercatura/models';
 import {
   ProductGridComponent,
   LoadingSpinnerComponent,
   ErrorMessageComponent,
-} from '@org/shop/shared-ui';
+} from '@mercatura/shop/shared-ui';
 
 @Component({
   selector: 'shop-product-list',

@@ -9,12 +9,12 @@ export const appRoutes: Route[] = [
   {
     path: 'products',
     loadChildren: () =>
-      import('@org/shop/feature-products').then((m) => m.featureProductsRoutes),
+      import('@mercatura/shop/feature-products').then((m) => m.featureProductsRoutes),
   },
   {
     path: 'products',
     loadChildren: () =>
-      import('@org/shop/feature-product-detail').then(
+      import('@mercatura/shop/feature-product-detail').then(
         (m) => m.featureProductDetailRoutes,
       ),
   },

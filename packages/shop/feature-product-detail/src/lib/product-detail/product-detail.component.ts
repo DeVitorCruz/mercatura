@@ -7,12 +7,12 @@ import {
 } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { ProductsService } from '@org/shop/data';
-import { Product } from '@org/models';
+import { ProductsService } from '@mercatura/shop/data';
+import { Product } from '@mercatura/models';
 import {
   LoadingSpinnerComponent,
   ErrorMessageComponent,
-} from '@org/shop/shared-ui';
+} from '@mercatura/shop/shared-ui';
 
 @Component({
   selector: 'shop-product-detail',

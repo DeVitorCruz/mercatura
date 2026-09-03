@@ -6,7 +6,7 @@ import {
   ApiResponse,
   PaginatedResponse,
   ProductFilter,
-} from '@org/models';
+} from '@mercatura/models';
 
 @Injectable({
   providedIn: 'root',

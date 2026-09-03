@@ -10,7 +10,7 @@ import {
   ApiResponse,
   PaginatedResponse,
   ProductFilter,
-} from '@org/models';
+} from '@mercatura/models';
 
 describe('ProductsService', () => {
   let service: ProductsService;

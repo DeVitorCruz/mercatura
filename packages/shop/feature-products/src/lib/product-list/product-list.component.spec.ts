@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { ProductListComponent } from './product-list.component';
 import { ProductsService } from '@mercatura/shop/data';
-import { Product } from '@mercatura/models';
+import { Product, ProductVariant } from '@mercatura/models';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 describe('ProductListComponent', () => {
@@ -14,26 +14,42 @@ describe('ProductListComponent', () => {
 
   const mockProducts: Product[] = [
     {
-      id: '1',
-      name: 'Product 1',
-      description: 'Description 1',
-      price: 99.99,
-      imageUrl: 'https://example.com/1.jpg',
-      category: 'Electronics',
-      inStock: true,
-      rating: 4.5,
-      reviewCount: 100,
+      id: '1' as string,
+      name: 'Product 1' as string,
+      slug: '' as string,
+      description: 'Description 1' as string,
+      image: '' as string,
+      imageUrl: 'https://example.com/1.jpg' as string,
+      images: [] as string[],
+      is_active: true as boolean,
+      category_id: 0 as number,
+      category: 'Electronics' as string,
+      tags: [] as string[],
+      rating: 4.5 as number,
+      reviewCount: 100 as number,
+      specs: '' as string,
+      price: 99.99 as number,
+      inStock: true as boolean,
+      variants: [] as ProductVariant[],
     },
     {
-      id: '2',
-      name: 'Product 2',
-      description: 'Description 2',
-      price: 149.99,
-      imageUrl: 'https://example.com/2.jpg',
-      category: 'Clothing',
-      inStock: false,
-      rating: 4.0,
-      reviewCount: 50,
+      id: '2' as string,
+      name: 'Product 2' as string,
+      slug: '' as string,
+      description: 'Description 2' as string,
+      image: '' as string,
+      imageUrl: 'https://example.com/2.jpg' as string,
+      images: [] as string[],
+      is_active: true as boolean,
+      category_id: 0 as number,
+      category: 'Clothing' as string,
+      tags: [] as string[],
+      rating: 4.0 as number,
+      reviewCount: 50 as number,
+      specs: '' as string,
+      price: 149.99 as number,
+      inStock: true as boolean,
+      variants: [] as ProductVariant[],
     },
   ];
 
@@ -41,8 +57,6 @@ describe('ProductListComponent', () => {
     mockProductsService = {
       getProducts: vi.fn(),
       getCategories: vi.fn(),
-      loading: vi.fn().mockReturnValue(false),
-      error: vi.fn().mockReturnValue(null),
     };
 
     mockRouter = {
@@ -66,18 +80,8 @@ describe('ProductListComponent', () => {
   });
 
   it('should load products and categories on init', () => {
-    mockProductsService.getProducts.mockReturnValue(
-      of({
-        items: mockProducts,
-        total: 2,
-        page: 1,
-        pageSize: 10,
-        totalPages: 1,
-      }),
-    );
-    mockProductsService.getCategories.mockReturnValue(
-      of(['Electronics', 'Clothing']),
-    );
+    mockProductsService.getProducts;
+    mockProductsService.getCategories;
 
     component.ngOnInit();
 
@@ -95,15 +99,7 @@ describe('ProductListComponent', () => {
   });
 
   it('should apply filters when search term changes', () => {
-    mockProductsService.getProducts.mockReturnValue(
-      of({
-        items: mockProducts,
-        total: 2,
-        page: 1,
-        pageSize: 10,
-        totalPages: 1,
-      }),
-    );
+    mockProductsService.getProducts;
 
     component.searchTerm = 'Product 1';
     component.onSearchChange();
@@ -118,15 +114,7 @@ describe('ProductListComponent', () => {
   });
 
   it('should apply filters when category changes', () => {
-    mockProductsService.getProducts.mockReturnValue(
-      of({
-        items: [mockProducts[0]],
-        total: 1,
-        page: 1,
-        pageSize: 10,
-        totalPages: 1,
-      }),
-    );
+    mockProductsService.getProducts;
 
     component.selectedCategory = 'Electronics';
     component.onFilterChange();

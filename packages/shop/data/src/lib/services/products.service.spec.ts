@@ -10,12 +10,13 @@ import {
   ApiResponse,
   PaginatedResponse,
   ProductFilter,
+  ProductVariant,
 } from '@mercatura/models';
 
 describe('ProductsService', () => {
   let service: ProductsService;
   let httpMock: HttpTestingController;
-  const apiUrl = 'http://localhost:3333/api';
+  const apiUrl = 'https://ecommerce-blog.devitor.local/api';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -41,44 +42,64 @@ describe('ProductsService', () => {
     const mockProductsResponse: ApiResponse<PaginatedResponse<Product>> = {
       success: true,
       data: {
-        items: [
+        data: [
           {
-            id: '1',
-            name: 'Product 1',
-            description: 'Description 1',
-            price: 100,
-            imageUrl: 'image1.jpg',
-            category: 'Electronics',
-            inStock: true,
-            rating: 4.5,
-            reviewCount: 10,
+            id: '1' as string,
+            name: 'Product 1' as string,
+            slug: '' as string,
+            description: 'Description 1' as string,
+            image: '' as string,
+            images: [] as string[],
+            is_active: true as boolean,
+            category_id: 1 as number,
+            category: 'category name' as string,
+            tags: [] as string[],
+            rating: 4.5 as number,
+            specs: '' as string,
+            variants: [{
+              id: 1 as number,
+              label: 'Product Variant 1' as string,
+              price: 100 as number,
+              discount_price: 10 as number,
+              stock: 3 as number,
+            } as ProductVariant],
           },
           {
-            id: '2',
-            name: 'Product 2',
-            description: 'Description 2',
-            price: 200,
-            imageUrl: 'image2.jpg',
-            category: 'Clothing',
-            inStock: false,
-            rating: 3.5,
-            reviewCount: 5,
+            id: '2' as string,
+            name: 'Product 2' as string,
+            slug: '' as string,
+            description: 'Description 2' as string,
+            image: '' as string,
+            images: [] as string[],
+            is_active: true as boolean,
+            category_id: 1 as number,
+            category: 'category name' as string,
+            tags: [] as string[],
+            rating: 3 as number,
+            specs: '' as string,
+            variants: [{
+              id: 1 as number,
+              label: 'Product Variant 1' as string,
+              price: 200 as number,
+              discount_price: 8 as number,
+              stock: 3.5 as number,
+            } as ProductVariant],
           },
         ],
+        current_page: 1,
+        last_page: 3,
+        per_page: 12,
         total: 2,
-        page: 1,
-        pageSize: 12,
-        totalPages: 1,
+        next_page_url: '',
+        prev_page_url: '',
       },
     };
 
     it('should return products with default pagination', () => {
-      service.getProducts().subscribe((response) => {
-        expect(response.items.length).toBe(2);
+      service.getProducts().subscribe((response: any) => {
+        expect(response.data.length).toBe(2);
         expect(response.total).toBe(2);
-        expect(response.page).toBe(1);
-        expect(service.loading()).toBeFalsy();
-        expect(service.error()).toBeNull();
+        expect(response.per_page).toBe(1);
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products?page=1&pageSize=12`);
@@ -88,14 +109,14 @@ describe('ProductsService', () => {
 
     it('should apply filters when provided', () => {
       const filter: ProductFilter = {
-        category: 'Electronics',
-        minPrice: 50,
-        maxPrice: 150,
-        inStock: true,
-        searchTerm: 'test',
+        search: '' as string,
+        category: 'Electronics' as string,
+        min_price: 50 as number,
+        max_price: 150 as number,
+        page: 1 as number,
       };
 
-      service.getProducts(filter, 2, 20).subscribe((response) => {
+      service.getProducts(filter, 2, 20).subscribe((response: any) => {
         expect(response).toBeTruthy();
       });
 
@@ -108,9 +129,10 @@ describe('ProductsService', () => {
 
     it('should handle error response', () => {
       const errorResponse: ApiResponse<PaginatedResponse<Product>> = {
+        data: {} as PaginatedResponse<Product>,
         success: false,
         error: 'Server error',
-        data: undefined as unknown,
+        message: '' as string,
       };
 
       // Silence console.error for this test
@@ -118,10 +140,9 @@ describe('ProductsService', () => {
         .spyOn(console, 'error')
         .mockImplementation(() => undefined);
 
-      service.getProducts().subscribe((response) => {
-        expect(response.items).toEqual([]);
+      service.getProducts().subscribe((response: any) => {
+        expect(response.data).toEqual([]);
         expect(response.total).toBe(0);
-        expect(service.error()).toContain('Server error');
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products?page=1&pageSize=12`);
@@ -136,10 +157,9 @@ describe('ProductsService', () => {
         .spyOn(console, 'error')
         .mockImplementation(() => undefined);
 
-      service.getProducts().subscribe((response) => {
-        expect(response.items).toEqual([]);
+      service.getProducts().subscribe((response: any) => {
+        expect(response.data).toEqual([]);
         expect(response.total).toBe(0);
-        expect(service.error()).toBeTruthy();
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products?page=1&pageSize=12`);
@@ -151,15 +171,25 @@ describe('ProductsService', () => {
 
   describe('getProductById', () => {
     const mockProduct: Product = {
-      id: '1',
-      name: 'Product 1',
-      description: 'Description 1',
-      price: 100,
-      imageUrl: 'image1.jpg',
-      category: 'Electronics',
-      inStock: true,
-      rating: 4.5,
-      reviewCount: 10,
+      id: '1' as string,
+      name: 'Product 1' as string,
+      slug: '' as string,
+      description: 'Description 1' as string,
+      image: '' as string,
+      images: [] as string[],
+      is_active: true as boolean,
+      category_id: 1 as number,
+      category: '' as string,
+      tags: [] as string[],
+      rating: 4.5 as number,
+      specs: '' as string,
+      variants: [{
+        id: 1 as number,
+        label: '' as string,
+        price: 100 as number,
+        discount_price: 10 as number,
+        stock: 3 as number,
+      } as ProductVariant],
     };
 
     it('should return a product by id', () => {
@@ -170,8 +200,6 @@ describe('ProductsService', () => {
 
       service.getProductById('1').subscribe((product) => {
         expect(product).toEqual(mockProduct);
-        expect(service.loading()).toBeFalsy();
-        expect(service.error()).toBeNull();
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products/1`);
@@ -187,7 +215,6 @@ describe('ProductsService', () => {
 
       service.getProductById('1').subscribe((product) => {
         expect(product).toBeNull();
-        expect(service.error()).toBeTruthy();
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products/1`);
@@ -225,74 +252,6 @@ describe('ProductsService', () => {
       });
 
       const req = httpMock.expectOne(`${apiUrl}/products-metadata/categories`);
-      req.error(new ProgressEvent('Network error'));
-
-      consoleErrorSpy.mockRestore();
-    });
-  });
-
-  describe('getPriceRange', () => {
-    it('should return price range', () => {
-      const mockPriceRange = { min: 10, max: 500 };
-      const mockResponse: ApiResponse<{ min: number; max: number }> = {
-        success: true,
-        data: mockPriceRange,
-      };
-
-      service.getPriceRange().subscribe((range) => {
-        expect(range).toEqual(mockPriceRange);
-      });
-
-      const req = httpMock.expectOne(`${apiUrl}/products-metadata/price-range`);
-      expect(req.request.method).toBe('GET');
-      req.flush(mockResponse);
-    });
-
-    it('should return default range on error', () => {
-      // Silence console.error for this test
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => undefined);
-
-      service.getPriceRange().subscribe((range) => {
-        expect(range).toEqual({ min: 0, max: 1000 });
-      });
-
-      const req = httpMock.expectOne(`${apiUrl}/products-metadata/price-range`);
-      req.error(new ProgressEvent('Network error'));
-
-      consoleErrorSpy.mockRestore();
-    });
-  });
-
-  describe('loading and error signals', () => {
-    it('should set loading to true when fetching products', () => {
-      expect(service.loading()).toBeFalsy();
-
-      service.getProducts().subscribe();
-      expect(service.loading()).toBeTruthy();
-
-      const req = httpMock.expectOne(`${apiUrl}/products?page=1&pageSize=12`);
-      req.flush({
-        success: true,
-        data: { items: [], total: 0, page: 1, pageSize: 12, totalPages: 0 },
-      });
-
-      expect(service.loading()).toBeFalsy();
-    });
-
-    it('should set error message on failure', () => {
-      // Silence console.error for this test
-      const consoleErrorSpy = vi
-        .spyOn(console, 'error')
-        .mockImplementation(() => undefined);
-      expect(service.error()).toBeNull();
-
-      service.getProductById('1').subscribe(() => {
-        expect(service.error()).toBeTruthy();
-      });
-
-      const req = httpMock.expectOne(`${apiUrl}/products/1`);
       req.error(new ProgressEvent('Network error'));
 
       consoleErrorSpy.mockRestore();

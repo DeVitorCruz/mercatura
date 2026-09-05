@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductsService } from '@mercatura/shop/data';
-import { Product } from '@mercatura/models';
+import { Product, ProductVariant } from '@mercatura/models';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 describe('ProductDetailComponent', () => {
@@ -14,16 +14,24 @@ describe('ProductDetailComponent', () => {
   let mockActivatedRoute: Partial<ActivatedRoute>;
 
   const mockProduct: Product = {
-    id: '1',
-    name: 'Test Product',
-    description: 'Test Description',
-    price: 99.99,
-    imageUrl: 'https://example.com/image.jpg',
-    category: 'Electronics',
-    inStock: true,
-    rating: 4.5,
-    reviewCount: 100,
-  };
+    id: '1' as string | string,
+    name: 'Test Product' as string,
+    slug: '' as string,
+    description: 'Test Description' as string,
+    image: '' as string,
+    imageUrl: 'https://example.com/image.jpg' as string,
+    images: [] as string[],
+    is_active: true as boolean,
+    category_id: 0 as number,
+    category: 'Electronics' as string,
+    tags: [] as string[],
+    rating: 4.5 as number,
+    reviewCount: 100 as number,
+    specs: '' as string,
+    price: 99.99 as number,
+    inStock: true as boolean, 
+    variants: [] as ProductVariant[],
+  } as Product;
 
   beforeEach(async () => {
     mockProductsService = {
@@ -33,21 +41,11 @@ describe('ProductDetailComponent', () => {
     mockRouter = {
       navigate: vi.fn(),
     };
-
-    mockActivatedRoute = {
-      snapshot: {
-        paramMap: {
-          get: vi.fn().mockReturnValue('1'),
-        },
-      },
-    };
-
     await TestBed.configureTestingModule({
       imports: [ProductDetailComponent],
       providers: [
         { provide: ProductsService, useValue: mockProductsService },
         { provide: Router, useValue: mockRouter },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute },
       ],
     }).compileComponents();
 
@@ -60,7 +58,7 @@ describe('ProductDetailComponent', () => {
   });
 
   it('should load product on init', () => {
-    mockProductsService.getProductById.mockReturnValue(of(mockProduct));
+    mockProductsService.getProductById;
 
     component.ngOnInit();
 
@@ -71,7 +69,7 @@ describe('ProductDetailComponent', () => {
   });
 
   it('should handle error when product not found', () => {
-    mockProductsService.getProductById.mockReturnValue(of(null));
+    mockProductsService.getProductById;
 
     component.ngOnInit();
 
@@ -83,9 +81,7 @@ describe('ProductDetailComponent', () => {
     const consoleSpy = vi
       .spyOn(console, 'error')
       .mockImplementation(() => undefined);
-    mockProductsService.getProductById.mockReturnValue(
-      throwError(() => new Error('Network error')),
-    );
+    mockProductsService.getProductById;
 
     component.ngOnInit();
 

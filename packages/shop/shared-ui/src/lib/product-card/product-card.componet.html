@@ -1,0 +1,36 @@
+<div class="product-card" (click)="onProductClick()">
+    <div class="product-card__image">
+        <img [src]="IMAGE_URL()" [alt]="product().name" />
+        @if (!IS_IN_STOCK()) {
+            <span class="product-card__badge product-card__badge--out-of-stock">
+                Out of Stock
+            </span>
+        }
+    </div>
+    <div class="product-card__info">
+        <h3 class="product-card__name">{{ product().name }}</h3>
+        <p class="product-card__category">{{ product().category ?? '' }}</p>
+        <div class="product-card__rating">
+            @for (star of STARS(); track star) {
+                <span class="star" [class.star--filled]="star <= RATING()">★</span>
+            }
+            <span class="product-card__review-count">({{ product().reviewCount ?? 0 }})</span>
+        </div>
+        <div class="product-card__price">
+            <span class="product-card__price--current">
+                {{ CURRENT_PRICE() | currency }}
+            </span>
+            @if (HAS_DISCOUNT()) {
+                <span class="product-card__price--original">
+                    {{ ORIGINAL_PRICE() | currency }}
+                </span>
+            }
+        </div>
+        <button 
+            class="product-card__btn"
+            [disabled]="!IS_IN_STOCK()"
+            (click)="onAddToCart($event)">
+            {{ IS_IN_STOCK() ? 'Add to Cart' : 'Out of Stock' }}
+        </button>
+    </div>
+</div>

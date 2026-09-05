@@ -3,164 +3,69 @@ import {
   input,
   output,
   ChangeDetectionStrategy,
+  InputSignal,
+  OutputEmitterRef,
+  Signal,
+  computed,
 } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Product } from '@mercatura/models';
+import { Product, ProductVariant } from '@mercatura/models';
 
 @Component({
   selector: 'shop-product-card',
   imports: [CommonModule, CurrencyPipe],
-  template: `
-    <div
-      class="product-card"
-      (click)="productClick.emit(product())"
-      (keyup.enter)="productClick.emit(product())"
-      (keyup.space)="productClick.emit(product())"
-      [class.out-of-stock]="!product().inStock"
-      tabindex="0"
-      role="button"
-      [attr.aria-label]="'View details for ' + product().name"
-    >
-      <div class="product-image">
-        <img [src]="product().imageUrl" [alt]="product().name" />
-        @if (!product().inStock) {
-          <div class="out-of-stock-overlay">Out of Stock</div>
-        }
-      </div>
-      <div class="product-info">
-        <h3 class="product-name">{{ product().name }}</h3>
-        <p class="product-category">{{ product().category }}</p>
-        <div class="product-rating">
-          <span class="stars">
-            @for (star of getStars(); track $index) {
-              <span [class.filled]="star">★</span>
-            }
-          </span>
-          <span class="review-count">({{ product().reviewCount }})</span>
-        </div>
-        <div class="product-price">
-          {{ product().price | currency }}
-        </div>
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      .product-card {
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: white;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .product-card.out-of-stock {
-        opacity: 0.7;
-      }
-
-      .product-image {
-        position: relative;
-        width: 100%;
-        padding-top: 100%;
-        overflow: hidden;
-        background: #f5f5f5;
-      }
-
-      .product-image img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .out-of-stock-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 4px;
-        font-weight: bold;
-      }
-
-      .product-info {
-        padding: 16px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .product-name {
-        margin: 0 0 8px 0;
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: #333;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-
-      .product-category {
-        margin: 0 0 8px 0;
-        font-size: 0.9rem;
-        color: #666;
-      }
-
-      .product-rating {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 12px;
-      }
-
-      .stars {
-        color: #ddd;
-      }
-
-      .stars .filled {
-        color: #ffd700;
-      }
-
-      .review-count {
-        font-size: 0.85rem;
-        color: #666;
-      }
-
-      .product-price {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #2c3e50;
-        margin-top: auto;
-      }
-    `,
-  ],
+  templateUrl: './product-card.componet.html',
+  styleUrl: './product-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-  readonly product = input.required<Product>();
-  readonly productClick = output<Product>();
+  public readonly product: InputSignal<Product> = input.required<Product>();
+  public readonly productClick: OutputEmitterRef<Product> = output<Product>();
+  public readonly addToCart: OutputEmitterRef<Product> = output<Product>();
 
-  getStars(): boolean[] {
-    const rating = this.product().rating;
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+  public readonly IMAGE_URL: Signal<string> = computed(() => 
+    this.product().imageUrl ?? this.product().image ?? 'assets/placeholder.jpg'
+  );
 
-    return Array(5)
+  public readonly RATING: Signal<number> = computed(() => this.product().rating ?? 0);
+  public readonly STARS: Signal<number[]> = computed(() => [1, 2, 3, 4, 5]);
+
+  public readonly CURRENT_PRICE: Signal<number> = computed(() => {
+    const VARIANT: ProductVariant = this.product().variants?.[0]!;
+    return VARIANT?.discount_price ?? VARIANT.price ?? this.product().price ?? 0;
+  });
+
+  public readonly ORIGINAL_PRICE: Signal<number> = computed(() => {
+    const VARIANT: ProductVariant = this.product().variants?.[0]!;
+    return VARIANT?.price ?? this.product().price ?? 0;
+  });
+
+  public readonly HAS_DISCOUNT: Signal<boolean> = computed(() => {
+    const VARIANT: ProductVariant = this.product().variants?.[0]!;
+    return !!VARIANT?.discount_price;
+  });
+
+  public readonly IS_IN_STOCK: Signal<boolean> = computed(() => {
+    if (this.product().inStock !== undefined) return this.product().inStock!;
+    const VARIANT: ProductVariant = this.product().variants?.[0]!;
+    return VARIANT ? VARIANT.stock > 0 : true;
+  });
+
+  public onProductClick(): void {
+    this.productClick.emit(this.product());
+  }
+
+  public onAddToCart(event: Event): void {
+    event.stopPropagation();
+    this.addToCart.emit(this.product());
+  }
+
+  public getStars(): boolean[] {
+    const RATING: number = this.product().rating!;
+    const fullStars: number = Math.floor(RATING);
+    const hasHalfStar: boolean = RATING % 1 >= 0.5;
+
+    return Array(this.STARS().length)
       .fill(false)
       .map((_, index) => {
         if (index < fullStars) return true;

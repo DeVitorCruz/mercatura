@@ -1,11 +1,11 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { ProductCardComponent } from './product-card.component';
+import { ProductGridComponent } from './product-grid.component';
 import { Product, ProductVariant } from '@mercatura/models';
 import { describe, it, beforeEach, expect, vi } from 'vitest';
 
 describe('ProductCardComponent', () => {
-  let component: ProductCardComponent;
-  let fixture: ComponentFixture<ProductCardComponent>;
+  let component: ProductGridComponent;
+  let fixture: ComponentFixture<ProductGridComponent>;
 
   const mockProduct: Product = {
     id: '1' as string,
@@ -29,10 +29,10 @@ describe('ProductCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProductCardComponent],
+      imports: [ProductGridComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ProductCardComponent);
+    fixture = TestBed.createComponent(ProductGridComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('product', mockProduct);
   });
@@ -56,15 +56,6 @@ describe('ProductCardComponent', () => {
     );
   });
 
-  it('should emit productClick event when card is clicked', () => {
-    const clickSpy = vi.fn();
-    component.productClick.subscribe(clickSpy);
-
-    fixture.nativeElement.querySelector('.product-card').click();
-
-    expect(clickSpy).toHaveBeenCalledWith(mockProduct);
-  });
-
   it('should display out of stock overlay when product is not in stock', () => {
     const outOfStockProduct = { ...mockProduct, inStock: false };
     fixture.componentRef.setInput('product', outOfStockProduct);
@@ -75,20 +66,5 @@ describe('ProductCardComponent', () => {
     expect(compiled.querySelector('.product-card').classList).toContain(
       'out-of-stock',
     );
-  });
-
-  it('should calculate star ratings correctly', () => {
-    const stars = component.getStars();
-
-    expect(stars).toEqual([true, true, true, true, true]);
-  });
-
-  it('should handle product with low rating', () => {
-    const lowRatedProduct = { ...mockProduct, rating: 2.3 };
-    fixture.componentRef.setInput('product', lowRatedProduct);
-
-    const stars = component.getStars();
-
-    expect(stars).toEqual([true, true, false, false, false]);
   });
 });

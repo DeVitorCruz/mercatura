@@ -14,16 +14,19 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@mercatura/api/products": ["./packages/api/products/src/index.ts"],
-      "@mercatura/models": ["./packages/shared/models/src/index.ts"],
       "@mercatura/shop/data": ["./packages/shop/data/src/index.ts"],
+      "@mercatura/models": ["./packages/shared/models/src/index.ts"],
       "@mercatura/shop/feature-product-detail": [
         "./packages/shop/feature-product-detail/src/index.ts"
       ],
       "@mercatura/shop/feature-products": [
         "./packages/shop/feature-products/src/index.ts"
       ],
-      "@mercatura/shop/shared-ui": ["./packages/shop/shared-ui/src/index.ts"]
+      "@mercatura/shop/shared-ui": ["./packages/shop/shared-ui/src/index.ts"],
+      "@mercatura/ui": ["./packages/shared/ui/src/index.ts"],
+      "@mercatura/shop/feature-auth": [
+        "./packages/shop/feature-auth/src/index.ts"
+      ],
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,5 +1,5 @@
 @use './mixins/input-forms' as *;
-@use '@mercatura/ui/styles' as ui;
+@use '../../styles/tokens/breakpoints' as bp;
 
 .ui-form {
     width: 100%;
@@ -20,7 +20,7 @@
     }
     
     &--cols-2 .ui-form__fields {
-        @include ui.respone('sm') {
+        @include bp.respone('sm') {
             grid-template-columns: 1fr 1fr;
         }
     }

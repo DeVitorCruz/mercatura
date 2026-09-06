@@ -1,0 +1,57 @@
+// ─── Base color palette ───────────────────────────────────
+$white: #ffffff;
+$black: #000000;
+$transparent: transparent;
+
+// ─── Gray scale ───────────────────────────────────
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+// ─── Semantic colors (overridden per theme) ───────────────
+$primary: #000000 !default;
+$primary-light: #333333 !default;
+$primary-dark: #000000 !default;
+
+$secondary: #6b7280 !default;
+$secondary-light: #9b7280 !default;
+$secondary-dark: #4b5563 !default;
+
+$accent: #f59e0b !default;
+$accent-light: #fbbf24 !default;
+$accent-dark: #d97706 !default;
+
+$success: #10b981 !default;
+$success-light: #34d399 !default;
+$success-dark: #059669 !default;
+
+$danger: #ef4444 !default;
+$danger-light: #f87171 !default;
+$danger-dark: #dc2626 !default;
+
+$warning: #f59e0b !default;
+$warning-light: #fbbf24 !default;
+$warning-dark: #d97706 !default;
+
+$info: #3b82f6 !default;
+$info-light: #60a5fa !default;
+$info-dark: #2563eb !default;
+
+// ─── Surface colors ───────────────────────────────────────
+$surface: $white !default;
+$surface-alt: $gray-50 !default;
+$border-color: $gray-200 !default;
+$text-primary: $gray-900 !default;
+$text-secondary: $gray-500 !default;
+$text-muted: $gray-400 !default;
+
+
+
+

@@ -1,0 +1,34 @@
+@use '../tokens/typography' as t;
+
+@mixin text-xs() { font-size: t.$text-xs; }
+@mixin text-sm() { font-size: t.$text-sm; }
+@mixin text-base() { font-size: t.$text-base; }
+@mixin text-lg() { font-size: t.$text-lg; }
+@mixin text-xl() { font-size: t.$text-xl; }
+@mixin text-3xl() { font-size: t.$text-3xl; }
+@mixin text-2xl() { font-size: t.$text-2xl; }
+@mixin text-4xl() { font-size: t.$text-4xl; }
+
+@mixin font-light() { font-weight: t.$font-light; }
+@mixin font-rigular() { font-weight: t.$font-rigular; }
+@mixin font-medium() { font-weight: t.$font-medium; }
+@mixin font-semibold() { font-weight: t.$font-semibold; }
+@mixin font-bold() { font-weight: t.$font-bold; }
+
+@mixin truncate() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin line-clamp($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orien: vertical;
+    overflow: hidden;
+}
+
+
+
+
+

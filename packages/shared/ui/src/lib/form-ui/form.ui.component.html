@@ -1,0 +1,99 @@
+<form 
+    class="ui-form"
+    [ngClass]="[
+        config().customClassName ?? '',
+        'ui-form--cols-'+(config().columns ?? 1)
+    ]"
+    (ngSubmit)="onSubmit()">
+    
+    @if (error()) {
+        <div class="ui-form__error">{{ error() }}</div>
+    }
+
+    <div class="ui-form__fields">
+        @for (field of config().fields; track field.id) {
+            <div 
+                class="ui-form__field"
+                [ngClass]="[
+                    field.customClassName ?? '',
+                    'ui-form__field--' + field.type
+                ]">
+
+                <label 
+                    [for]="field.id" 
+                    class="ui-form__label">
+                    {{ field.label }}
+                    @if (field.required) {
+                        <span class="ui-form__required">*</span>
+                    }
+                </label>
+
+                @switch (field.type) {
+                    @case ('textarea') {
+                        <textarea 
+                            class="ui-form__input"
+                            [id]="field.id"
+                            [name]="field.id" 
+                            [placeholder]="field.placeholder ?? ''" 
+                            [required]="field.required ?? false"
+                            [disabled]="field.disabled ?? false"
+                            [value]="values()[field.id]"
+                            (input)="onValueChange(field, $any($event.target).value)">
+                        </textarea>
+                    }
+
+                    @case ('select') {
+                        <select 
+                            class="ui-form__input ui-form__select"
+                            [id]="field.id" 
+                            [name]="field.id"
+                            [required]="field.required ?? false"
+                            [disabled]="field.disabled ?? false"
+                            [value]="values()[field.id]"
+                            (change)="onValueChange(field, $any($event.target).value)">
+                            <option value="">{{ field.placeholder ?? 'Select...' }}</option>
+                            @for (option of field.options ?? []; track option.value) {
+                                <option [value]="option.value">{{ option.label }}</option>
+                            }
+                        </select>
+                    }
+
+                    @case ('checkbox') {
+                        <input 
+                            type="checkbox" 
+                            class="ui-form__checkbox" 
+                            [id]="field.id"
+                            [name]="field.id"
+                            [checked]="values()[field.id]"
+                            [disabled]="field.disabled ?? false"
+                            (change)="onValueChange(field, $any($event.target).value)" />
+                    }
+
+                    @default {
+                        <input 
+                            [type]="field" 
+                            class="ui-form__input"
+                            [id]="field.id"
+                            [name]="field.id"
+                            [placeholder]="field.placeholder ?? ''"
+                            [required]="field.required ?? false"
+                            [disabled]="field.disabled ?? false"
+                            [value]="values()[field.id]"
+                            (input)="onValueChange(field, $any($event.target).value)" />
+
+                    }
+                }
+
+            </div>
+        }
+    </div>
+
+    <div class="ui-form__actions">
+        <button 
+            type="submit"
+            class="ui-form__submit"
+            [disabled]="loading()">
+            {{ getSubmitLabel() }}
+        </button>
+    </div>
+</form>

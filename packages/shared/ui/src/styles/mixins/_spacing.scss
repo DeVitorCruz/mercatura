@@ -1,0 +1,22 @@
+@use '../tokens/spacing' as s;
+
+// ─── Padding ──────────────────────────────────────────────
+@mixin p($size) { padding: $size; }
+@mixin px($size) { padding-left: $size; padding-right: $size; }
+@mixin py($size) { padding-top: $size; padding-bottom: $size; }
+@mixin pt($size) { padding-top: $size; }
+@mixin pb($size) { padding-bottom: $size; }
+@mixin pl($size) { padding-left: $size; }
+@mixin pr($size) { padding-right: $size; }
+
+// ─── Margin ───────────────────────────────────────────────
+@mixin m($size) { margin: $size; }
+@mixin mx($size) { margin-left: $size; margin-right: $size; }
+@mixin my($size) { margin-top: $size; margin-bottom: $size; }
+@mixin mt($size) { margin-top: $size; }
+@mixin mb($size) { margin-bottom: $size; }
+@mixin ml($size) { margin-left: $size; }
+@mixin mr($size) { margin-right: $size; }
+@mixin mx-auto() { margin-left: auto; margin-right: auto; } 
+
+

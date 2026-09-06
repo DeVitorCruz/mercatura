@@ -1,0 +1,58 @@
+@use '../tokens/colors' as c;
+
+// ─── Background color mixins ──────────────────────────────
+// inspired by Bootstrap's bg-* utilities but as mixins
+// so they can be composed and extended per theme
+
+@mixin bg-primary() { background-color: c.$primary; color: c.$white; }
+@mixin bg-secondary() { background-color: c.$secondary; color: c.$white; }
+@mixin bg-accent() { background-color: c.$accent; color: c.$white; }
+@mixin bg-success() { background-color: c.$success; color: c.$white; }
+@mixin bg-danger() { background-color: c.$danger; color: c.$white; }
+@mixin bg-warning() { background-color: c.$warning; color: c.$gray-900; }
+@mixin bg-info() { background-color: c.$info; color: c.$white; }
+
+// ─── Surface variants ─────────────────────────────────────
+@mixin bg-surface() { background-color: c.$surface; color: c.$text-primary; }
+@mixin bg-surface-alt() { background-color: c.$surface-alt; color: c.$text-primary; }
+@mixin bg-dark() { background-color: c.$gray-900; color: c.$white; }
+@mixin bg-light() { background-color: c.$gray-100; color: c.$text-primary; }
+@mixin bg-transparent() { background-color: transparent; }
+
+// ─── Subtle/tinted backgrounds ────────────────────────────
+@mixin bg-primary-subtle() { background-color: rgba(c.$primary, .1); color: c.$primary-dark; }
+@mixin bg-secondary-subtle() { background-color: rgba(c.$secondary, .1); color: c.$secondary-dark; }
+@mixin bg-accent-subtle() { background-color: rgba(c.$accent, .1); color: c.$accent-dark; }
+@mixin bg-success-subtle() { background-color: rgba(c.$success, .1); color: c.$success-dark; }
+@mixin bg-danger-subtle() { background-color: rgba(c.$danger, .1); color: c.$danger-dark; }
+@mixin bg-warning-subtle() { background-color: rgba(c.$warning, .1); color: c.$warning-dark; }
+
+// ─── Gradient backgrounds ─────────────────────────────────
+@mixin bg-gradient-primary() {
+    background: linear-gradient(135deg, c.$primary, c.$primary-light);
+    color: c.$white;
+}
+
+@mixin bg-gradient-accent() {
+    background: linear-gradient(135deg, c.$accent, c.$accent-light);
+    color: c.$white;
+}
+
+// ─── Utility: apply any bg by name ────────────────────────
+@mixin bg($name) {
+    @if $name == 'primary' { @include bg-primary(); }
+    @else if $name == 'secondary' { @include bg-secondary(); }
+    @else if $name == 'accent' { @include bg-accent(); }
+    @else if $name == 'success' { @include bg-success(); }
+    @else if $name == 'danger' { @include bg-danger(); }
+    @else if $name == 'warning' { @include bg-warning(); }
+    @else if $name == 'info' { @include bg-info(); }
+    @else if $name == 'surface' { @include bg-surface(); }
+    @else if $name == 'surface-alt' { @include bg-surface-alt(); }
+    @else if $name == 'dark' { @include bg-dark(); }
+    @else if $name == 'light' { @include bg-light(); }
+    @else if $name == 'transparent' { @include bg-transparent(); } 
+}
+
+
+

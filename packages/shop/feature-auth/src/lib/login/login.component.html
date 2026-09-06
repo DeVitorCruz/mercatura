@@ -1,0 +1,18 @@
+<div class="auth-page">
+    <div class="auth-card">
+        <h2 class="auth-card__title">Sign In</h2>
+        <p class="auth-card__subtitle">Welcome back!</p>
+
+        <lib-ui-form
+            [config]="FORM_CONFIG"
+            [loading]="LOADING()"
+            [error]="ERROR()"
+            (formSubmit)="onSubmit()">
+        </lib-ui-form>
+
+        <p class="auth-card__footer">
+            Don't have an account?
+            <a [routerLink]="'/auth/register'">Create one</a>
+        </p>
+    </div>
+</div>

@@ -27,6 +27,7 @@
       "@mercatura/shop/feature-auth": [
         "./packages/shop/feature-auth/src/index.ts"
       ],
+      "@mercatura/themes/shopus": ["./packages/themes/shopus/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

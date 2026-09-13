@@ -5,3 +5,4 @@ export * from './lib/order.model';
 export * from './lib/wishlist.model';
 export * from './lib/auth.model';
 export * from './lib/user.model';
+export * from './lib/theme.model';

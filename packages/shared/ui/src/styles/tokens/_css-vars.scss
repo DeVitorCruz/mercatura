@@ -1,0 +1,75 @@
+// ---- Mercatura Design Token Contract ------------------------
+// Default values - overridden per app via :root {}
+// Every component in @mercatura/ui uses ONLY these variables
+
+:root {
+    // ---- Typography ------------------------
+    --mercatura-font: system-ui, sans-serif;
+    --mercatura-font-heading: system-ui, sans-serif;
+    --mercatura-text-base: 1rem;
+    --mercatura-text-sm: .875rem;
+    --mercatura-text-xs: .75rem;
+    --mercatura-font-weight-regular: 400;
+    --mercatura-font-weight-medium: 500;
+    --mercatura-font-weight-semibold: 600;
+    --mercatura-font-weight-bold: 400;
+
+    // ---- Colors ------------------------
+    --mercatura-primary: #000000;
+    --mercatura-primary-hover: #333333;
+    --mercatura-primary-subtle: rgba(0, 0, 0, .08);
+    --mercatura-on-primary: #ffffff;
+
+    --mercatura-secondary: #6B7280;
+    --mercatura-secondary-hover: #4B5563;
+    --mercatura-on-secondary: #ffffff;
+
+    --mercatura-surface: #ffffff;
+    --mercatura-surface-alt: #F9FAFB;
+    --mercatura-surface-hover: #F3F4F6;
+
+    --mercatura-border: #E5E7EB;
+    --mercatura-border-focus: #000000;
+    
+    --mercatura-text: #111827;
+    --mercatura-text-secondary: #6B7280;
+    --mercatura-text-muted: #9CA3AF;
+    --mercatura-text-on-dark: #ffffff;
+
+    --mercatura-danger: #EF4444;
+    --mercatura-danger-subtle: rgba(239, 68, 68, .08);
+    --mercatura-on-danger: #ffffff;
+
+    --mercatura-success: #10B981;
+    --mercatura-success-subtle: rgba(16, 185, 129, .08);
+
+    --mercatura-warning: #F59E0B;
+    --mercatura-warning-subtle: rgba(245, 158, 11, .08);
+
+    // ---- Shape ------------------------
+    --mercatura-radius: 4px;
+    --mercatura-radius-lg: 8px;
+    --mercatura-radius-xl: 12px;
+    --mercatura-radius-full: 9999px;
+
+    // ---- Shadow ------------------------
+    --mercatura-shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);
+    --mercatura-shadow-md: 0 4px 12px rgba(0, 0, 0, .1);
+    --mercatura-shadow-lg: 0 8px 24px rgba(0, 0, 0, .12);
+    --mercatura-shadow-lx: 0 20px 60px rgba(0, 0, 0, .15);
+
+    // ---- Spacing ------------------------
+    --mercatura-spacing-1: .25rem;
+    --mercatura-spacing-2: .5rem;
+    --mercatura-spacing-3: .75rem;
+    --mercatura-spacing-4: 1rem;
+    --mercatura-spacing-5: 1.25rem;
+    --mercatura-spacing-6: 1.5rem;
+    --mercatura-spacing-8: 2rem;
+    --mercatura-spacing-10: 2.5rem;
+    --mercatura-spacing-12: 3rem;
+    --mercatura-spacing-16: 4rem;
+
+    // ---- Transition ------------------------
+    --mercatura-transition: all .2s ease;
+}

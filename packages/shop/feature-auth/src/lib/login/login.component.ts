@@ -1,6 +1,6 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, input, InputSignal, signal, WritableSignal } from '@angular/core';
 import { FormField, FormUiComponent } from '@mercatura/ui';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormConfig } from '@mercatura/ui';
 import { LoginRequest } from '@mercatura/models';
 import { AuthService } from '@mercatura/shop/data';
@@ -16,6 +16,12 @@ import { LOGIN_FORM_FIELDS } from './LOGIN_FORM_FIELDS';
 export class LoginComponent {
   private readonly AUTH: AuthService = inject(AuthService);
   private readonly ROUTER: Router = inject(Router);
+
+  private readonly ROUTE: ActivatedRoute = inject(ActivatedRoute);
+
+  public readonly REDIRECT_TO: InputSignal<string> = input<string>(
+    this.ROUTE.snapshot.data['redirectTo'] ?? '/dashboard'
+  );
 
   public readonly LOADING: WritableSignal<boolean> = signal<boolean>(false);
   public readonly ERROR: WritableSignal<string | null> = signal<string | null>(null);

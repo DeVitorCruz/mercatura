@@ -1,0 +1,39 @@
+<div class="auth-shell">
+    <div class="auth-shell__container">
+        <div class="auth-shell__row">
+            
+            <!-- Left panel - Swiper slides -->
+            <div class="auth-shell__left">
+                <lib-slider
+                    [config]="SLIDE_CONFIG" />
+            </div>
+            
+            <!-- Right panel - tab nav + router outlet -->
+            <div class="auth-shell__right">
+                <div class="auth-shell__card">
+            
+                    <!-- Tab navigation -->
+                    <div class="auth-shell__tabs">
+                        <a 
+                            routerLink="login" 
+                            class="auth-shell__tab"
+                            [class.is-active]="!isLogin()">
+                            Login
+                        </a>
+                        <a 
+                            routerLink="register" 
+                            class="auth-shell__tab"
+                            [class.is-active]="!isLogin()">
+                            Register
+                        </a>
+                    </div>
+                    <!-- Form outlet -->
+                    <div class="auth-shell__content">
+                        <router-outlet />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,8 +1,8 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, input, InputSignal, signal, WritableSignal } from '@angular/core';
 import { FormUiComponent, FormConfig, FormField } from '@mercatura/ui';
 import { REGISTER_FORM_FIELDS } from './REGISTER_FORM_FIELDS';
 import { AuthService } from '@mercatura/shop/data';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RegisterRequest } from '@mercatura/models';
 
 @Component({
@@ -15,8 +15,14 @@ export class RegisterComponent {
   private readonly AUTH: AuthService = inject(AuthService);
   private readonly ROUTER: Router = inject(Router);
 
+  private readonly ROUTE: ActivatedRoute = inject(ActivatedRoute);
+
   public readonly LOADING: WritableSignal<boolean> = signal<boolean>(false);
   public readonly ERROR: WritableSignal<string | null> = signal<string | null>(null);
+
+  public readonly REDIRECT_TO: InputSignal<string> = input<string>(
+    this.ROUTE.snapshot.data['redirectTo'] ?? '/dashboard'
+  );
 
   private readonly CREDENTIALS: RegisterRequest = {
     name: '' as string,

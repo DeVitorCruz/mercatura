@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { AUTH_PLATFORM_ROUTES } from './features/auth/auth.platform.routes';
 
 export const appRoutes: Route[] = [
     {
@@ -8,8 +9,7 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'auth',
-        loadChildren: () =>
-            import('@mercatura/shop/feature-auth').then(m => m.authRoutes),
+        children: AUTH_PLATFORM_ROUTES,
     },
     {
         path: '**',

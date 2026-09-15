@@ -28,6 +28,12 @@
     justify-content: center;
 }
 
+@mixin flex-cols-n($number: 1) {
+    @include flex-center();
+    width: calc(100% / $number);
+    flex: 0 0 auto;
+}
+
 
 
 

@@ -1,0 +1,74 @@
+// --- Bootstrap-inspird container system ---------------
+// Uses CSS custom properties so each app can override
+
+:root {
+    --mercatura-container-padding: 1rem;
+    --mercatura-container-max-sm: 540px;
+    --mercatura-container-max-md: 720px;
+    --mercatura-container-max-lg: 960px;
+    --mercatura-container-max-xl: 1140px;
+    --mercatura-container-max-2xl: 1320px;
+    --mercatura-container-max-fluid: 100%;
+}
+
+
+// --- Base container mixin ---------------
+@mixin container() {
+    width: 100%;
+    padding-right: var(--mercatura-container-padding);
+    padding-left: var(--mercatura-container-padding);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+// --- Responsive container ---------------
+@mixin container-sm() {
+    @include container();
+    @media (min-width: 576px) { max-width: var(--mercatura-container-max-sm); }
+}
+
+@mixin container-md() {
+    @include container();
+    @media (min-width: 576px) { max-width: var(--mercatura-container-max-sm); }
+    @media (min-width: 768px) { max-width: var(--mercatura-container-max-md); }
+}
+
+@mixin container-lg() {
+    @include container();
+    @media (min-width: 576px) { max-width: var(--mercatura-container-max-sm); }
+    @media (min-width: 768px) { max-width: var(--mercatura-container-max-md); }
+    @media (min-width: 992px) { max-width: var(--mercatura-container-max-lg); }
+}
+
+@mixin container-xl() {
+    @include container();
+    @media (min-width: 576px) { max-width: var(--mercatura-container-max-sm); }
+    @media (min-width: 768px) { max-width: var(--mercatura-container-max-md); }
+    @media (min-width: 992px) { max-width: var(--mercatura-container-max-lg); }
+    @media (min-width: 1200px) { max-width: var(--mercatura-container-max-xl); }
+}
+
+@mixin container-2xl() {
+    @include container();
+    @media (min-width: 576px) { max-width: var(--mercatura-container-max-sm); }
+    @media (min-width: 768px) { max-width: var(--mercatura-container-max-md); }
+    @media (min-width: 992px) { max-width: var(--mercatura-container-max-lg); }
+    @media (min-width: 1200px) { max-width: var(--mercatura-container-max-xl); }
+    @media (min-width: 1400px) { max-width: var(--mercatura-container-max-2xl); }
+}
+
+@mixin container-fluid() {
+    @include container();
+    max-width: var(--mercatura-container-max-fluid);
+}
+
+// --- Utility: pick container size by name ---------------
+@mixin container-size($size: 'xl') {
+    @if $size == 'sm' { @include container-sm(); }
+    @else if $size == 'md' { @include container-md(); }
+    @else if $size == 'lg' { @include container-lg(); }
+    @else if $size == 'xl' { @include container-xl(); }
+    @else if $size == '2xl' { @include container-2xl(); }
+    @else if $size == 'fluid' { @include container-2xl(); }
+    @else { @include container-xl(); }
+}

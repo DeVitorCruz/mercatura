@@ -10,6 +10,8 @@
 @forward './mixins/typography';
 @forward './mixins/flex';
 @forward './mixins/spacing';
+@forward './mixins/reset';
+@forward './mixins/container';
 @forward './tokens/breakpoints' show respond;
 
 

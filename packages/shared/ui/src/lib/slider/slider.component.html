@@ -1,0 +1,19 @@
+<div [class]="'swiper' + ' ' + config().containerClass">
+    <div class="swiper-wrapper">
+        @for (item of config().items; track item.id) {
+            <div class="swiper-slide">
+                <ng-container
+                    *ngComponentOutlet="item.component; inputs: item.inputs"></ng-container>
+            </div>
+        }
+    </div>
+
+    @if (config().showPagination) {
+        <div class="swiper-pagination"></div>
+    }
+
+    @if (config().showNavigation) {
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    }
+</div>

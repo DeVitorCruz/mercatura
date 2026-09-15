@@ -24,10 +24,12 @@
       ],
       "@mercatura/shop/shared-ui": ["./packages/shop/shared-ui/src/index.ts"],
       "@mercatura/ui": ["./packages/shared/ui/src/index.ts"],
+      "@mercatura/ui/styles/mercatura": ["./packages/shared/ui/src/styles/mercatura.scss"],
       "@mercatura/shop/feature-auth": [
         "./packages/shop/feature-auth/src/index.ts"
       ],
-      "@mercatura/themes/shopus": ["./packages/themes/shopus/src/index.ts"]
+      "@mercatura/themes/shopus": ["./packages/themes/shopus/src/index.ts"],
+      "@mercatura/templates": ["./packages/templates/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

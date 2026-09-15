@@ -1,0 +1,19 @@
+@mixin auth-default-tabs() {
+    &__tabs {
+        display: flex;
+        border-bottom: 1px solid var(--mercatura-border);
+    }
+
+    &__tab {
+        flex: 1;
+
+        &.is-active {
+            color: var(--mercatura-primary);
+            border-bottom-color: var(--mercatura-primary);
+        }
+
+        &:hover:not(.is-active) {
+            color: var(--mercatura-text-secondary);
+        }
+    }
+}

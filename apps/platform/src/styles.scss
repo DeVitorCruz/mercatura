@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'swiper/swiper.css';
+@use 'swiper/modules/navigation.css';
+@use 'swiper/modules/pagination.css';
+@use 'swiper/modules/autoplay.css';
+
+@use '@mercatura/ui/styles/mercatura' as m;
+
+// ------ Reset -----------------------------------------
+@include m.reset();
+
+// ------ Platform Light Theme -----------------------------------------
+:root, [data-theme="light"] {
+    --mercatura-font: 'Inter', system-ui, sans-serif;
+    --mercatura-font-heading: 'Inter', system-ui, sans-serif;
+    --mercatura-primary: #4F46E5;
+    --mercatura-primary-hover: #4338CA;
+    --mercatura-primary-subtle: rgba(79, 70, 229, .08);
+    --mercatura-on-primary: #ffffff;
+    --mercatura-secondary: #1A1A2E;
+    --mercatura-secondary-hover: #2D2D4A;
+    --mercatura-on-secondary: #ffffff;
+    --mercatura-surface: #ffffff;
+    --mercatura-surface-alt: #F3F4F6;
+    --mercatura-surface-hover: #E5E7EB;
+    --mercatura-border: #E5E7EB;
+    --mercatura-border-focus: #4F46E5;
+    --mercatura-text: #111827;
+    --mercatura-text-secondary: #6B7280;
+    --mercatura-text-muted: #9CA3AF;
+    --mercatura-text-on-dark: #ffffff;
+    --mercatura-radius: 8px;
+    --mercatura-radius-lg: 12px;
+    --mercatura-radius-xl: 16px;
+    --mercatura-shadow-xl: 0 20px 60px rgba(0, 0, 0, .20);
+    --mercatura-container-padding: 1.5rem;
+}
+
+// ------ Platform Dark Theme -----------------------------------------
+[data-theme="dark"] {
+    --mercatura-primary: #6366F1;
+    --mercatura-primary-hover: #818CF8;
+    --mercatura-primary-subtle: rgba(99, 102, 241, .12);
+    --mercatura-on-primary: #ffffff;
+    --mercatura-secondary: #E2E8F0;
+    --mercatura-secondary-hover: #F8FAFC;
+    --mercatura-on-secondary: #1A1A2E;
+    --mercatura-surface: #1E1E2E;
+    --mercatura-surface-alt: #161622;
+    --mercatura-surface-hover: #2A2A3E;
+    --mercatura-border: #2D2D4A;
+    --mercatura-border-focus: #6366F1;
+    --mercatura-text: #E2E8F0;
+    --mercatura-text-secondary: #94A3B8;
+    --mercatura-text-muted: #64748B;
+    --mercatura-text-on-dark: #ffffff;
+    --mercatura-shadow-xl: 0 20px 60px rgba(0, 0, 0, .6);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');

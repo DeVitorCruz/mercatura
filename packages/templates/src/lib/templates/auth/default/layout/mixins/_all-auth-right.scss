@@ -1,0 +1,13 @@
+@mixin all-auth-right() {
+    background-color: var(--mercatura-on-primary);
+    box-shadow: var(--mercatura-shadow-sl);
+
+    .auth-shell__card {
+        width: 100%;
+        padding-left: 15px;
+    }
+
+    .auth-shell__card--layer {
+        padding: 20px;
+    }
+}

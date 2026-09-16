@@ -4,6 +4,7 @@ import { Component, input, InputSignal } from '@angular/core';
   selector: 'lib-text-slide',
   imports: [],
   templateUrl: './text-slide.component.html',
+  styleUrl: './text-slide.component.scss',
 })
 export class TextSlideComponent {
   public readonly title: InputSignal<string> =

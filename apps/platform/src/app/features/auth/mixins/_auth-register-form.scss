@@ -1,0 +1,15 @@
+@use './factories/auth-struc-form' as *;
+
+@mixin auth-register-form-all-features() {
+    lib-register:has(.auth-page) {
+        @include auth-struc-form-all-features();
+
+        .auth-card__title {
+            margin-bottom: 24px;
+        }
+
+        .auth-card__subtitle {
+            left: 0;
+        }
+    }
+}

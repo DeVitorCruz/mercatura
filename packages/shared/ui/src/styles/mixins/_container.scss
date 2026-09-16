@@ -21,6 +21,13 @@
     margin-left: auto;
 }
 
+@mixin full-screen-container() {
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+}
+
 // --- Responsive container ---------------
 @mixin container-sm() {
     @include container();

@@ -1,0 +1,24 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin all-auth-left() {
+    @include flex-col-center();
+    color: var(--mercatura-text-on-dark, #ffffff);
+    padding: var(--mercatura-auth-left-padding, 2.8rem);
+    background-color: var(--mercatura-primary, #ec8951);
+    box-shadow: var(--mercatura-shadow);
+    background-image: var(--mercatura-auth-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    .auth-shell__left-img-sec {
+        margin-bottom: 40px;
+
+        img {
+            max-width: fit-content;
+            width: 130px;
+            height: 130px;
+        }           
+    }
+}

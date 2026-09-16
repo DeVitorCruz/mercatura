@@ -1,0 +1,7 @@
+@mixin auth-default-slides-all-features() {
+    lib-slider:has(.auth-slides-swiper) {
+        .swiper-pagination-bullet-active {
+            background-color: var(--mercatura-text-on-dark);
+        }
+    }
+}

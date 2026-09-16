@@ -7,13 +7,13 @@ export interface TextAuthSlide {
     description: string;
 };
 
-export function buildAuthDefaultRoutes(config: AuthTemplateConfig = {}, slides?: TextAuthSlide[]): Route[] {
+export function buildAuthDefaultRoutes(config: AuthTemplateConfig = {}, slides?: TextAuthSlide[], imgPath?: string): Route[] {
     return [
         {
             path: '',
             loadComponent: () =>
                 import('./layout/layout.component').then(m =>m.LayoutComponent),
-            data: { slides: slides, },
+            data: { slides: slides, imgPath },
             children: [
                 {
                     path: '',

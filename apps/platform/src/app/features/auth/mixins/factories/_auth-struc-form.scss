@@ -1,0 +1,30 @@
+@use './auth-ui-form' as *;
+
+@mixin auth-struc-form-all-features() {
+    .auth-card {
+        position: relative;
+
+        .auth-card__title {
+            color: var(--mercatura-primary);
+            display: inline-block;
+            padding: 24px;
+            padding-left: 0;
+        }
+
+        .auth-card__subtitle {
+            position: absolute;
+            right: 0;
+            top: 9%;
+        }
+
+        .auth-card__footer {
+            padding: 20px;
+            
+            a {
+                color: var(--mercatura-primary);
+            }
+        }
+
+        @include auth-ui-form-all-features();
+    }
+}

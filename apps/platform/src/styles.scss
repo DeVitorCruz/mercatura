@@ -5,6 +5,9 @@
 @use 'swiper/modules/autoplay.css';
 
 @use '@mercatura/ui/styles/mercatura' as m;
+@use './app/features/auth/mixins/auth-login-form' as *;
+@use './app/features/auth/mixins/auth-register-form' as *;
+@use './app/features/auth/mixins/auth-default-slides' as *;
 
 // ------ Reset -----------------------------------------
 @include m.reset();
@@ -38,23 +41,34 @@
 
 // ------ Platform Dark Theme -----------------------------------------
 [data-theme="dark"] {
-    --mercatura-primary: #6366F1;
-    --mercatura-primary-hover: #818CF8;
+    --mercatura-primary: #ec8951;
+    --mercatura-primary-hover: #e76a23;
     --mercatura-primary-subtle: rgba(99, 102, 241, .12);
     --mercatura-on-primary: #ffffff;
     --mercatura-secondary: #E2E8F0;
     --mercatura-secondary-hover: #F8FAFC;
     --mercatura-on-secondary: #1A1A2E;
     --mercatura-surface: #1E1E2E;
-    --mercatura-surface-alt: #161622;
+    --mercatura-surface-alt: rgba(246, 246, 246, 0.6);
     --mercatura-surface-hover: #2A2A3E;
-    --mercatura-border: #2D2D4A;
+    --mercatura-border: 1px solid #dee2e6;
     --mercatura-border-focus: #6366F1;
-    --mercatura-text: #E2E8F0;
-    --mercatura-text-secondary: #94A3B8;
+    --mercatura-text: #313131;
+    --mercatura-text-secondary: #212529;
     --mercatura-text-muted: #64748B;
     --mercatura-text-on-dark: #ffffff;
+    --mercatura-shadow: 1px 5px 24px 0 rgba(255, 128, 132, 0.8);
     --mercatura-shadow-xl: 0 20px 60px rgba(0, 0, 0, .6);
+    --mercatura-shadow-sl: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
+
+    // -------- Auth Platform -----------------------------
+    --mercatura-auth-border-padding: 2rem;
+    --mercatura-auth-left-padding: 2.8rem;
+    --mercatura-auth-bg: url('/assets/auth-bg-grafic.png');
 }
+
+@include auth-login-form-all-features();
+@include auth-register-form-all-features();
+@include auth-default-slides-all-features();
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');

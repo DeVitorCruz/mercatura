@@ -1,0 +1,7 @@
+@use './factories/auth-struc-form' as *;
+
+@mixin auth-login-form-all-features() {
+    lib-login:has(.auth-page) {
+        @include auth-struc-form-all-features();
+    }
+}

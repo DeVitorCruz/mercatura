@@ -32,6 +32,9 @@ export class LayoutComponent {
   public readonly RAW_SLIDES: TextAuthSlide[] = 
     this.ROUTE.snapshot.data['slides'] ?? SLIDES;
 
+  public readonly IMG_PATH: string =  
+    this.ROUTE.snapshot.data['imgPath'] ?? 'assets/auth-logo-grafic.png';
+
   public readonly SLIDE_CONFIG: SliderConfig = {
     items: this.RAW_SLIDES.map((slide, index) => ({
       id: index as number,

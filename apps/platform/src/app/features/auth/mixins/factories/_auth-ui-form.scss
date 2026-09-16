@@ -1,0 +1,15 @@
+@mixin auth-ui-form-all-features() {
+    lib-ui-form:has(.ui-form) {
+        .ui-form {
+            .ui-form__input {
+                border: var(--mercatura-border);   
+            }
+
+            .ui-form__submit {
+                background-color: var(--mercatura-primary);
+                color: var(--mercatura-text-on-dark);
+                text-transform: uppercase;
+            }
+        }
+    }
+}

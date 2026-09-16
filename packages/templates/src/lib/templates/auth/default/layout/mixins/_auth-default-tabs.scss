@@ -1,19 +1,32 @@
 @mixin auth-default-tabs() {
-    &__tabs {
+    &__list {
         display: flex;
-        border-bottom: 1px solid var(--mercatura-border);
+        border-bottom: var(--mercatura-border);
     }
 
     &__tab {
-        flex: 1;
+        display: block;
+        padding: 8px 16px;
+        font-size: 18px;
+        transition: all .5s ease-in-out;
 
         &.is-active {
             color: var(--mercatura-primary);
-            border-bottom-color: var(--mercatura-primary);
+            border-bottom: 1px solid var(--mercatura-primary);
+
+            &:hover {
+                color: var(--mercatura-primary-hover);
+            }
         }
 
         &:hover:not(.is-active) {
-            color: var(--mercatura-text-secondary);
+            color: var(--mercatura-primary);
+            border-bottom: 1px solid var(--mercatura-primary);
         }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
     }
 }

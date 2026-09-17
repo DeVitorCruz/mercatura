@@ -3,6 +3,7 @@
 @use './mixins/all-auth-left' as *;
 @use './mixins/all-auth-right' as *;
 @use './mixins/auth-row-sec' as *;
+@use './mixins/list-icon-sec' as *;
 
 :host { display: block; width: 100%; height: 100%; }
 
@@ -32,4 +33,7 @@
 
     // ---- Tabs ----------------------------
     @include auth-default-tabs();
+
+    // ---- Social Media ----------------------------
+    @include list-icon-sec-all-features();
 }

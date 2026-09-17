@@ -1,0 +1,23 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin list-icon-sec-all-features() {
+    &__social-label {
+        text-align: center;
+    }
+    
+    &__social-icons {
+        @include flex-center();
+        padding-top: 10px;
+        margin-top: 10px;
+
+        .auth-shell__social-btn {
+            color: var(--mercatura-primary);
+            display: block;
+            padding: 10px;
+            margin-right: 10px;
+            width: 40px;
+            height: 40px;    
+            border: 1px solid var(--mercatura-primary);       
+        }
+    }
+}

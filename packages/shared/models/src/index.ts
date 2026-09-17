@@ -8,3 +8,4 @@ export * from './lib/user/user.model';
 export * from './lib/theme/theme.model';
 export * from './lib/template/template.model';
 export * from './lib/slide/slide-item.model';
+export * from './lib/icons/social-provider/social-provider.model';

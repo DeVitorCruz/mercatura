@@ -7,10 +7,13 @@ import { filter, map, startWith } from 'rxjs';
 import { SliderComponent } from '@mercatura/ui';
 import { SliderConfig, SliderItem } from '@mercatura/models';
 import { TextSlideComponent } from '../slides/text-slide.component';
+import { IconComponent } from '@mercatura/ui';
+import { SocialProvider } from '@mercatura/models';
+import { SOCIAL_PROVIDERS } from '../SOCIAL_PROVIDERS';
 
 @Component({
   selector: 'lib-layout',
-  imports: [RouterOutlet, RouterLink, SliderComponent],
+  imports: [RouterOutlet, RouterLink, SliderComponent, IconComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
@@ -34,6 +37,9 @@ export class LayoutComponent {
 
   public readonly IMG_PATH: string =  
     this.ROUTE.snapshot.data['imgPath'] ?? 'assets/auth-logo-grafic.png';
+
+  public readonly SOCIAL_PROVIDERS: SocialProvider[] = 
+    this.ROUTE.snapshot.data['socialProviders'] ?? SOCIAL_PROVIDERS;
 
   public readonly SLIDE_CONFIG: SliderConfig = {
     items: this.RAW_SLIDES.map((slide, index) => ({

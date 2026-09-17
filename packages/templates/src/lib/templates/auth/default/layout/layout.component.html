@@ -41,6 +41,26 @@
                         <div class="auth-shell__content">
                             <router-outlet />
                         </div>
+
+                        <!-- Social login icons -->
+                         <div class="auth-shell__social">
+                            <p class="auth-shell__social-label">
+                                Or continue with
+                            </p>
+                            <ul class="auth-shell__social-icons">
+                                @for (provider of SOCIAL_PROVIDERS; track provider.name) {
+                                    <li class="icon-item">
+                                        <a [href]="provider.url"
+                                            class="auth-shell__social-btn"
+                                            [attr.aria-label]="provider.name">
+                                            <lib-icon
+                                                [name]="provider.icon"
+                                                [size]="20" />
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                         </div>
                     </div>
                 </div>
             </div>

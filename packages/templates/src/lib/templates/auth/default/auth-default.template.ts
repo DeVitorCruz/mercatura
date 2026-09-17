@@ -1,19 +1,20 @@
 import { Route } from "@angular/router";
 import { AuthTemplateConfig } from "../auth-template.interface";
 import { TemplateInterface } from "@mercatura/models";
+import { SocialProvider } from "@mercatura/models";
 
 export interface TextAuthSlide {
     title: string;
     description: string;
 };
 
-export function buildAuthDefaultRoutes(config: AuthTemplateConfig = {}, slides?: TextAuthSlide[], imgPath?: string): Route[] {
+export function buildAuthDefaultRoutes(config: AuthTemplateConfig = {}, slides?: TextAuthSlide[], imgPath?: string, socialProviders?: SocialProvider): Route[] {
     return [
         {
             path: '',
             loadComponent: () =>
                 import('./layout/layout.component').then(m =>m.LayoutComponent),
-            data: { slides: slides, imgPath },
+            data: { slides: slides, imgPath, socialProviders },
             children: [
                 {
                     path: '',

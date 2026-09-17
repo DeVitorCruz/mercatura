@@ -1,6 +1,17 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
 @mixin all-auth-right() {
+    @include flex-start();
     background-color: var(--mercatura-on-primary);
     box-shadow: var(--mercatura-shadow-sl);
+
+    margin-bottom: 30px;
+    flex: 0 0 auto;
+    width: 100%;
+
+    @include respone('md') { 
+        width: 60%; 
+    }
 
     .auth-shell__card {
         width: 100%;

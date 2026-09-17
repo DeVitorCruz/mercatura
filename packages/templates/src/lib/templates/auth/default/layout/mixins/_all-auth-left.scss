@@ -10,7 +10,12 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    flex: 0 0 auto;
+    width: 100%;
 
+    @include respone('md') { 
+        width: 40%; 
+    }
 
     .auth-shell__left-img-sec {
         margin-bottom: 40px;

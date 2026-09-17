@@ -1,0 +1,7 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin auth-row-sec-all-features() {
+    display: flex;
+    flex-direction: column;
+    @include respone('md') { flex-direction: row; }
+}

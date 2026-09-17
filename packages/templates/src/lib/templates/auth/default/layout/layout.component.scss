@@ -4,6 +4,7 @@
 @use './mixins/all-auth-right' as *;
 @use './mixins/auth-row-sec' as *;
 @use './mixins/list-icon-sec' as *;
+@use './mixins/auth-skip-btn' as *;
 
 :host { display: block; width: 100%; height: 100%; }
 
@@ -15,6 +16,8 @@
 
     &__container {
         @include container-size('lg');
+        @include auth-skip-btn-all-features();
+        position: relative;
     }
 
     &__row {
@@ -36,4 +39,5 @@
 
     // ---- Social Media ----------------------------
     @include list-icon-sec-all-features();
+
 }

@@ -11,17 +11,23 @@ import {
 
 @Service()
 export class AuthService extends ApiService {
-    private readonly STORAGE: StorageService = inject(StorageService);
+    private readonly STORAGE: StorageService = 
+        inject(StorageService);
 
     private readonly TOKEN_KEY: string = 'auth_token';
     private readonly USER_KEY: string = 'auth_user';
 
-    private readonly TOKEN: WritableSignal<string | null> = signal<string | null>(null);
-    private readonly USER: WritableSignal<AuthUser | null> = signal<AuthUser | null>(null);
+    private readonly TOKEN: WritableSignal<string | null> = 
+        signal<string | null>(null);
+    private readonly USER: WritableSignal<AuthUser | null> = 
+        signal<AuthUser | null>(null);
 
-    public readonly token: Signal<string | null> = computed(() => this.TOKEN());
-    public readonly user: Signal<AuthUser | null> = computed(() => this.USER());
-    public readonly isAuthenticated: Signal<boolean> = computed(() => !!this.TOKEN());
+    public readonly token: Signal<string | null> = 
+        computed(() => this.TOKEN());
+    public readonly user: Signal<AuthUser | null> = 
+        computed(() => this.USER());
+    public readonly isAuthenticated: Signal<boolean> = 
+        computed(() => !!this.TOKEN());
 
     constructor() {
         super();

@@ -1,0 +1,15 @@
+@mixin auth-skip-btn-all-features() {
+    .auth-shell__skip {
+        display: flex;
+        text-transform: uppercase;
+        padding: .875rem 2rem;
+        background-color: var(--mercatura-primary);
+        color: var(--mercatura-text-on-dark);
+        float: right;
+        margin-top: 30px;
+
+        .icon-item {
+            margin-right: 10px;
+        }
+    }
+}

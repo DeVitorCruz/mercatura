@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
-import { AUTH_PLATFORM_ROUTES } from './features/auth/auth.platform.routes';
+import { authPlatformRoutes } from './features/auth/auth.platform.routes';
+import { platformBuildRoutes } from './features/platform-build/platform-build.routes';
 
 export const appRoutes: Route[] = [
     {
@@ -9,7 +10,11 @@ export const appRoutes: Route[] = [
     },
     {
         path: 'auth',
-        children: AUTH_PLATFORM_ROUTES,
+        children: authPlatformRoutes,
+    },
+    {
+        path: '',
+        children: platformBuildRoutes,
     },
     {
         path: '**',

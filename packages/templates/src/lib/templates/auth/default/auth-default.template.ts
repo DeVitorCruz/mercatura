@@ -8,7 +8,12 @@ export interface TextAuthSlide {
     description: string;
 };
 
-export function buildAuthDefaultRoutes(config: AuthTemplateConfig = {}, slides?: TextAuthSlide[], imgPath?: string, socialProviders?: SocialProvider): Route[] {
+export function buildAuthDefaultRoutes(
+    config: AuthTemplateConfig = {}, 
+    slides?: TextAuthSlide[], 
+    imgPath?: string, 
+    socialProviders?: SocialProvider
+): Route[] {
     return [
         {
             path: '',

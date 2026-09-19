@@ -1,0 +1,35 @@
+<div class="platform-sidebar">
+    
+    <!-- Brand -->
+    <div class="platform-sidebar__brand">
+        @if (brandLogo()) {
+            <img class="platform-sidebar__logo"
+                [src]="brandLogo()" 
+                [alt]="brandName()">
+        } @else {
+            <span class="platform-sidebar__brand-name">{{ brandName() }}</span>
+        }
+    </div>
+
+    <!-- Navigation -->
+    <nav class="platform-sidebar__nav">
+        <ul class="platform-sidebar__list">
+            @for (item of navItems(); track item.route) {
+                <li class="platform-sidebar__item">
+                    <a [routerLink]="item.route" 
+                        class="platform-sidebar__link"
+                        routerLinkActive="is-active">
+                        <lib-icon 
+                            [name]="item.icon" [size]="18" />
+                        <span class="platform-sidebar__label">{{ item.label }}</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+
+
+
+

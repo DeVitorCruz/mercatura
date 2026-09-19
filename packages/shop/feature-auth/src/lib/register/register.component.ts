@@ -61,7 +61,7 @@ export class RegisterComponent {
     this.AUTH.register(this.CREDENTIALS).subscribe({
       next: () => {
         this.LOADING.set(false);
-        this.ROUTER.navigate(['/products']);
+        this.ROUTER.navigate([this.REDIRECT_TO()]);
       },
       error: (err: any) => {
         this.LOADING.set(false);

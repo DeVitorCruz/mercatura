@@ -1,0 +1,31 @@
+<mat-sidenav-container class="platform-shell">
+    <!-- Sidebar -->
+    <mat-sidenav 
+        class="platform-shell__sidenav"
+        [opened]="sidebarOpen()"
+        [mode]="'over'"
+        position="start">
+        <lib-sidebar 
+            [navItems]="NAV_ITEMS"
+            [brandName]="BRAND_NAME" 
+            [brandLogo]="BRAND_LOGO" />
+    </mat-sidenav>
+
+    <!-- Main content -->
+    <mat-sidenav-content class="platform-shell__content">
+        
+        <!-- Fixed header -->
+        <lib-header 
+            [sidebarOpen]="sidebarOpen()"
+            (menuToggle)="toggleSidebar()" />
+
+        <!-- Page content -->
+        <main class="platform-shell__main">
+            <router-outlet />
+        </main>
+
+        <!-- Fixed footer -->
+        <lib-footer />
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

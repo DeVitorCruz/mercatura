@@ -1,0 +1,27 @@
+<header class="platform-header">
+    <div class="platform-header__layer">
+        <div class="platform-header__row">
+            
+            <div class="platform-header__left">
+                <button 
+                    class="platform-header__menu-btn"
+                    type="button"
+                    (click)="onMenuToggle()">
+                    <lib-icon 
+                        [name]="sidebarOpen() ? 'layout-sidebar' : 'layout-sidebar-reverse'"
+                        [size]="20"/>
+                </button>
+            </div>
+
+            <div class="platform-header__right">
+                <button class="platform-header__menu-btn" type="button">
+                    <lib-icon name="bell" [size]="20"/>
+                </button>
+                <button class="platform-header__menu-btn" type="button">
+                    <lib-icon name="person-circle" [size]="22"/>
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</header>

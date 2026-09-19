@@ -9,3 +9,7 @@ export * from './lib/theme/theme.model';
 export * from './lib/template/template.model';
 export * from './lib/slide/slide-item.model';
 export * from './lib/icons/social-provider/social-provider.model';
+export * from './lib/platform/tenant.model';
+export * from './lib/platform/tenant-request.model';
+export * from './lib/platform/app.model';
+export * from './lib/platform/dashboard.model';

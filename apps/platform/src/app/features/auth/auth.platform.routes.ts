@@ -1,6 +1,6 @@
 import { buildAuthDefaultRoutes } from '@mercatura/templates';
 
-export const AUTH_PLATFORM_ROUTES = buildAuthDefaultRoutes({
+export const authPlatformRoutes = buildAuthDefaultRoutes({
     loginRedirectTo: '/dashboard',
     registerRedirectTo: '/dashboard',
 });

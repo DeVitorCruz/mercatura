@@ -3,7 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'lib-templates',
   imports: [],
-  templateUrl: './templates.component.html',
-  styleUrl: './templates.component.scss',
+  template: `
+    <div>Template are working!</div>
+  `,
+  styles: `
+    div {
+      display: block;
+    }
+  `,
 })
 export class TemplatesComponent {}

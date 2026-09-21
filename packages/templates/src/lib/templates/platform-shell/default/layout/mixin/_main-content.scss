@@ -1,0 +1,10 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin main-content-all-features(){
+    flex: 1;
+    overflow-y: auto;
+
+    @include respone('md') {
+        margin-top: 80px;
+    }
+}

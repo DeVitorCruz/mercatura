@@ -1,0 +1,15 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+:host { display: block; width: 100%; }
+
+.platform-footer {
+    @include flex-center();
+    padding: var(--mercatura-spacing-6);
+    background-color: var(--platform-footer-bg);
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}

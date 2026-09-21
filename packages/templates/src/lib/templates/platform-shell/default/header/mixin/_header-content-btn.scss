@@ -1,0 +1,12 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin header-content-btn-all-features() {
+    display: none;
+    @include respone('lg') { display: flex; }
+
+    .platform-header__badge {
+        padding: 0 20px;
+        border-left: 1px solid var(--platform-border-header);
+        border-right: 1px solid var(--platform-border-header);
+    }
+}

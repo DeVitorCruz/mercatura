@@ -1,0 +1,50 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+@use './mixin/header-left' as *;
+@use './mixin/header-content-btn' as *;
+@use './mixin/header-right' as *;
+
+:host { display: block; width: 100%; }
+
+.platform-header {
+    background-color: var(--platform-header-bg);
+    position: sticky;
+    width: 100%;
+    height: var(--platform-header-height);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    z-index: 1;
+
+    &__layer {
+        padding: 15px;
+    }
+
+    &__row {
+        @include flex-between();
+    }
+
+    &__left-content {
+        @include header-left-all-features();
+    }
+
+    &__right {
+        @include header-right-all-features();
+    }
+
+    &__menu-btn, &__badge {
+        border: none;
+        background-color: var(--platform-header-bg);
+        cursor: pointer;
+        transition: var(--mercatura-transition);
+
+        ::ng-deep svg {
+            color: var(--mercatura-primary);
+        }
+    }
+
+    &__content-btn {
+        @include header-content-btn-all-features();
+    }
+
+    &__content-hidden {
+        @include respone('lg') { display: none; }
+    }
+}

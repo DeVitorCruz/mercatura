@@ -1,0 +1,36 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin nav-link-all-features() {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3);
+    padding: .625rem var(--mercatura-spacing-3);
+    border-radius: var(--mercatura-radius);
+    color: var(--platform-sidebar-link);
+    text-decoration: none;
+    font-size: var(--platform-font-size-sm);
+    font-weight: var(--platform-font-weight-md);
+    transition: var(--mercatura-transition);
+    white-space: nowrap;
+    overflow: hidden;
+
+    lib-icon {
+        flex-shrink: 0;
+        opacity: .7;
+        transition: var(--mercatura-transition);
+    }
+
+    &:hover {
+        background-color: var(--platform-sidebar-bg-active);
+        color: var(--platform-sidebar-active);
+
+        lib-icon { opacity: 1; }
+    }
+
+    &.is-active {
+        background-color: var(--platform-sidebar-bg-active);
+        color: var(--platform-sidebar-active);
+
+        lib-icon { opacity: 1; }
+    }
+}

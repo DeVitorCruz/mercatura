@@ -1,0 +1,24 @@
+@use './mixin/side-bar-content' as *;
+@use './mixin/main-content' as *;
+@use '@mercatura/ui/styles/mercatura' as *;
+
+:host { display: block; width: 100%; height: 100%; }
+
+.platform-shell {
+    background-color: var(--platform-content-bg);
+    width: 100%;
+    height: 100vh;
+
+    &__sidenav {
+        @include side-bar-content-all-features();
+    }
+
+    &__content {
+        @include flex-col();
+        min-height: 100vh;
+    }
+
+    &__main {
+        @include main-content-all-features();
+    }
+}

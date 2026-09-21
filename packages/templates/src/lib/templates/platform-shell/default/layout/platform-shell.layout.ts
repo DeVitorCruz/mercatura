@@ -5,6 +5,8 @@ import { NavItem } from '../../platform-shell.interface';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderConfig } from '../header/header.interface';
+
 
 @Component({
   selector: 'lib-platform-shell-layout',
@@ -25,6 +27,9 @@ export class PlatformShellLayout {
   
   public readonly BRAND_LOGO: string =
     this.ROUTE.snapshot.data['brandLogo'] ?? '';
+
+  public readonly HEADER_CONFIG: HeaderConfig =
+      this.ROUTE.snapshot.data['headerConfig'];
 
   public readonly sidebarOpen: WritableSignal<boolean> = 
     signal<boolean>(false);

@@ -1,0 +1,18 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin header-left-all-features() {
+    @include flex-start();
+
+    img {
+        height: 23px;
+        margin-right: 15px;
+    }
+
+    .platform-header__logo {
+        @include respone('lg') { display: none; }
+    }
+
+    .platform-header__menu-btn {
+        padding: 0 12px;
+    }
+}

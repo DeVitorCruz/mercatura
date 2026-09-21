@@ -1,0 +1,29 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+@use './mixins/sidebar-brand' as *;
+@use './mixins/sidebar-brand-name' as *;
+@use './mixins/sidebar-all-nav' as *;
+
+:host { display: block; height: 100%; }
+
+.platform-sidebar {
+    @include flex-col();
+    height: 100%;
+    overflow: hidden;
+
+    &__brand {
+        @include sidebar-brand-all-features();
+    }
+
+    &__logo {
+        height: 36px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    &__brand-name {
+        @include sidebar-brand-name-all-features();
+    }
+
+    // ----- Nav -------------------------------------
+    @include sidebar-all-nav-all-features();
+}

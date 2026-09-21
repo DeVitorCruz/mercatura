@@ -1,0 +1,10 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+@mixin sidebar-brand-all-features() {
+    display: flex;
+    align-items: center;
+    height: var(--platform-header-height);
+    padding: 0 var(--mercatura-spacing-6);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    flex-shrink: 0;
+}

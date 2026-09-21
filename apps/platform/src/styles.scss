@@ -41,6 +41,7 @@
 
 // ------ Platform Dark Theme -----------------------------------------
 [data-theme="dark"] {
+    --mercatura-font-weight: 500;
     --mercatura-primary: #ec8951;
     --mercatura-primary-hover: #e76a23;
     --mercatura-primary-subtle: rgba(99, 102, 241, .12);
@@ -52,6 +53,9 @@
     --mercatura-surface: #1E1E2E;
     --mercatura-surface-alt: rgba(246, 246, 246, 0.6);
     --mercatura-surface-hover: #2A2A3E;
+    --mercatura-spacing-6: 15px;
+    --mercatura-spacing-4: 8px;
+    --mercatura-spacing-3: 5px;
     --mercatura-border: 1px solid #dee2e6;
     --mercatura-border-focus: #6366F1;
     --mercatura-text: #313131;
@@ -59,14 +63,32 @@
     --mercatura-text-tertiary: #909090;
     --mercatura-text-muted: #64748B;
     --mercatura-text-on-dark: #ffffff;
+    --mercatura-radius: 8px;
     --mercatura-shadow: 1px 5px 24px 0 rgba(255, 128, 132, 0.8);
     --mercatura-shadow-xl: 0 20px 60px rgba(0, 0, 0, .6);
     --mercatura-shadow-sl: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);
+    --mercatura-transition: all .3s ease-out;
 
     // -------- Auth Platform -----------------------------
     --mercatura-auth-border-padding: 2rem;
     --mercatura-auth-left-padding: 2.8rem;
     --mercatura-auth-bg: url('/assets/auth-bg-grafic.png');
+
+    // -------- Platform Shell -----------------------------
+    --platform-font-weight-md: 500;
+    --platform-font-size-sm: 15px;
+    --platform-sidebar-bg: #2f2f2f; 
+    --platform-sidebar-img: url('/assets/sidebar/sidebarbg-img.jpg');
+    --platform-sidebar-link: #ffffff;
+    --platform-sidebar-active: #ec8951;
+    --platform-sidebar-bg-active: rgba(255, 255, 255, 0.08);
+    --platform-header-height: 64px;
+    --platform-header-bg: #ffffff;
+    --platform-content-bg: #f8f8f9;
+    --platform-card-bg: #ffffff;
+    --platform-footer-bg: #ffffff;
+    --platform-primary: #ff8084;
+    --platform-border-header: #eff0f1;
 }
 
 @include auth-login-form-all-features();

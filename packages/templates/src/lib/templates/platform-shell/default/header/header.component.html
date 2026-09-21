@@ -3,25 +3,38 @@
         <div class="platform-header__row">
             
             <div class="platform-header__left">
-                <button 
-                    class="platform-header__menu-btn"
-                    type="button"
-                    (click)="onMenuToggle()">
-                    <lib-icon 
-                        [name]="sidebarOpen() ? 'layout-sidebar' : 'layout-sidebar-reverse'"
-                        [size]="20"/>
-                </button>
+                <div class="platform-header__left-content">
+                    <a [href]="headerConfig().logo.link" class="platform-header__logo">
+                        <img [src]="headerConfig().logo.url" alt="logo">
+                    </a>
+                    <button
+                        class="platform-header__menu-btn"
+                        type="button"
+                        (click)="onMenuToggle()">
+                        <lib-icon
+                            [name]="headerConfig().sidebarIcon.name"
+                            [size]="headerConfig().sidebarIcon.size"/>
+                    </button>
+                </div>
             </div>
 
             <div class="platform-header__right">
-                <button class="platform-header__menu-btn" type="button">
-                    <lib-icon name="bell" [size]="20"/>
-                </button>
-                <button class="platform-header__menu-btn" type="button">
-                    <lib-icon name="person-circle" [size]="22"/>
-                </button>
+                <ul class="platform-header__content-btn">
+                    @for (icon of headerConfig().icons; track icon) {
+                        <li class="platform-header__badge">
+                            <lib-icon [name]="icon.name" [size]="icon.size"/>
+                        </li>
+                    }
+                </ul>
+                <ul class="platform-header__content-hidden">
+                    <li class="platform-header__badge">
+                        <lib-icon 
+                            [name]="headerConfig().hiddenIcon.name" 
+                            [size]="headerConfig().hiddenIcon.size"/>
+                    </li>
+                </ul>
             </div>
         </div>
-        
+
     </div>
 </header>

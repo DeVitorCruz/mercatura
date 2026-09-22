@@ -42,6 +42,7 @@
 // ------ Platform Dark Theme -----------------------------------------
 [data-theme="dark"] {
     --mercatura-font-weight: 500;
+    --mercatura-font-weight-semibold: 400;
     --mercatura-primary: #ec8951;
     --mercatura-primary-hover: #e76a23;
     --mercatura-primary-subtle: rgba(99, 102, 241, .12);
@@ -53,17 +54,21 @@
     --mercatura-surface: #1E1E2E;
     --mercatura-surface-alt: rgba(246, 246, 246, 0.6);
     --mercatura-surface-hover: #2A2A3E;
+    --mercatura-spacing-1: 10px;
     --mercatura-spacing-6: 15px;
     --mercatura-spacing-4: 8px;
     --mercatura-spacing-3: 5px;
     --mercatura-border: 1px solid #dee2e6;
     --mercatura-border-focus: #6366F1;
     --mercatura-text: #313131;
+    --mercatura-text-2xl: 1.5rem;
     --mercatura-text-secondary: #212529;
     --mercatura-text-tertiary: #909090;
     --mercatura-text-muted: #64748B;
     --mercatura-text-on-dark: #ffffff;
+    --mercatura-text-sm: 20px;
     --mercatura-radius: 8px;
+    --mercatura-radius-full: 9999px;
     --mercatura-shadow: 1px 5px 24px 0 rgba(255, 128, 132, 0.8);
     --mercatura-shadow-xl: 0 20px 60px rgba(0, 0, 0, .6);
     --mercatura-shadow-sl: 1px 5px 24px 0 rgba(68, 102, 242, 0.05);

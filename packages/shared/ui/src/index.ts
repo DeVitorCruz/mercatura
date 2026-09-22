@@ -4,3 +4,7 @@ export * from './lib/form-ui/form-field.interface';
 export * from './lib/theme/theme/theme.service';
 export * from './lib/slider/slider.component';
 export * from './lib/icon/icon.component';
+export * from './lib/accordion/accordion.component';
+export * from './lib/accordion/accordion-item.interface';
+export * from './lib/breadcrumb/breadcrumb-item.interface';
+export * from './lib/breadcrumb/breadcrumb.component';

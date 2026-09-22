@@ -13,7 +13,6 @@
 
     <!-- Main content -->
     <mat-sidenav-content class="platform-shell__content">
-        
         <!-- Fixed header -->
         <lib-header 
             [headerConfig]="HEADER_CONFIG"
@@ -22,11 +21,10 @@
 
         <!-- Page content -->
         <main class="platform-shell__main">
-            <router-outlet />
+            <lib-page-banner />
         </main>
 
         <!-- Fixed footer -->
         <lib-footer />
-
     </mat-sidenav-content>
 </mat-sidenav-container>

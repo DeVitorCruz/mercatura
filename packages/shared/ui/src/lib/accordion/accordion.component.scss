@@ -1,0 +1,18 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+@use './mixin/accordion-btn-trigger' as *;
+@use './mixin/accordion-children' as *;
+
+:host { display: block; width: 100%; }
+
+.accordion {
+    @include flex-col();
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 2px;
+
+    &__item { width: 100%; }
+
+    @include accordion-btn-trigger-all-features();
+    @include accodion-children-all-features();
+}

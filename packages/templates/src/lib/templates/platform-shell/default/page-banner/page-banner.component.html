@@ -1,0 +1,12 @@
+<div class="page-banner">
+    <div class="page-banner__info">
+        <h1 class="page-banner__title">
+            {{ pageInfo()?.title }}
+        </h1>
+        <lib-breadcrumb [items]="pageInfo()?.breadcrumbs ?? []"/>
+    </div>
+</div>
+<!-- Page content -->
+ <div class="page-banner__content">
+    <router-outlet />
+ </div>

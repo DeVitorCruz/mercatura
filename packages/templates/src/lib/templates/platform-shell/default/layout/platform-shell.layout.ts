@@ -6,12 +6,14 @@ import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderConfig } from '../header/header.interface';
-
+import { PageBannerComponent } from '../page-banner/page-banner.component';
 
 @Component({
   selector: 'lib-platform-shell-layout',
   imports: [RouterOutlet, MatSidenavModule, 
-    HeaderComponent, SidebarComponent, FooterComponent],
+    HeaderComponent, SidebarComponent, FooterComponent,
+    PageBannerComponent,
+  ],
   templateUrl: './platform-shell.layout.html',
   styleUrl: './platform-shell.layout.scss',
 })

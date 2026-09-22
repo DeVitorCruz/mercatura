@@ -1,0 +1,32 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
+:host { display: block; }
+
+.breadcrumb {
+    &__list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: .25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+        font-size: var(--mercatura-text-sm, .875rem);
+    }
+
+    &__link {
+        text-decoration: none;
+        transition: var(--mercatura-transition, all .2s ease)
+    }
+
+    &__separator {
+        opacity: .4;
+        font-size: .75rem;
+    }
+}

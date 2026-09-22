@@ -13,7 +13,10 @@
 
     <!-- Navigation -->
     <nav class="platform-sidebar__nav">
-        <ul class="platform-sidebar__list">
+
+        <lib-accordion [items]="navItems()"/>
+
+        <!-- <ul class="platform-sidebar__list">
             @for (item of navItems(); track item.route) {
                 <li class="platform-sidebar__item">
                     <a [routerLink]="item.route" 
@@ -25,7 +28,7 @@
                     </a>
                 </li>
             }
-        </ul>
+        </ul> -->
     </nav>
 </div>
 

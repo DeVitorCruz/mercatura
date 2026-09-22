@@ -1,11 +1,10 @@
 import { Component, input, InputSignal } from '@angular/core';
-import { IconComponent } from '@mercatura/ui';
-import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NavItem } from '../../platform-shell.interface';
+import { AccordionComponent } from '@mercatura/ui';
 
 @Component({
   selector: 'lib-sidebar',
-  imports: [RouterLink, RouterLinkActive, IconComponent],
+  imports: [AccordionComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })

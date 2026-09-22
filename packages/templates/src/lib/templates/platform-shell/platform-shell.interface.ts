@@ -1,10 +1,9 @@
 import { HeaderConfig } from "./default/header/header.interface";
+import { AccordionItem } from "@mercatura/ui";
 
-export interface NavItem {
-    label: string;
+export interface NavItem extends AccordionItem {
     icon: string;
     route: string;
-    children?: NavItem[];
 };
 
 export interface PlatformShellConfig {

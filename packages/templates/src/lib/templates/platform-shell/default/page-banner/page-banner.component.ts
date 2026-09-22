@@ -1,6 +1,6 @@
 import { Component, inject, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { BreadcrumbComponent } from '@mercatura/ui';
 import { filter, map, startWith } from 'rxjs';
 import { BreadcrumbItem } from '@mercatura/ui';
@@ -20,7 +20,7 @@ export class PageBannerComponent {
   public readonly pageInfo: Signal<PageInfo | undefined> = 
     toSignal<PageInfo | undefined>(
       this.ROUTER.events.pipe(
-        filter(e => e instanceof Navigation),
+        filter(e => e instanceof NavigationEnd),
         startWith(null),
         map(() => (this._buildPageInfo() as PageInfo))
       )
@@ -30,9 +30,9 @@ export class PageBannerComponent {
     let route = this.ROUTE;
     while(route.firstChild) route = route.firstChild;
     
-    const TITLE: string = route.snapshot.data['title'] ?? 
-      this._titleFromUrl(this.ROUTER.url);
-
+    const TITLE: string = route.snapshot?.data['title'] ?? 
+    this._titleFromUrl(this.ROUTER.url);
+    
     const BREADCRUMBS: BreadcrumbItem[] = [
       { label: 'home', route: '/' },
       { label: TITLE }

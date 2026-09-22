@@ -10,7 +10,7 @@ import { PageBannerComponent } from '../page-banner/page-banner.component';
 
 @Component({
   selector: 'lib-platform-shell-layout',
-  imports: [RouterOutlet, MatSidenavModule, 
+  imports: [MatSidenavModule, 
     HeaderComponent, SidebarComponent, FooterComponent,
     PageBannerComponent,
   ],

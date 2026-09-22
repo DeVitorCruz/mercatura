@@ -1,7 +1,6 @@
 import { Component, computed, input, InputSignal, Signal, signal, WritableSignal } from '@angular/core';
 import { AccordionItem } from './accordion-item.interface';
 import { IconComponent } from '../icon/icon.component';
-import { NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({

@@ -1,6 +1,6 @@
 @use '@mercatura/ui/styles/mercatura' as *;
-@use './mixin/accordion-btn-trigger' as *;
 @use './mixin/accordion-children' as *;
+@use './mixin/accordion-liste-item' as *;
 
 :host { display: block; width: 100%; }
 
@@ -13,6 +13,6 @@
 
     &__item { width: 100%; }
 
-    @include accordion-btn-trigger-all-features();
-    @include accodion-children-all-features();
+    @include accordion-liste-item-all-features();
+    @include accordion-children-all-features();
 }

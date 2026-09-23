@@ -1,5 +1,3 @@
-@use './navigation-collect/nav-list' as *;
-@use './navigation-collect/nav-link' as *;
 
 @mixin sidebar-all-nav-all-features() {
     &__nav {
@@ -14,14 +12,6 @@
             background: rgba(255, 255, 255, .15);
             border-radius: 2px;
         }
-    }
-
-    &__list {
-        @include nav-list-all-features();
-    }
-
-    &__link {
-        @include nav-link-all-features();
     }
 
     &__label { flex: 1; }

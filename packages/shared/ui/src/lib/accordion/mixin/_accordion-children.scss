@@ -1,28 +1,23 @@
-@mixin accodion-children-all-features() {
+@use './accordion-child-link' as *;
+
+@mixin accordion-children-all-features() {
     &__children {
         list-style: none;
         margin: 0;
+        margin-left: var(--mercatura-spacing-5, 15px);
+        margin-right: var(--mercatura-spacing-0, 0);
         padding: 0;
         max-height: 0;
         overflow: hidden;
-        transition: max-height .25s ease;
+        transition: max-height .3s ease;
 
         &.is-open { max-height: 500px; }
     }
 
     &__child-link {
-        display: flex;
-        align-items: center;
-        gap: var(--mercatura-spacing-3, .75rem);
-        padding: .5rem var(--mercatura-spacing-3, .75rem)
-            .5rem calc(var(--mercatura-spacing-3, .75rem) + 30px);
-        border-radius: var(--mercatura-radius, 4px);
-        text-decoration: none;
-        transition: var(--mercatura-transition, all .2s ease);
-        white-space: nowrap;
-        overflow: hidden;
+        @include accordion-child-link-all-features();
     }
-
+    
     &__child-dot {
         width: 5px;
         height: 5px;

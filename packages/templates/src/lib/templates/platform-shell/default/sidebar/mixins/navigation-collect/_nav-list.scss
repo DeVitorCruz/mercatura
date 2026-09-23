@@ -1,9 +1,0 @@
-@use '@mercatura/ui/styles/mercatura' as *; 
-
-@mixin nav-list-all-features() {
-    @include flex-col();
-    gap: 2px;
-    padding: 0 var(--mercatura-spacing-3);
-    list-style: none;
-    margin: 0;
-}

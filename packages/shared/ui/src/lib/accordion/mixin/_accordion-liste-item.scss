@@ -1,0 +1,33 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+@use './accordion-btn-trigger' as *;
+
+@mixin accordion-liste-item-all-features() {
+    &__trigger {
+        @include accordion-btn-trigger-all-features();
+    }
+
+    &__label {
+        @include flex-center();
+        min-width: 18px;
+        height: 18px;
+        padding: 0 4px;
+        border-radius: var(--mercatura-radius-full, 9999px);
+        font-size: var(--platform-font-size-sm, 15px);
+        font-weight: var(--mercatura-font-weight-bold, 600);
+    }
+
+    lib-icon {
+        display: flex;
+        flex-shrink: 0;
+        opacity: .7;
+        transition: var(--mercatura-transition);
+        margin-right: 10px;
+    }
+
+    &__chevron {
+        flex-shrink: 0;
+        transition: transform .2s ease;
+
+        &.is-rotated { transform: rotate(-180deg) }
+    }
+}

@@ -1,0 +1,16 @@
+@mixin accordion-child-link-all-features() {
+    color: var(--platform-sidebar-child-link);
+    font-size: var(--mercatura-spacing-5);
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3, .75rem);
+    padding-top: var(--mercatura-spacing-4);
+    padding-bottom: var(--mercatura-spacing-4);
+    padding-left: var(--mercatura-spacing-7);
+    padding-right: var(--mercatura-spacing-0);
+    border-radius: var(--mercatura-radius, 4px);
+    text-decoration: none;
+    transition: var(--mercatura-transition, all .2s ease);
+    white-space: nowrap;
+    overflow: hidden;
+}

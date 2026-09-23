@@ -1,6 +1,6 @@
 import { Component, input, InputSignal } from '@angular/core';
-import { NavItem } from '../../platform-shell.interface';
 import { AccordionComponent } from '@mercatura/ui';
+import { AccordionItem } from '@mercatura/ui';
 
 @Component({
   selector: 'lib-sidebar',
@@ -9,8 +9,8 @@ import { AccordionComponent } from '@mercatura/ui';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  public readonly navItems: InputSignal<NavItem[]> = 
-    input<NavItem[]>([]);
+  public readonly navItems: InputSignal<AccordionItem[]> = 
+    input<AccordionItem[]>([]);
   public readonly brandName: InputSignal<string> = 
     input<string>('Mercatura');
   public readonly brandLogo: InputSignal<string> =

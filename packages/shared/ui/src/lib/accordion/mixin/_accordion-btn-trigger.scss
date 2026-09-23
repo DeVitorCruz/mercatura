@@ -1,37 +1,27 @@
-@use '@mercatura/ui/styles/mercatura' as *;
-
 @mixin accordion-btn-trigger-all-features() {
-    &__trigger {
-        display: flex;
-        align-items: center;
-        gap: var(--mercatura-spacing-3, .75rem);
-        width: 100%;
-        padding: .625rem var(--mercatura-spacing-3, .75rem);
-        border: none;
-        border-radius: var(--mercatura-radius, 4px);
-        background: transparent;
-        cursor: pointer;
-        text-align: left;
-        text-decoration: none;
-        transition: var(--mercatura-transition, all .2s ease);
-        white-space: nowrap;
-        overflow: hidden;
-    }
+    color: var(--platform-sidebar-link);
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3, .75rem);
+    width: 100%;
+    padding:  var(--mercatura-spacing-5, .625rem) var(--mercatura-spacing-6, .75rem);
+    border: none;
+    border-radius: var(--mercatura-radius, 4px);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: var(--mercatura-transition, all .2s ease);
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 10px;
 
-    &__label {
-        @include flex-center();
-        min-width: 18px;
-        height: 18px;
-        padding: 0 4px;
-        border-radius: var(--mercatura-radius-full, 9999px);
-        font-size: 10px;
-        font-weight: 600;
-    }
+    &:hover {
+        background-color: var(--platform-sidebar-bg-active);
+        color: var(--platform-sidebar-active);
+        border-left: 1px solid var(--platform-sidebar-active);
 
-    &__chevron {
-        flex-shrink: 0;
-        transition: transform .2s ease;
-
-        &.is-rotated { transform: rotate(-180deg) }
+        lib-icon { opacity: 1; }
     }
 }

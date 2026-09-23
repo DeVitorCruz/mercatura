@@ -31,7 +31,11 @@
                                 [routerLink]="child.route"
                                 routerLinkActive="is-active" 
                                 class="accordion__child-link">
-                                <span class="accordion__child-dot"></span>
+                                @if (child.icon) {
+                                    <lib-icon [name]="child.icon" [size]="10"/>
+                                } @else {
+                                    <span class="accordion__child-dot"></span>
+                                }
                                 <span class="accordion__label">{{ child.label }}</span>
                                 @if (child.badge) {
                                     <span class="accordion__badge">{{ child.badge }}</span>

@@ -1,0 +1,11 @@
+@mixin accordion-child-dot-all-features() {
+    position: absolute;
+        left: 14px;
+        background-color: var(--platform-sidebar-child-link);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        opacity: .5;
+        transition: var(--mercatura-transition, all .2s ease);
+}

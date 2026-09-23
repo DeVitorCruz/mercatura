@@ -1,4 +1,4 @@
-<ul class="accordion">
+<ul class="accordion" [attr.data-depth]="depth()">
     @for (item of items(); track item.id) {
         <li class="accordion__item">
             @if (hasChildren(item)) {
@@ -8,13 +8,19 @@
                     class="accordion__trigger"
                     [class.is-open]="isOpen(item.id)()"
                     (click)="toggle(item.id)">
-                    @if (item.icon) {
-                        <lib-icon [name]="item.icon" [size]="18"/>
-                    }
-                    <span class="accordion__label">{{ item.label }}</span>
-                    @if (item.badge) {
-                        <span class="accordion__badge">{{ item.badge }}</span>
-                    }
+                    
+                    <div class="accordion__info">
+                        @if (item.icon) {
+                            <lib-icon [name]="item.icon" [size]="18"/>
+                        } @else {
+                            <span class="accordion__child-dot"></span>
+                        }
+                        <span class="accordion__label">{{ item.label }}</span>
+                        @if (item.badge) {
+                            <span class="accordion__badge">{{ item.badge }}</span>
+                        }
+                    </div>
+
                     <lib-icon 
                         name="chevron-down" 
                         [size]="14"
@@ -22,41 +28,32 @@
                         [class.is-rotated]="isOpen(item.id)()" />
                 </button>
 
-                <!-- Children -->
-                <ul class="accordion__children"
-                    [class.is-open]="isOpen(item.id)()">
-                    @for (child of item.children!; track child.id) {
-                        <li class="accordion__child">
-                            <a 
-                                [routerLink]="child.route"
-                                routerLinkActive="is-active" 
-                                class="accordion__child-link">
-                                @if (child.icon) {
-                                    <lib-icon [name]="child.icon" [size]="10"/>
-                                } @else {
-                                    <span class="accordion__child-dot"></span>
-                                }
-                                <span class="accordion__label">{{ child.label }}</span>
-                                @if (child.badge) {
-                                    <span class="accordion__badge">{{ child.badge }}</span>
-                                }
-                            </a>
-                        </li>
-                    }
-                </ul>
+                <!-- Recursive Children -->
+                <div 
+                    class="accordion__children"
+                    [class.is-open]="isOpen(item.id)()"
+                    [class]="'child-level-' + depth()">
+                    <lib-accordion 
+                        [items]="item.children!" 
+                        [depth]="depth() + 1"/>
+                </div>
             } @else {
                 <a 
                     [routerLink]="item.route"
                     routerLinkActive="is-active"
                     [class.is-link]="true"
                     class="accordion__trigger">
-                    @if (item.icon) {
-                        <lib-icon [name]="item.icon" [size]="18"/>
-                    }
-                    <span class="accordion__label">{{ item.label }}</span>
-                    @if (item.badge) {
-                        <span class="accordion__badge">{{ item.badge }}</span>
-                    }
+                    <div class="accordion__info">
+                        @if (item.icon) {
+                            <lib-icon [name]="item.icon" [size]="18"/>
+                        } @else {
+                            <span class="accordion__child-dot"></span>
+                        }
+                        <span class="accordion__label">{{ item.label }}</span>
+                        @if (item.badge) {
+                            <span class="accordion__badge">{{ item.badge }}</span>
+                        }
+                    </div>
                 </a>
             }
         </li>

@@ -1,0 +1,12 @@
+@mixin accordion-general-panel-all-features() {
+    list-style: none;
+    margin: 0;
+    margin-left: var(--mercatura-spacing-5, 15px);
+    margin-right: var(--mercatura-spacing-0, 0);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+
+    &.is-open { max-height: 500px; }
+}

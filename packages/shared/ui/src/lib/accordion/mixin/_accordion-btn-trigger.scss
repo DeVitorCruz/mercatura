@@ -1,7 +1,8 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+
 @mixin accordion-btn-trigger-all-features() {
+    @include flex-between();
     color: var(--platform-sidebar-link);
-    display: flex;
-    align-items: center;
     gap: var(--mercatura-spacing-3, .75rem);
     width: 100%;
     padding:  var(--mercatura-spacing-5, .625rem) var(--mercatura-spacing-6, .75rem);

@@ -6,8 +6,14 @@
         @include accordion-btn-trigger-all-features();
     }
 
-    &__label {
+    &__trigger[data-depth="1"] { padding: 2.5rem; }
+    &__trigger[data-depth="2"] { padding: 2.5rem; }
+
+    &__info, &__label {
         @include flex-center();
+    }
+
+    &__label {
         min-width: 18px;
         height: 18px;
         padding: 0 4px;

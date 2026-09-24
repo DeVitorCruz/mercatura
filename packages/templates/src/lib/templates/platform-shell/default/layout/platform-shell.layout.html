@@ -3,8 +3,9 @@
     <mat-sidenav 
         class="platform-shell__sidenav"
         [opened]="sidebarOpen()"
-        [mode]="'over'"
-        position="start">
+        [mode]="sidebarMode()"
+        position="start"
+        (closedStart)="onSidebarClosed()">
         <lib-sidebar 
             [navItems]="NAV_ITEMS"
             [brandName]="BRAND_NAME" 

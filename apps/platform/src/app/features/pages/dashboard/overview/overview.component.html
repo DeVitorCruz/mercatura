@@ -1,0 +1,34 @@
+@if (LOADING()) {
+    <div class="overview-loading">
+        <span>Loading dashboard...</span>
+    </div>
+}
+
+@if (ERROR()) {
+    <div class="overview-error">{{ ERROR() }}</div>
+}
+
+@if (DATA(); as data) {
+
+    <!-- Trial banner -->
+    <app-trial-banner 
+        [daysRemaining]="data.tenant.trial_days_remaining"
+        [status]="data.tenant.status" />
+
+    <!-- Stat cards -->
+    <app-stat-cards 
+        [limits]="data.limits" 
+        [subscription]="data.subscription" />
+
+    <!-- Apps list -->
+    <app-app-grid 
+        [apps]="data.apps"
+        [canCreate]="canCreateApp()" />
+
+    <!-- Recent orders -->
+    <app-recent-orders 
+        [orders]="data.recent_orders" />
+
+    <!-- Recent contacts -->
+    <app-recent-contacts [contacts]="data.recent_contacts"/>
+}

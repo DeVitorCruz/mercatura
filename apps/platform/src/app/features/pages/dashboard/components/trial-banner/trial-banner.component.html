@@ -1,0 +1,15 @@
+@if (status() === 'trial') {
+    <div class="banner" [ngClass]="getTrialClass()">
+        @if (!daysRemaining() || daysRemaining()! <= 0) {
+            <strong>Trial expired.</strong> Upgrade your plan to continue.
+            <a routerLink="/billing">Upgrade now</a>
+        } @else if (daysRemaining()! < 3) {
+            <strong>Trial ending soon!</strong> 
+            {{ daysRemaining() }} days remaining.
+            <a routerLink="/billing">Upgrade now</a>
+        } @else {
+            <strong>Trial:</strong>
+            {{ daysRemaining() }} days remaining.
+        }
+    </div>
+}

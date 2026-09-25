@@ -1,0 +1,66 @@
+<div class="overview-section">
+    <div class="overview-section__header">
+        <h2 class="overview-section__title">Your Apps</h2>
+        <a 
+            routerLink="/apps"
+            class="btn btn--primary"
+            [class.is-disabled]="!canCreate()">
+            + New App
+        </a>
+    </div>
+
+    @if (apps().length === 0) {
+        <div class="overview-empty">
+            No apps yet. Create your first app to get started.
+        </div>
+    } @else {
+        <div class="app-grid">
+            @for (app of apps(); track app.id) {
+                <div class="app-card">
+                    <div class="app-card__header">
+                        <h3 class="app-card__name">{{ app.name }}</h3>
+                        <span class="badge" [ngClass]="getStatusClass(app.status)">
+                            {{ app.status }}
+                        </span>
+                    </div>
+                    <div class="app-card__meta">
+                        <span>{{ app.app_type }}</span>
+                        <span>{{ app.theme }}</span>
+                    </div>
+                    
+                    @if (app.primary_domain) {
+                        <a 
+                            [href]="'https://' + app.primary_domain" 
+                            target="_blank"
+                            class="app-card__domain">
+                            {{ app.primary_domain }}
+                        </a>
+                    }
+
+                    @if (app.stats) {
+                        <div class="app-card__stats">
+                            <div class="app-stat">
+                                <span class="app-stat__value">{{ app.stats.products }}</span>
+                                <span class="app-stat__label">Products</span>
+                            </div>
+                            <div class="app-stat">
+                                <span class="app-stat__value">{{ app.stats.orders }}</span>
+                                <span class="app-stat__label">Orders</span>
+                            </div>
+                            <div class="app-stat">
+                                <span class="app-stat__value">
+                                    {{ formatRevenue(app.stats.revenue) }}
+                                </span>
+                                <span class="app-stat__label">Revenue</span>
+                            </div>
+                            <div class="app-stat">
+                                <span class="app-stat__value">{{ app.stats.contacts_unread }}</span>
+                                <span class="app-stat__label">Contacts</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>

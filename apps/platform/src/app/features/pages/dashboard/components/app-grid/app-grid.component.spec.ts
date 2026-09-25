@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Overview } from './overview';
+import { AppGridComponent } from './app-grid.component';
 
-describe('Overview', () => {
-  let component: Overview;
-  let fixture: ComponentFixture<Overview>;
+describe('AppGrid', () => {
+  let component: AppGridComponent;
+  let fixture: ComponentFixture<AppGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Overview],
+      imports: [AppGridComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Overview);
+    fixture = TestBed.createComponent(AppGridComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,0 +1,49 @@
+<div class="overview-stats">
+    <div class="stat-card">
+        <div class="stat-card__label">Apps</div>
+        <div class="stat-card__value">
+            {{ limits().apps.used }} / {{ limits().apps.max }}
+        </div>
+        <div class="stat-card__bar">
+            <div 
+                class="stat-card__bar-fill"
+                [style.width.%]="getLimitPercent(limits().apps)"
+                [ngClass]="isLimitReached(limits().apps) ? 'is-danger' : 'is-primary'">
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card__label">Products</div>            
+        <div class="stat-card__value">
+            {{ limits().products.used }} / {{ limits().products.max }}
+        </div>
+        <div class="stat-card__bar">
+            <div 
+                class="stat-card__bar-fill"
+                [style.width.%]="getLimitPercent(limits().products)"
+                [ngClass]="isLimitReached(limits().products) ? 'is-danger' : 'is-primary'">
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card__label">Domains</div>
+        <div class="stat-card__value">
+            {{ limits().domains.used }} / {{ limits().domains.max }}
+        </div>
+        <div class="stat-card__bar">
+            <div 
+                class="stat-card__bar-fill"
+                [style.width.%]="getLimitPercent(limits().domains)"
+                [ngClass]="isLimitReached(limits().domains) ? 'is-danger' : 'is-primary'">
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-card__label">Plan</div>
+        <div class="stat-card__value">{{ subscription().plan }}</div>
+        <div class="stat-card__sub">{{ subscription().status }}</div>
+    </div>
+</div>

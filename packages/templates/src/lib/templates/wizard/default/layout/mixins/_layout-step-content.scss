@@ -1,0 +1,7 @@
+@mixin layout-step-content-all-features() {
+    background-color: var(--mercatura-surface, #fff);
+    border-radius: var(--mercatura-radius-xl, 12px);
+    padding: var(--mercatura-spacing-10, 2.5rem);
+    box-shadow: var(--mercatura-shadow-md, 0 4px 12px rgba(0, 0, 0, .1));
+    color: var(--mercatura-text-on-dark, #fff);
+} 

@@ -1,0 +1,26 @@
+@mixin layout-step-dot-all-features() {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--mercatura-radius-full, 9999px);
+    border: var(--mercatura-border, 2px solid #e5e7eb);
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--mercatura-text-muted, #9ca3af);
+    flex-shrink: 0;
+    transition: var(--mercatura-transition, all .2s ease);
+
+    .wizard__step.is-active & {
+        border-color: var(--mercatura-primary, #000);
+        background-color: var(--mercatura-primary, #000);
+        color: var(--mercatura-primary, #fff);
+    }
+
+    .wizard__step.is-done & {
+        border-color: var(--mercatura-success, #10b981);
+        background-color: var(--mercatura-success, #10b981);
+        color: #fff;
+    }
+}

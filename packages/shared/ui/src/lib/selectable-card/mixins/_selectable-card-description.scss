@@ -1,0 +1,6 @@
+@mixin selectable-card-description-all-features() {
+    font-size: var(--mercatura-text-sm, .875rem);
+    color: var(--mercatura-text-on-dark, #6b7280);
+    line-height: 1.5;
+    margin-bottom: var(--mercatura-spacing-3, .75rem);
+}

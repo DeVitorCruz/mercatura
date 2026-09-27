@@ -1,0 +1,32 @@
+<div class="selectable-card-grid"
+    [class.--columns]="columns()">
+    @for (item of items(); track item.id) {
+        <div class="selectable-card"
+            [class.is-selected]="isSelected(item.id)"
+            (click)="select(item.id)">
+            @if (item.badge) {
+                <span class="selectable-card__badge">{{ item.badge }}</span>
+            }
+
+            <div class="selectable-card__title">{{ item.title }}</div>
+
+            @if (item.subtitle) {
+                <div class="selectable-card__subtitle">{{ item.subtitle }}</div>
+            }
+
+            @if (item.description) {
+                <div class="selectable-card__description">{{ item.description }}</div>
+            }
+
+            @if (item.meta && item.meta.length > 0) {
+                <ul class="selectable-card__meta">
+                    @for (line of item.meta; track line) {
+                        <li>{{ line }}</li>
+                    }
+                </ul>
+            }
+
+            <div class="selectable-card__check"></div>
+        </div>
+    }
+</div>

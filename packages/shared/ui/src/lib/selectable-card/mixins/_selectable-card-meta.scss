@@ -1,0 +1,19 @@
+@mixin selectable-card-meta-all-features() {
+    list-style: none;
+    margin: var(--mercatura-spacing-1, .25rem);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mercatura-spacing-1, .25rem);
+
+    li {
+        font-size: var(--mercatura-text-sm, .875rem);
+        color: var(--mercatura-text-on-dark, #6b7280);
+
+        &::before {
+            content: '✓ ';
+            color: var(--mercatura-success, #10b981);
+            font-weight: 600;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@mixin selectable-card-check-all-features() {
+    display: none;
+    position: absolute;
+    bottom: var(--mercatura-spacing-3, .75rem);
+    right: var(--mercatura-spacing-3, .75rem);
+    width: 20px;
+    height: 20px;
+    border-radius: var(--mercatura-radius-full, 9999px);
+    background-color: var(--mercatura-primary, #000);
+    color: var(--mercatura-on-primary, #fff);
+    font-size: .75rem;
+    align-items: center;
+    justify-content: center;
+}

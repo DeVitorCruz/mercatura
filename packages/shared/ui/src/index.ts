@@ -8,3 +8,5 @@ export * from './lib/accordion/accordion.component';
 export * from './lib/accordion/accordion-item.interface';
 export * from './lib/breadcrumb/breadcrumb-item.interface';
 export * from './lib/breadcrumb/breadcrumb.component';
+export * from './lib/selectable-card/selectable-card.component';
+export * from './lib/selectable-card/selectable-card-item.interface';

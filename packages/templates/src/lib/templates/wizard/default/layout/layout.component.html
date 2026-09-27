@@ -1,0 +1,33 @@
+<div class="wizard">
+    <!-- Step indicator -->
+    <div class="wizard__steps">
+        @for (step of steps(); track step.id; let last = $last) {
+            <div class="wizard__step"
+                [class.is-active]="step.id === currentStep()"
+                [class.is-done]="step.id < currentStep()">
+                <div class="wizard__step-dot">
+                    @if (step.id < currentStep()) {
+                        ✓
+                    } @else {
+                        {{ step.id }}
+                    }
+                </div>
+                <div class="wizard__step-info">
+                    <span class="wizard__step-label">{{ step.label }}</span>
+                    @if (step.description) {
+                        <span class="wizard__step-desc">{{ step.description }}</span>
+                    }
+                </div>
+            </div>
+            @if (!last) {
+                <div class="wizard__step-line"
+                    [class.is-done]="step.id < currentStep()">
+                </div>
+            }
+        }
+    </div>
+    <!-- Content -->
+     <div class="wizard__content">
+        <ng-content />
+     </div>
+</div>

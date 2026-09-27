@@ -1,0 +1,48 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+@use './mixins/selectable-card-badge' as *;
+@use './mixins/selectable-card-title' as *;
+@use './mixins/selectable-card-subtitle' as *;
+@use './mixins/selectable-card-description' as *;
+@use './mixins/selectable-card-meta' as *;
+@use './mixins/selectable-card-check' as *;
+@use './mixins/selectable-card' as *;
+
+:host { display: block; width: 100%; }
+
+.selectable-card-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 3), 1fr);
+    gap: var(--mercatura-spacing-4, 1rem);
+
+    @include respone('md') { grid-template-columns: 1fr; }
+}
+
+.selectable-card {
+    @include selectable-card-all-features();
+
+    &__badge {
+        @include selectable-card-badge-all-features();
+    }
+
+    &__title {
+        @include selectable-card-title-all-features();
+    }
+
+    &__subtitle {
+        @include selectable-card-subtitle-all-features();
+    }
+
+    &__description {
+        @include selectable-card-description-all-features();
+    }
+
+    &__meta {
+        @include selectable-card-meta-all-features();
+    }
+
+    &__check {
+        @include selectable-card-check-all-features();
+    }
+
+    &.is-selected &__check { display: flex; }
+}

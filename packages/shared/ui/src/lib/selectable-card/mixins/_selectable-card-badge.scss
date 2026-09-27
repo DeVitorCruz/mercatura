@@ -1,0 +1,11 @@
+@mixin selectable-card-badge-all-features() {
+    position: absolute;
+    top: var(--mercatura-spacing-3, .75rem);
+    right: var(--mercatura-spacing-3, .75rem);
+    padding: 2px var(--mercatura-spacing-2, .5rem);
+    border-radius: var(--mercatura-radius-full, 9999px);
+    font-size: .6875rem;
+    font-weight: 600;
+    background-color: var(--mercatura-primary, #000);
+    color: var(--mercatura-on-primary, #fff);
+}

@@ -1,0 +1,11 @@
+@mixin layout-step-line-all-features() {
+    flex: 1;
+    height: 1px;
+    background-color: var(--mercatura-border, #e5e7eb);
+    margin: 0 var(--mercatura-spacing-3, .75rem);
+    transition: background-color .3s ease;
+
+    &.is-done {
+        background-color: var(--mercatura-success, #10b981);
+    }
+}

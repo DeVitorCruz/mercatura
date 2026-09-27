@@ -1,11 +1,9 @@
 import { Component, inject, OnDestroy, OnInit, 
   signal, WritableSignal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { PlatformService } from '@mercatura/shop/data';
-import { Dashboard, getLimitPercent, isLimitReached,
-  DashboardLimitItem, formatRevenueBRL } from '@mercatura/models';
+import { Dashboard, isLimitReached } from '@mercatura/models';
 import { interval, Subscription, switchMap } from 'rxjs';
-import { DatePipe, NgClass } from '@angular/common';
 import { TrialBannerComponent } from '../components/trial-banner/trial-banner.component';
 import { StatCardsComponent } from '../components/stat-cards/stat-cards.component';
 import { AppGridComponent } from '../components/app-grid/app-grid.component';
@@ -45,18 +43,18 @@ export class OverviewComponent implements OnInit, OnDestroy {
   private _loadDashboard(): void {
     this.LOADING.set(true);
     this.PLATFORM.getDashboard().subscribe({
-      next: (data) => {
+      next: (data: Dashboard) => {
         this.DATA.set(data);
         this.LOADING.set(false);
 
         // no tenant -> onboarding
         if (!data.tenant) {
-          this.ROUTER.navigate(['/onboarding/tenant']);
+          this.ROUTER.navigate(['/onboarding']);
         }
       },
-      error: (err) => {
+      error: (err: any) => {
         if (err.status === 404) {
-          this.ROUTER.navigate(['/onboarding/tenant']);
+          this.ROUTER.navigate(['/onboarding']);
         } else {
           this.ERROR.set('Failed to load dashboard.');
           this.LOADING.set(false);

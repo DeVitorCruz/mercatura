@@ -1,0 +1,51 @@
+@use './mixins/layout-step-dot' as *;
+@use './mixins/layout-step-info' as *;
+@use './mixins/layout-step-label' as *;
+@use './mixins/layout-step-line' as *;
+@use './mixins/layout-step-content' as *;
+
+:host { display: block; width: 100%; }
+
+.wizard {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+
+    // ---- Steps ---------------------------------------
+    &__steps {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--mercatura-spacing-10, 2.5rem);
+    }
+
+    &__step {
+        display: flex;
+        align-items: center;
+        gap: var(--mercatura-spacing-3, .75rem);
+    }
+
+    &__step-dot {
+        @include layout-step-dot-all-features();
+    }
+
+    &__step-info {
+        @include layout-step-info-all-features();
+    }
+
+    &__step-label {
+        @include layout-step-label-all-features();
+    }
+
+    &__step-desc {
+        font-size: var(--mercatura-text-xs, .75rem);
+        color: var(--mercatura-text-muted, #9ca3af);
+    }
+
+    &__step-line {
+        @include layout-step-line-all-features();
+    }
+    // ---- Content ---------------------------------------
+    &__content {
+        @include layout-step-content-all-features();
+    }
+}

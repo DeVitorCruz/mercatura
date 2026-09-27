@@ -1,0 +1,5 @@
+@mixin selectable-card-subtitle-all-features(){
+    font-size: var(--mercatura-text-sm, .875rem);
+    color: var(--mercatura-text-on-dark, #6b7280);
+    margin-bottom: var(--mercatura-spacing-3, .75rem);
+}

@@ -1,0 +1,61 @@
+<div class="onboading-page">
+    <lib-wizard-layout
+        [steps]="WIZARD_STEPS"
+        [currentStep]="step()">
+        @if (error()) {
+            <div class="onboarding__error">{{ error() }}</div>
+        }
+
+        <!-- STEP 1 -->
+        @if (step() === 1) {
+            <h2 class="onboarding__title">Welcome to Mercatura</h2>
+            <p class="onboarding__subtitle">Let's set up your business account</p>
+
+            <lib-ui-form 
+                [config]="STEP1_FORM" 
+                [loading]="loading()" 
+                [error]="error()"
+                (formSubmit)="onStep1Submit()" />
+            @if (tenantSlug) {
+                <p class="onboarding__preview">
+                    Preview: <strong>{{ tenantSlug }}.mercatura.com</strong>
+                </p>
+            }
+
+            <div class="onboarding__section">
+                <label for="" class="onboarding__label">
+                    Choose your plan
+                </label>
+                <lib-selectable-card 
+                    [items]="planCards()"
+                    [selectedId]="selectedPlan"
+                    [columns]="3"
+                    (selected)="selectedPlan = $any($event)" />
+            </div>
+        }
+
+        <!-- STEP 2 -->
+        @if (step() === 2) {
+            <h2 class="onboarding__title">Create your first app</h2>
+            <p class="onboarding__subtitle">Choose a type and theme for your store</p>
+
+            <lib-ui-form 
+                [config]="STEP2_FORM" 
+                [loading]="loading()" 
+                [error]="error()"
+                (formSubmit)="onStep2Submit()" />
+
+            <div class="onboarding__section">
+                <label for="" class="onboarding__label">
+                    Choose a theme
+                </label>
+                <lib-selectable-card 
+                    [items]="themeCards()"
+                    [selectedId]="selectedTheme"
+                    [columns]="3"
+                    (selected)="selectedTheme = $any($event)" />
+            </div>
+        }
+
+    </lib-wizard-layout>
+</div>

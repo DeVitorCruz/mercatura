@@ -1,0 +1,7 @@
+@mixin app-card-stats-all-features() {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--mercatura-spacing-2);
+    border-top: var(--mercatura-border);
+    padding-top: var(--mercatura-spacing-4);
+}

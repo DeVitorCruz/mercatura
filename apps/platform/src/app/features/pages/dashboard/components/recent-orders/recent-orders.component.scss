@@ -1,0 +1,3 @@
+@use '../mixins/recent-table' as *;
+
+@include recent-table-all-features();

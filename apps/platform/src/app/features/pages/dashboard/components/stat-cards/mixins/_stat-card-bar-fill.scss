@@ -1,0 +1,8 @@
+@mixin stat-card-bar-fill-all-features() {
+    height: 100%;
+    border-radius: var(--mercatura-radius-full);
+    transition: width .3s ease;
+
+    &.is-primary { background: var(--platform-primary); }
+    &.is-danger { background: var(--mercatura-danger); }
+}

@@ -1,0 +1,16 @@
+@mixin trial-banner-all-features() {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3);
+    padding: var(--mercatura-spacing-3) var(--mercatura-spacing-5);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+    margin-bottom: var(--mercatura-spacing-6);
+
+    a {
+        color: inherit;
+        font-weight: var(--mercatura-font-weight-semibold);
+        text-decoration: underline;
+        margin-left: var(--mercatura-spacing-2);
+    }
+}

@@ -1,0 +1,6 @@
+@mixin app-stat-label-all-features() {
+    font-size: .625rem;
+    color: var(--mercatura-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}

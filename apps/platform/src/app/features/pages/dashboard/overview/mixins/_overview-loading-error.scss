@@ -1,0 +1,6 @@
+@mixin overview-loading-error-all-features() {
+    padding: var(--mercatura-spacing-8);
+    text-align: center;
+    color: var(--mercatura-text-secondary);
+    font-size: var(--mercatura-text-sm);
+}

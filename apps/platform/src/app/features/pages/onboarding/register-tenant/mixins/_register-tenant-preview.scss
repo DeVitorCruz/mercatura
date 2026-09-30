@@ -1,0 +1,5 @@
+@mixin register-tenant-preview-all-features() {
+    font-size: var(--mercatura-text-sm);
+    margin-top: var(--mercatura-spacing-2);
+    strong { color: var(--platform-primary); }
+} 

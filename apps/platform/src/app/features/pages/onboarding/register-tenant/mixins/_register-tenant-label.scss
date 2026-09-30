@@ -1,0 +1,6 @@
+@mixin register-tenant-label-all-features() {
+    display: block;
+    font-size: var(--mercatura-text-sm);
+    font-weight: var(--mercatura-font-weight-semibold);
+    margin-bottom: var(--mercatura-spacing-3);
+}

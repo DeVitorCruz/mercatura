@@ -1,0 +1,11 @@
+@use '@mercatura/ui/styles/mercatura' as *;
+ 
+@mixin overview-stats-card-all-features() {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--mercatura-spacing-5);
+    margin-bottom: var(--mercatura-spacing-8);
+
+    @include respone('lg') {}
+    @include respone('sm') {}
+}

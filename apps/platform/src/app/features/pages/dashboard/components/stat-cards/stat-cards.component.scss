@@ -1,0 +1,37 @@
+@use './mixins/overview-stats-card' as *;
+@use './mixins/stat-card' as *;
+@use './mixins/stat-card-label' as *;
+@use './mixins/stat-card-value' as *;
+@use './mixins/stat-card-sub' as *;
+@use './mixins/stat-card-bar' as *;
+@use './mixins/stat-card-bar-fill' as *;
+
+:host { display: block; width: 100%; }
+
+.overview-stats {
+    @include overview-stats-card-all-features();
+}
+
+.stat-card {
+    @include stat-card-all-features();
+
+    &__label {
+        @include stat-card-label-all-features();
+    }
+
+    &__value {
+        @include stat-card-value-all-features();
+    }
+
+    &__sub {
+        @include stat-card-sub-all-features();
+    }
+
+    &__bar {
+        @include stat-card-bar-all-features();
+    }
+
+    &__bar-fill {
+        @include stat-card-bar-fill-all-features();
+    }
+}

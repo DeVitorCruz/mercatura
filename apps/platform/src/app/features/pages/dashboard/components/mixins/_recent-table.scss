@@ -1,0 +1,27 @@
+@use './table-th' as *;
+
+@mixin recent-table-all-features() {
+    .data-table {
+        overflow-x: auto;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--mercatura-text-sm);
+        }
+
+        th {
+            @include table-th-all-features();
+        }
+
+        td {
+            padding: 
+                var(--mercatura-spacing-3) var(--mercatura-spacing-4);
+            color: var(--mercatura-text);
+            border-bottom: var(--mercatura-border); 
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background-color: var(--mercatura-surface-alt); }
+    }
+}

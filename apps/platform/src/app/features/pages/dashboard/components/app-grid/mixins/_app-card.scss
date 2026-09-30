@@ -1,0 +1,11 @@
+@mixin app-card-all-features() {
+    border: var(--mercatura-border, 1px solid #dee2e6);
+    border-radius: var(--mercatura-radius-lg);
+    padding: var(--mercatura-spacing-5);
+    transition: var(--mercatura-transition);    
+
+    &:hover {
+        border-color: var(--platform-primary);
+        box-shadow: var(--mercatura-shadow-md);
+    }
+}

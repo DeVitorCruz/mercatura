@@ -1,0 +1,24 @@
+@mixin app-grid-btn-all-features() {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--mercatura-spacing-2) var(--mercatura-spacing-4);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+    font-weight: var(--mercatura-font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--mercatura-transition);
+    border: none;
+
+    &--primary {
+        background: var(--platform-primary);
+        color: #fff;
+
+        &:hover { opacity: .9; }
+    }
+
+    &.is-disabled {
+        opacity: .5;
+        pointer-events: none;
+    }
+}

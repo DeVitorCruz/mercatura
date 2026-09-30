@@ -1,0 +1,7 @@
+@mixin app-card-meta-all-features() {
+    display: flex;
+    gap: var(--mercatura-spacing-2);
+    font-size: var(--mercatura-text-xs);
+    color: var(--mercatura-text-muted);
+    margin-bottom: var(--mercatura-spacing-4);
+}

@@ -1,0 +1,41 @@
+@use './mixins/register-tenant-title' as *;
+@use './mixins/register-tenant-subtitle' as *;
+@use './mixins/register-tenant-preview' as *;
+@use './mixins/register-tenant-label' as *;
+@use './mixins/register-tenant-error' as *;
+
+:host { display: block; width: 100% }
+
+.onboading-page {
+    min-height: 100%;
+    display: flex;   
+    align-items: flex-start;
+    justify-content: center;
+    padding: 
+        var(--mercatura-spacing-8) var(--mercatura-spacing-4);
+    background-color: var(--platform-content-bg);
+
+    &__title {
+        @include register-tenant-title-all-features();
+    }
+
+    &__subtitle {
+        @include register-tenant-subtitle-all-features();
+    }
+
+    &__preview {
+        @include register-tenant-preview-all-features();
+    }
+
+    &__section {
+        margin-top: var(--mercatura-spacing-6);
+    }
+
+    &__label {
+        @include register-tenant-label-all-features();
+    }
+
+    &__error {
+        @include register-tenant-error-all-features();
+    }
+}

@@ -1,0 +1,7 @@
+@use './mixins/trial-banner' as *;
+
+:host { display: block; width: 100%; }
+
+.banner {
+    @include trial-banner-all-features();
+}

@@ -1,0 +1,5 @@
+@mixin stat-card-sub-all-features() {
+    font-size: var(--mercatura-text-xs);
+    color: var(--mercatura-text-muted);
+    text-transform: capitalize;
+}

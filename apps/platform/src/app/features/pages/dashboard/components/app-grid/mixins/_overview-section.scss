@@ -1,0 +1,7 @@
+@mixin overview-section-all-features() {
+    background: var(--platform-card-bg);
+    border-radius: var(--mercatura-radius-lg);
+    padding: var(--mercatura-spacing-6);
+    box-shadow: var(--mercatura-shadow-sl);
+    margin-bottom: var(--mercatura-spacing-6);
+}

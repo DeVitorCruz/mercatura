@@ -1,0 +1,8 @@
+@mixin register-tenant-error-all-features() {
+    padding: var(--mercatura-spacing-3) var(--mercatura-spacing-4);
+    background-color: var(--mercatura-danger-subtle);
+    color: var(--mercatura-danger);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+    margin-bottom: var(--mercatura-spacing-4);
+}

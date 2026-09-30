@@ -1,0 +1,11 @@
+@mixin table-th-all-features() {
+    text-align: left;
+    padding: 
+        var(--mercatura-spacing-3) var(--mercatura-spacing-4);
+    font-size: var(--mercatura-text-xs);
+    font-weight: var(--mercatura-font-weight-semibold);
+    color: var(--mercatura-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    border-bottom: var(--mercatura-border);
+}

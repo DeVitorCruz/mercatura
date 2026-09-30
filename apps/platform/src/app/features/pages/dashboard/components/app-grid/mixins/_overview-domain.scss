@@ -1,0 +1,8 @@
+@mixin app-card-domain-all-features() {
+    font-size: var(--mercatura-text-sm);
+    color: var(--platform-primary);
+    text-decoration: none;
+    font-weight: var(--mercatura-font-weight-semibold);
+
+    &:hover { text-decoration: underline; }
+}

@@ -1,0 +1,6 @@
+@mixin overview-header-all-features() {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--mercatura-spacing-5);
+}

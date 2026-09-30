@@ -1,0 +1,7 @@
+@mixin stat-card-all-features() {
+    background: var(--platform-card-bg);
+    border-radius: var(--mercatura-radius-lg);
+    padding: var(--mercatura-spacing-5);
+    box-shadow: va(--mercatura-shadow-sl);
+    border-top: 3px solid var(--platform-primary);
+}

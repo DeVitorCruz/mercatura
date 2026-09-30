@@ -1,0 +1,7 @@
+@mixin stat-card-bar-all-features() {
+    height: 4px;
+    border: var(--mercatura-border);
+    border-radius: var(--mercatura-radius-full);
+    overflow: hidden;
+    margin-top: var(--mercatura-spacing-3);
+} 

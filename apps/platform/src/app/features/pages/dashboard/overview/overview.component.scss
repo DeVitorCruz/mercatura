@@ -1,0 +1,13 @@
+@use './mixins/overview-loading-error' as *;
+
+:host { display: block; width: 100%; }
+
+// ---- Loading / Error -------------------------------------
+.overview-loading,
+.overview-error {
+    @include overview-loading-error-all-features();
+}
+
+.overview-error { color: var(--mercatura-danger); }
+
+

@@ -1,0 +1,74 @@
+@use './mixins/overview-section' as *;
+@use './mixins/overview-header' as *;
+@use './mixins/overview-title' as *;
+@use './mixins/overview-domain' as *;
+@use './mixins/app-card' as *;
+@use './mixins/app-card-header' as *;
+@use './mixins/app-card-name' as *;
+@use './mixins/app-card-meta' as *;
+@use './mixins/app-card-stats' as *;
+@use './mixins/app-stat' as *;
+@use './mixins/app-stat-value' as *;
+@use './mixins/app-stat-label' as *;
+@use './mixins/badge' as *;
+@use './mixins/app-grid-btn' as *;
+
+:host { display: block; width: 100%; }
+
+// ---- Section ---------------------------------------------
+.overview-section {
+    @include overview-section-all-features();
+
+    &__header {
+        @include overview-header-all-features();
+    }
+
+    &__title {
+        @include overview-title-all-features();
+    }
+}
+
+.app-card {
+    @include app-card-all-features();
+
+    &__header {
+        @include app-card-header-all-features();
+    }
+
+    &__name {
+        @include app-card-name-all-features();
+    }
+
+    &__meta {
+        @include app-card-meta-all-features();
+    }
+
+    &__domain {
+        @include app-card-domain-all-features();
+    }
+
+    &__stats {
+        @include app-card-stats-all-features();
+    }
+}
+
+.app-stat {
+    @include app-stat-all-features();
+
+    &__value {
+        @include app-stat-value-all-features();
+    }
+
+    &__label {
+        @include app-stat-label-all-features();
+    }
+}
+
+.badge {
+    @include badge-all-features();
+}
+
+// ---- Buttons ---------------------------------------------
+.btn {
+    @include app-grid-btn-all-features();
+}

@@ -1,1 +1,6 @@
-@mixin header-right-all-features(){}
+@mixin header-right-all-features() {
+    .platform-header__avatar-btn {
+        background-color: var(--mercatura-on-primary);
+        border: var(--platform-header-avatar-btn ,none);
+    }
+}

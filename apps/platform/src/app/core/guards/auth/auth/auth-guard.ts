@@ -3,15 +3,22 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '@mercatura/shop/data';
 import { PlatformService } from '@mercatura/shop/data';
 import { catchError, map, of } from 'rxjs';
+import { TenantCacheService } from '@mercatura/shop/data';
 
 export const authGuard: CanActivateFn = () => {
     const AUTH: AuthService = inject(AuthService);
     const PLATFORM: PlatformService = inject(PlatformService);
     const ROUTER: Router = inject(Router);
+    const CACHE: TenantCacheService = inject(TenantCacheService);
 
     // 1. Not token -> login
     if (!AUTH.getToken()) {
+        CACHE.reset();
         return ROUTER.createUrlTree(['/auth/login']);
+    }
+
+    if (CACHE.checked && CACHE.valid) {
+        return true;
     }
 
     // 2. Check tenant
@@ -20,11 +27,13 @@ export const authGuard: CanActivateFn = () => {
             // suspended or cancelled -> blocked
             if (tenant.status === 'suspended' || 
                 tenant.status === 'cancelled') {
+                CACHE.reset();
                 return ROUTER.createUrlTree(['/auth/login']);
             }
 
             // no apps -> onboarding step 2
             if (!tenant.apps || tenant.apps.length === 0) {
+                CACHE.reset();
                 return ROUTER.createUrlTree(['/onboarding']);
             }
 
@@ -33,10 +42,16 @@ export const authGuard: CanActivateFn = () => {
         catchError(err => {
             // 404 -> no tenant -> onboarding
             if (err.status === 404) {
+                CACHE.reset();
                 return of(ROUTER.createUrlTree(['/onboarding']));
             }
-            // other error -> login
-            return of(ROUTER.createUrlTree(['/auth/login'])); 
+            if (err.status === 401) {
+                CACHE.reset();
+                return of(ROUTER.createUrlTree(['/auth/login'])); 
+            }
+            // network/server error -> allow through, don't kick user
+            CACHE.setValid();
+            return of(true);
         }),
     );
 };

@@ -110,6 +110,7 @@
     --platform-footer-bg: #ffffff;
     --platform-primary: #ff8084;
     --platform-border-header: #eff0f1;
+    --platform-header-avatar-btn: none;
 }
 
 @include auth-login-form-all-features();

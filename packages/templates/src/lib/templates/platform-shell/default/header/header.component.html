@@ -25,7 +25,48 @@
                             <lib-icon [name]="icon.name" [size]="icon.size"/>
                         </li>
                     }
+                    @if (headerConfig().user) {
+                        <li class="platform-header__badge platform-header__user"
+                            (click)="toggleDropdown()"
+                            (clickOutside)="closeDropdown()">
+    
+                            <button class="platform-header__avatar-btn" type="button">
+                                @if (headerConfig().user!.avatarUrl) {
+                                    <img 
+                                        [src]="headerConfig().user!.avatarUrl" 
+                                        [alt]="headerConfig().user!.name"
+                                        class="platform-header__avatar">
+                                } @else {
+                                    <lib-icon name="person-circle" [size]="20" />
+                                }
+                                @if (headerConfig().user!.name) {
+                                    <span class="platform-header__user-name">
+                                        {{ headerConfig().user!.name }}
+                                    </span>
+                                }
+                                <lib-icon name="chevron-down" [size]="12" />
+                            </button>
+                            
+                            <!-- Dropdown -->
+                            @if (dropdownOpen()) {
+                                <ul class="platform-header__dropdown">
+                                    @for (item of headerConfig().user!.dropdownItems; track item.label) {
+                                        <li 
+                                            class="platform-header__dropdown-item"
+                                            [class.is-danger]="item.action === 'logout'"
+                                            (click)="onDropdownAction(item.action, item.route)">
+                                            <lib-icon [name]="item.icon" [size]="16" />
+                                            <span>{{ item.label }}</span>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+    
+                        </li>
+                    }
                 </ul>
+
+
                 <ul class="platform-header__content-hidden">
                     <li class="platform-header__badge">
                         <lib-icon 

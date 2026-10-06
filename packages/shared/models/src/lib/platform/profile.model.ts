@@ -40,11 +40,11 @@ export interface UpdateProfileRequest {
     city?: string;
     state?: string;
     postal_code?: string;
-    country?: string,
-    website?: string,
-    linkedin?: string,
-    twitter?: string,
-    instagram?: string,
+    country?: string;
+    website?: string;
+    linkedin?: string;
+    twitter?: string;
+    instagram?: string;
 };
 
 

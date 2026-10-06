@@ -109,7 +109,7 @@ export class RegisterTenantComponent implements OnInit {
           title:  t.name as string,
           description:  t.description as string,
           badge:  t.is_default ? 'Default' : undefined as string | undefined,
-        }as SelectableCardItem)));
+        } as SelectableCardItem)));
         const DEF: AppTheme = themes.find(t => t.is_default)!;
         if (DEF) this.selectedTheme = DEF.slug;
       },

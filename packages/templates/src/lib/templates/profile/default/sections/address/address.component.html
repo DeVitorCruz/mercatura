@@ -1,1 +1,8 @@
-<p>address works!</p>
+<div class="profile-section">
+    <h3 class="profile-section__title">Address</h3>
+    <lib-ui-form 
+        [config]="FORM_CONFIG" 
+        [loading]="saving()"
+        [error]="error()"
+        (formSubmit)="onSubmit($event)"/>
+</div>

@@ -1,5 +1,5 @@
 export type FormFieldType = 
-    'text' | 'email' | 'password' | 'textarea' | 'select' | 'checkbox' | 'number' | 'tel';
+    'text' | 'email' | 'password' | 'textarea' | 'select' | 'checkbox' | 'number' | 'tel' | 'url';
 
 export interface FormSelectOption {
     label: string;

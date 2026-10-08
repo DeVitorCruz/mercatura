@@ -33,10 +33,13 @@ export const authGuard: CanActivateFn = () => {
 
             // no apps -> onboarding step 2
             if (!tenant.apps || tenant.apps.length === 0) {
-                CACHE.reset();
+                // <- set checked but invalid so onboardingGuard
+                // doesn't call getTenant again
+                CACHE.setInvalid();
                 return ROUTER.createUrlTree(['/onboarding']);
             }
 
+            CACHE.setValid();
             return true;
         }),
         catchError(err => {
@@ -45,6 +48,7 @@ export const authGuard: CanActivateFn = () => {
                 CACHE.reset();
                 return of(ROUTER.createUrlTree(['/onboarding']));
             }
+            
             if (err.status === 401) {
                 CACHE.reset();
                 return of(ROUTER.createUrlTree(['/auth/login'])); 

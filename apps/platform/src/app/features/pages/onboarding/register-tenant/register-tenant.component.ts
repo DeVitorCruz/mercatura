@@ -11,6 +11,7 @@ import { WizardLayoutComponent, WizardStep } from '@mercatura/templates';
 import { WIZARD_STEPS } from './steps/WIZARD_STEPS';
 import { STEP1_FORM } from './steps/step-1/STEP1_FORM';
 import { STEP2_FORM } from './steps/step-2/STEP2_FORM';
+import { TenantCacheService } from '@mercatura/shop/data';
 
 @Component({
   selector: 'app-register-tenant',
@@ -23,7 +24,9 @@ export class RegisterTenantComponent implements OnInit {
   private readonly PLATFORM: PlatformService = 
     inject(PlatformService);
   private readonly ROUTER: Router = inject(Router);
-  
+  private readonly CACHE: TenantCacheService = 
+    inject(TenantCacheService);
+
   public readonly step: WritableSignal<number> =
     signal<number>(1);
   public readonly loading: WritableSignal<boolean> =
@@ -165,6 +168,7 @@ export class RegisterTenantComponent implements OnInit {
     } as CreateAppRequest).subscribe({
       next: () => {
         this.loading.set(false);
+        this.CACHE.setValid(); // <- allow dashboard access
         this.ROUTER.navigate(['/dashboard']);
       },
       error: (err: any) => {

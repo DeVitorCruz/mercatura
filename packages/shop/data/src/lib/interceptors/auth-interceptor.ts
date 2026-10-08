@@ -6,10 +6,16 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const AUTH: AuthService = inject(AuthService);
   const TOKEN: string = AUTH.getToken()!;
 
+  // Don't add Content-Type for FormData (file uploads)
+  const IS_FORM_DATA: boolean = req.body instanceof FormData;
+
   const headers: Record<string, string> = {
     'Accept': 'application/json',
-    'Content-type': 'application/json',
   };
+
+  if (!IS_FORM_DATA) {
+    headers['Content-type'] = 'application/json';
+  }
 
   if (TOKEN) {
     headers['Authorization'] = `Bearer ${TOKEN}`;

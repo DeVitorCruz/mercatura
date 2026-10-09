@@ -1,0 +1,20 @@
+@use './avatar-collections/avatar-section' as *;
+@use './avatar-collections/avatar' as *;
+@use './avatar-collections/avatar-upload' as *;
+@use './user-collections/user-main' as *;
+
+@mixin avatar-main-all-features() {
+    &__avatar-section {
+        @include avatar-section-all-features();
+    }
+
+    &__avatar {
+        @include avatar-all-features();
+    }
+    
+    &__avatar-upload {
+        @include avatar-upload-all-features();
+    }
+
+    @include user-main-all-features();
+}

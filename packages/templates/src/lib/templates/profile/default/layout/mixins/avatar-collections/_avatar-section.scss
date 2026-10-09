@@ -1,0 +1,9 @@
+@mixin avatar-section-all-features() {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-6);
+    background-color: var(--platform-card-bg, #fff);
+    border-radius: var(--mercatura-radius-lg);
+    padding: var(--mercatura-spacing-6);
+    box-shadow: var(--mercatura-shadow-md);
+}

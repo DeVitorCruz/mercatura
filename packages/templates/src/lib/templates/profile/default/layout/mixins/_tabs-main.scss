@@ -1,0 +1,33 @@
+@mixin tabs-main-all-features() {
+    &__tabs {
+        display: flex;
+        gap: 2px;
+        background: var(--platform-card-bg, #fff);
+        border-radius: var(--mercatura-radius-lg);
+        padding: var(--mercatura-spacing-2);
+        box-shadow: var(--mercatura-shadow-md);
+    }   
+
+    &__tab {
+        display: flex;
+        align-items: center;
+        gap: var(--mercatura-spacing-2);
+        padding: var(--mercatura-spacing-2) var(--mercatura-spacing-4);
+        border-radius: var(--mercatura-radius);
+        font-size: var(--mercatura-text-sm);
+        font-weight: var(--mercatura-font-weight-semibold);
+        color: var(--mercatura-text-secondary);
+        text-decoration: none;
+        transition: var(--mercatura-transition);
+
+        &:hover {
+            background: var(--mercatura-surface-alt);
+            color: var(--mercatura-text);
+        }
+
+        &.is-active {
+            background: var(--mercatura-primary);
+            color: var(--mercatura-on-primary);
+        }
+    }
+}

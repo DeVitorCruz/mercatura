@@ -1,0 +1,17 @@
+@mixin avatar-upload-all-features() {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--mercatura-radius-full);
+    background: var(--mercatura-primary, #000);
+    color: var(--mercatura-on-primary, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--mercatura-transition);
+
+    &:hover { opacity: .85; }
+}

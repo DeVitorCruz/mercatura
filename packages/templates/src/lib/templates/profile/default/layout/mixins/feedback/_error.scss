@@ -1,0 +1,7 @@
+@mixin error-all-features() {
+    padding: var(--mercatura-spacing-3) var(--mercatura-spacing-4);
+    background: var(--mercatura-danger-subtle);
+    color: var(--mercatura-danger);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+}

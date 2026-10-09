@@ -13,7 +13,7 @@ export interface ProfileTab {
 export const DEFAULT_PROFILE_TABS: ProfileTab[] = [
     {
         label: 'Personal Info' as string,
-        route: '' as string,
+        route: 'person' as string,
         icon: 'person' as string,
     } as ProfileTab,
     {

@@ -1,0 +1,23 @@
+@use './mixins/profile-layout-main' as *;
+@use './mixins/avatar-main' as *;
+@use './mixins/tabs-main' as *;
+@use './mixins/feedback-main' as *;
+@use './mixins/content-main' as *;
+
+:host { display: block; width: 100%; }
+
+.profile-layout {
+    @include profile-layout-main-all-features();
+
+    // ----- Avatar section ----------------------
+    @include avatar-main-all-features();
+
+    // ----- Tabs --------------------------------
+    @include tabs-main-all-features();
+
+    // ----- Feedback ----------------------------
+    @include feedback-main-all-features();
+
+    // ----- Content card ------------------------
+    @include content-main-all-features();
+}

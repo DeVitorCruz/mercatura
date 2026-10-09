@@ -1,0 +1,17 @@
+@use './feedback/success' as *;
+@use './feedback/error' as *;
+@use './feedback/loading' as *;
+
+@mixin feedback-main-all-features() {
+    &__success {
+        @include success-all-features();
+    }
+
+    &__error {
+        @include error-all-features();
+    }
+
+    &__loading {
+        @include loading-all-features();
+    }
+}

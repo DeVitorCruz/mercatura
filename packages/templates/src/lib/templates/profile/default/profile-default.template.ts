@@ -14,7 +14,7 @@ export function buildProfileRoutes(config: ProfileTemplateConfig = {}):Route[] {
             },
             children: [
                 {
-                    path: '',
+                    path: 'person',
                     loadComponent: () => 
                         import('./sections/personal-info/personal-info.component')
                             .then(m => m.PersonalInfoComponent),

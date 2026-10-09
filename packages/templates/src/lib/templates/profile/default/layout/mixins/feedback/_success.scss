@@ -1,0 +1,6 @@
+@mixin success-all-features() {
+    padding: var(--mercatura-spacing-3) var(--mercatura-spacing-4);
+    background: var(--mercatura-success-subtle, #fff);
+    color: var(--mercatura-success);
+    border-radius: var(--mercatura-radius);
+}

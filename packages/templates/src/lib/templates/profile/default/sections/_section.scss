@@ -1,0 +1,14 @@
+@mixin profile-section() {
+    :host { display: block; width: 100%; }
+
+    .profile-section {
+        &__title {
+            font-size: 1rem;
+            font-weight: var(--mercatura-font-weight-semibold);
+            color: var(--mercatura-text);
+            margin: 0 0 var(--mercatura-spacing-6) 0;
+            padding-bottom: var(--mercatura-spacing-4);
+            border-bottom: 1px solid var(--mercatura-border);
+        }   
+    }
+}

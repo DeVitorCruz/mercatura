@@ -1,0 +1,32 @@
+@mixin user-main-all-features() {
+    &__user-info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--mercatura-spacing-1);
+    }
+
+    &__user-name {
+        font-size: 1.25rem;
+        font-weight: var(--mercatura-font-weight-bold);
+        color: var(--mercatura-text);
+        margin: 0;
+    }
+
+    &__user-email {
+        font-size: var(--mercatura-text-sm);
+        color: var(--mercatura-text-secondary);
+        margin: 0;
+    }
+
+    &__role {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px var(--mercatura-spacing-2);
+        border-radius: var(--mercatura-radius-full);
+        font-size: .6875rem;
+        font-weight: var(--mercatura-font-weight-semibold);
+        background: var(--mercatura-primary-subtle);
+        color: var(--mercatura-primary);
+        width: fit-content;
+    }
+}

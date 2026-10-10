@@ -6,11 +6,6 @@ import { onboardingGuard } from './core/guards/onboarding/onboarding/onboarding-
 
 export const appRoutes: Route[] = [
     {
-        path: '',
-        redirectTo: 'auth/login',
-        pathMatch: 'full',
-    },
-    {
         path: 'auth',
         children: authPlatformRoutes,
     },

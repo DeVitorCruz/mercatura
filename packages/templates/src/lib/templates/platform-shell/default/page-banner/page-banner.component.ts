@@ -32,7 +32,7 @@ export class PageBannerComponent {
     
     const TITLE: string = route.snapshot?.data['title'] ?? 
     this._titleFromUrl(this.ROUTER.url);
-    
+
     const BREADCRUMBS: BreadcrumbItem[] = [
       { label: 'home', route: '/' },
       { label: TITLE }

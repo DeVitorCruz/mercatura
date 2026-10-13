@@ -15,5 +15,4 @@ export const PLATFORM_NAV_ITEMS: AccordionItem[] = [
     { id: 5 as string | number,  label: 'Users' as string, icon: 'people' as string, route: '/users' as string, children: USERS_CHILD as AccordionItem[] | undefined, badge: 5 as (string | number) | undefined, },
     { id: 6 as string | number,  label: 'Localization' as string, icon: 'translate' as string, route: '/localization' as string, children: LOCALIZATION_CHILD as AccordionItem[] | undefined, badge: 6 as (string | number) | undefined, },
     { id: 7 as string | number,  label: 'Settings' as string, icon: 'gear' as string, route: '/settings' as string, children: SETTINGS_CHILD as AccordionItem[] | undefined,badge: 7 as (string | number) | undefined, },
-    { id: 8 as string | number,  label: 'Login' as string, icon: 'box-arrow-in-right' as string, route: '/login' as string, children: undefined as AccordionItem[] | undefined,badge: 8 as (string | number) | undefined, },
 ];

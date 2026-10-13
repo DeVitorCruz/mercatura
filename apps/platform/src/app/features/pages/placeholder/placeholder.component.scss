@@ -1,0 +1,25 @@
+:host { display: block; width: 100%; }
+
+.placeholder {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: var(--mercatura-spacing-4);
+
+    &__icon { font-size: 3rem; }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: var(--mercatura-font-weight-bold);
+        color: var(--mercatura-text);
+        margin: 0;
+    }
+
+    &__text {
+        font-size: var(--mercatura-text-sm);
+        color: var(--mercatura-text-muted);
+        margin: 0;
+    }
+}

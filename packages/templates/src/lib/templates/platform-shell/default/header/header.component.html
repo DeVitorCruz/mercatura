@@ -31,17 +31,19 @@
                             (clickOutside)="closeDropdown()">
     
                             <button class="platform-header__avatar-btn" type="button">
-                                @if (headerConfig().user!.avatarUrl) {
+                                @if (avatarUrl()) {
                                     <img 
-                                        [src]="headerConfig().user!.avatarUrl" 
-                                        [alt]="headerConfig().user!.name"
-                                        class="platform-header__avatar">
+                                        class="platform-header__avatar"
+                                        [src]="avatarUrl()!" 
+                                        [alt]="userName()">
                                 } @else {
-                                    <lib-icon name="person-circle" [size]="20" />
+                                    <lib-icon 
+                                        [name]="'person-circle'" 
+                                        [size]="28" />
                                 }
-                                @if (headerConfig().user!.name) {
+                                @if (userName()) {
                                     <span class="platform-header__user-name">
-                                        {{ headerConfig().user!.name }}
+                                        {{ userName() }}
                                     </span>
                                 }
                                 <lib-icon name="chevron-down" [size]="12" />
@@ -66,16 +68,25 @@
                     }
                 </ul>
 
-
                 <ul class="platform-header__content-hidden">
                     <li class="platform-header__badge">
-                        <lib-icon 
-                            [name]="headerConfig().hiddenIcon.name" 
-                            [size]="headerConfig().hiddenIcon.size"/>
+                        
+                        <!-- User dropdown -->
+                        <lib-dropdown 
+                            [items]="USER_MENU"
+                            [align]="'right'"
+                            [minWidth]="'200px'"
+                            (itemAction)="onUserAction($event)">
+                            <div class="platform-header__user-trigger">
+                                <lib-icon 
+                                    [name]="headerConfig().hiddenIcon.name" 
+                                    [size]="headerConfig().hiddenIcon.size" />
+                            </div>
+                        </lib-dropdown>
+
                     </li>
                 </ul>
             </div>
         </div>
-
     </div>
 </header>

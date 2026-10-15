@@ -1,0 +1,30 @@
+<div class="dropdown" [class.is-open]="isOpen()">
+    <!-- Trigger slot -->
+    <div class="dropdown__trigger" (click)="toggle()">
+        <ng-content />
+    </div>
+
+    <!-- Menu -->
+    @if (isOpen()) {
+        <ul 
+            class="dropdown__menu"
+            [class.dropdown__menu--left]="align() === 'left'"
+            [style.min-width]="minWidth()">
+            @for (item of items(); track item.id) {
+                @if (item.divider) {
+                    <div class="dropdown__divider"></div>
+                } @else {
+                    <li 
+                        class="dropdown__item"
+                        [class.is-danger]="item.danger"
+                        (click)="onItemClick(item)">
+                        @if (item.icon) {
+                            <lib-icon [name]="item.icon" [size]="16" />
+                        }
+                        <span>{{ item.label }}</span>
+                    </li>
+                }
+            }
+        </ul>
+    }
+</div>

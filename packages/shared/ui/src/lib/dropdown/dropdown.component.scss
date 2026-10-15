@@ -1,0 +1,23 @@
+@use './mixins/dropdown-menu' as *;
+@use './mixins/dropdown-item' as *;
+@use './mixins/dropdown-divider' as *;
+
+:host { display: inline-block; position: relative; }
+
+.dropdown {
+    position: relative;
+
+    &__trigger { cursor: pointer; }
+
+    &__menu {
+        @include dropdown-menu-all-features();
+    }
+
+    &__item {
+        @include dropdown-item-all-features();
+    }
+
+    &__divider {
+        @include dropdown-divider-all-features();
+    }
+}

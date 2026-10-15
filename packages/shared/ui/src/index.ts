@@ -10,3 +10,5 @@ export * from './lib/breadcrumb/breadcrumb-item.interface';
 export * from './lib/breadcrumb/breadcrumb.component';
 export * from './lib/selectable-card/selectable-card.component';
 export * from './lib/selectable-card/selectable-card-item.interface';
+export * from './lib/dropdown/dropdown.component';
+export * from './lib/dropdown/dropdown-item.interface';

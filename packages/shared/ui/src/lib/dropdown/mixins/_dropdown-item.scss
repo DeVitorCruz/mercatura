@@ -1,0 +1,26 @@
+@mixin dropdown-item-all-features() {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-2, .5rem);
+    width: 100%;
+    padding: var(--mercatura-spacing-2, .5rem) var(--mercatura-spacing-3, .75rem);
+    border: none;
+    border-radius: var(--mercatura-radius, 4px);
+    background: transparent;
+    color: var(--mercatura-text, #111);
+    font-size: var(--mercatura-text-sm, .875rem);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--mercatura-transition, all .2s ease);
+    white-space: nowrap;
+
+    &:hover {
+        background: var(--mercatura-surface-alt, #f9fafb);
+    }
+
+    &.is-danger {
+        color: var(--mercatura-danger, #ef4444);
+        &:hover { background: var(--mercatura-danger-subtle); }
+    }
+}

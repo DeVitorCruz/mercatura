@@ -1,0 +1,18 @@
+@mixin dropdown-menu-all-features() {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--mercatura-surface, #fff);
+    border: var(--mercatura-border, 1px solid #e5e7eb);
+    border-radius: var(--mercatura-radius-lg, 8px);
+    box-shadow: 
+        var(--mercatura-shadow-md, 0 8px 24px rgba(0, 0, 0, .12));
+    padding: var(--mercatura-spacing-2, .5rem);
+    z-index: 200;
+    animation: dropdown-in .15s ease;
+}
+
+@keyframes dropdown-in {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}

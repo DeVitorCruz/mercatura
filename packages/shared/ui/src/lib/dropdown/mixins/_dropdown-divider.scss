@@ -1,0 +1,5 @@
+@mixin dropdown-divider-all-features() {
+    height: 1px;
+    background: var(--mercatura-border, #e5e7eb);
+    margin: var(--mercatura-spacing-2, .5rem) 0;
+}

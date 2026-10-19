@@ -14,3 +14,6 @@ export * from './lib/platform/tenant-request.model';
 export * from './lib/platform/app.model';
 export * from './lib/platform/dashboard.model';
 export * from './lib/platform/profile.model';
+export * from './lib/table/table.model';
+export * from './lib/card/card.model';
+export * from './lib/search/search.model';

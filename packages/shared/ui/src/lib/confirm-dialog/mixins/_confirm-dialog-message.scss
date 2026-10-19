@@ -1,0 +1,6 @@
+@mixin confirm-dialog-message-all-features() {
+    font-size: var(--mercatura-text-sm);
+    color: var(--mercatura-text-secondary);
+    margin: 0 0 var(--mercatura-spacing-6) 0;
+    line-height: 1.5;
+}

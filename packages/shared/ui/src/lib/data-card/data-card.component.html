@@ -1,0 +1,48 @@
+<div class="data-card">
+    @if (image()) {
+        <div class="data-card__image">
+            <img [src]="image()!" [alt]="title()" />
+        </div>
+    } @else {
+        <div class="data-card__image data-card__image-placeholder">
+            <lib-icon [name]="'image'" [size]="32" />
+        </div>
+    }
+
+    <div class="data-card__body">
+        <div class="data-card__header">
+            <div class="data-card__title-wrap">
+                <h3 class="data-card__title">{{ title() }}</h3>
+                @if (subtitle()) {
+                    <p class="data-card__subtitle">{{ subtitle() }}</p>
+                }
+            </div>
+            @if (badge()) {
+                <span class="badge" [ngClass]="badge()!.class">
+                    {{ badge()!.label }}
+                </span>
+            }
+            @if (actions().length > 0) {
+                <lib-dropdown
+                    [items]="dropdownItems"
+                    [align]="'right'"
+                    (itemAction)="onAction($event)">
+                    <button type="button" class="data-card__menu-btn">
+                        <lib-icon [name]="'three-dots-vertical'" [size]="16" />
+                    </button>
+                </lib-dropdown>
+            }
+        </div>
+
+        @if (meta().length > 0) {
+            <div class="data-card__meta">
+                @for (item of meta(); track item.label) {
+                    <div class="data-card__meta-item">
+                        <span class="data-card__meta-label">{{ item.label }}</span>
+                        <span class="data-card__meta-value">{{ item.value }}</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

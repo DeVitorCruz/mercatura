@@ -1,0 +1,15 @@
+@mixin data-badge-all-features() {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--mercatura-spacing-2);
+    border-radius: var(--mercatura-radius-full);
+    font-size: .6875rem;
+    font-weight: var(--mercatura-font-weight-semibold);
+    text-transform: capitalize;
+
+    &--green { background: rgba(16, 185, 129, .1); color: #059669; }
+    &--blue { background: rgba(59, 130, 246, .1); color: #1d4ed8; }
+    &--yellow { background: rgba(245, 158, 11, .1); color: #b45309; }
+    &--red { background: rgba(239, 68, 68, .08); color: #dc2626; }
+    &--gray { background: var(--mercatura-surface-alt); color: var(--mercatura-text-muted); }
+}

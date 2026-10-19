@@ -1,0 +1,5 @@
+@mixin confirm-dialog-actions-all-features() {
+    display: flex;
+    gap: var(--mercatura-spacing-3);
+    justify-content: flex-end;
+}

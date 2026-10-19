@@ -1,0 +1,6 @@
+@mixin confirm-dialog-title-all-features() {
+    font-size: 1.125rem;
+    font-weight: var(--mercatura-font-weight-bold);
+    color: var(--mercatura-text);
+    margin: 0 0 var(--mercatura-spacing-3) 0;
+}

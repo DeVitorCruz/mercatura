@@ -1,0 +1,7 @@
+@mixin data-card-meta-all-features() {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--mercatura-spacing-2);
+    padding-top: var(--mercatura-spacing-3);
+    border-top: var(--mercatura-border, 1px solid #dee2e6);
+}

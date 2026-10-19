@@ -1,0 +1,31 @@
+@mixin confirm-dialog-btn-all-features() {
+    padding: var(--mercatura-spacing-2) var(--mercatura-spacing-5);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+    font-weight: var(--mercatura-font-weight-semibold);
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: var(--mercatura-transition);
+
+    &:disabled { opacity: .6; cursor: not-allowed; }
+
+    &--cancel {
+        background: var(--mercatura-surface-alt);
+        color: var(--mercatura-text);
+        border: 1px solid var(--mercatura-border);
+        &:hover:not(:disabled) { background: var(--mercatura-surface-hover); }
+    }
+
+    &--primary {
+        background: var(--mercatura-primary);
+        color: var(--mercatura-on-primary);
+        &:hover:not(:disabled) { opacity: .9; }
+    }
+
+    &--danger {
+        background: var(--mercatura-danger);
+        color: #fff;
+        &:hover:not(:disabled) { opacity: .9; }
+    }
+}

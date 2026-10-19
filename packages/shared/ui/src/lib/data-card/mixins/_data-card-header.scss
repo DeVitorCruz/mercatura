@@ -1,0 +1,6 @@
+@mixin data-card-header-all-features() {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--mercatura-spacing-2);
+    margin-bottom: var(--mercatura-spacing-3);
+}

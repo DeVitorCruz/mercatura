@@ -1,0 +1,57 @@
+@use './mixins/data-card' as *;
+@use './mixins/data-card-image' as *;
+@use './mixins/data-card-header' as *;
+@use './mixins/data-card-title' as *;
+@use './mixins/data-card-menu-btn' as *;
+@use './mixins/data-card-meta' as *;
+@use './mixins/data-card-meta-item' as *;
+@use './mixins/data-card-meta-label' as *;
+@use './mixins/data-card-meta-value' as *;
+
+:host { display: block; }
+
+.data-card {
+    @include data-card-all-features();
+
+    &__image {
+        @include data-card-image-all-features();
+    }
+
+    &__body { padding: var(--mercatura-spacing-4); }
+
+    &__header {
+        @include data-card-header-all-features();
+    }
+
+    &__title-wrap { flex: 1; min-width: 0; }
+
+    &__title {
+        @include data-card-all-title-features();
+    }   
+
+    &__subtitle {
+        font-size: var(--mercatura-text-xs);
+        color: var(--mercatura-text-muted);
+        margin: 2px 0 0 0;
+    }
+
+    &__menu-btn {
+        @include data-card-menu-btn-all-features();
+    }
+
+    &__meta {
+        @include data-card-meta-all-features();
+    }
+
+    &__meta-item {
+        @include data-card-meta-item-all-features();
+    }
+
+    &__meta-label {
+        @include data-card-meta-label-all-features();
+    }
+    
+    &__meta-value {
+        @include data-card-meta-value-all-features();
+    }
+}

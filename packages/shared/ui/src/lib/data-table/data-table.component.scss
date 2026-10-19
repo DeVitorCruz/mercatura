@@ -1,0 +1,49 @@
+@use './mixins/data-loading' as *;
+@use './mixins/table/data-table' as *;
+@use './mixins/data-empty' as *;
+@use './mixins/data-thumb' as *;
+@use './mixins/data-action-btn' as *;
+@use './mixins/data-pagination-main' as *;
+@use './mixins/data-badge' as *;
+
+:host { display: block; width: 100%; }
+
+.data-table {
+    &__loading {
+        @include data-loading-all-features();
+    }
+    
+    &__wrapper { overflow-x: auto; }
+
+    @include data-table-all-features();
+    
+    &__empty {
+        @include data-empty-all-features();
+    }
+
+    &__thumb {
+        @include data-thumb-all-features();
+    }
+
+    &__no-img {
+        color: var(--mercatura-text-muted);
+    }
+
+    &__actions {
+        white-space: nowrap;
+    }
+
+    &__actions-col { width: 1%; white-space: nowrap; }
+
+    &__action-btn {
+        @include data-action-btn-all-features();
+    }
+
+    // ---- Pagination -----------------------------
+    @include data-pagination-main-all-features();
+}
+
+// ---- Badge (shared) -----------------------------
+.badge {
+    @include data-badge-all-features();
+}

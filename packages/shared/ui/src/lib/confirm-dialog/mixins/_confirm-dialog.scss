@@ -1,0 +1,14 @@
+@mixin confirm-dialog-all-features() {
+    background: var(--mercatura-surface);
+    border-radius: var(--mercatura-radius-xl);
+    padding: var(--mercatura-spacing-8);
+    width: 100%;
+    max-width: 420px;
+    box-shadow: var(--mercatura-shadow-xl);
+    animation: slide-up .2s ease;
+}
+
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}

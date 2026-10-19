@@ -1,0 +1,5 @@
+@mixin data-empty-all-features() {
+    text-align: center;
+    color: var(--mercatura-text-muted);
+    padding: var(--mercatura-spacing-10) !important;
+}

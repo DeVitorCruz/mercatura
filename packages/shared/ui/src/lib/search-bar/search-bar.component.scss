@@ -1,0 +1,34 @@
+@use './mixins/search-bar-input-wrap' as *;
+@use './mixins/search-bar-icon' as *;
+@use './mixins/search-bar-input' as *;
+@use './mixins/search-bar-clear' as *;
+@use './mixins/search-bar-filter' as *;
+
+:host { display: block; width: 100%; }
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3);
+    flex-wrap: wrap;
+
+    &__input-wrap {
+        @include search-bar-input-wrap-all-features();
+    }
+
+    &__icon {
+        @include search-bar-icon-all-features();
+    }
+
+    &__input {
+        @include search-bar-input-all-features();
+    }
+
+    &__clear {
+        @include search-bar-clear-all-features();
+    }
+
+    &__filter {
+        @include search-bar-filter-all-features();
+    }
+}

@@ -1,0 +1,22 @@
+@mixin data-action-btn-all-features() {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-1);
+    padding: var(--mercatura-spacing-1) var(--mercatura-spacing-2);
+    border: 1px solid var(--mercatura-border);
+    border-radius: var(--mercatura-radius);
+    background: transparent;
+    font-size: var(--mercatura-text-xs);
+    color: var(--mercatura-text);
+    cursor: pointer;
+    transition: var(--mercatura-transition);
+    margin-right: var(--mercatura-spacing-1);
+
+    &:hover { background: var(--mercatura-surface-alt); }
+
+    &.is-danger {
+        color: var(--mercatura-danger);
+        border-color: var(--mercatura-danger);
+        &:hover { background: var(--mercatura-danger-subtle); }
+    }
+}

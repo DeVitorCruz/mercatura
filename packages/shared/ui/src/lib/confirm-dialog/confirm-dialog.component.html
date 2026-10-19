@@ -1,0 +1,24 @@
+<div class="confirm-dialog-overlay" (click)="cancelled.emit()">
+    <div class="confirm-dialog" (click)="$event.stopPropagation()">
+        <h3 class="confirm-dialog__title">{{ title() }}</h3>
+        <p class="confirm-dialog__message">{{ message() }}</p>
+        <div class="confirm-dialog__actions">
+            <button 
+                type="button" 
+                class="confirm-dialog__btn confirm-dialog__btn--cancel"
+                [disabled]="loading()"
+                (click)="cancelled.emit()">
+                {{ cancelLabel() }}
+            </button>
+            <button     
+                type="button" 
+                class="confirm-dialog__btn"
+                [class.confirm-dialog__btn--danger]="danger()"
+                [class.confirm-dialog__btn--primary]="!danger()"
+                [disabled]="loading()"
+                (click)="confirmed.emit()">
+                {{ loading() ? 'Processing...' : confirmLabel() }}
+            </button>
+        </div>
+    </div>
+</div>

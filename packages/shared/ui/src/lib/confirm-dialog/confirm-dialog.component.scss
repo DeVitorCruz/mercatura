@@ -1,0 +1,32 @@
+@use './mixins/confirm-dialog-overlay' as *;
+@use './mixins/confirm-dialog' as *;
+@use './mixins/confirm-dialog-title' as *;
+@use './mixins/confirm-dialog-message' as *;
+@use './mixins/confirm-dialog-actions' as *;
+@use './mixins/confirm-dialog-btn' as *;
+
+:host { display: block; }
+
+.confirm-dialog-overlay {
+    @include confirm-dialog-overlay-all-features();
+}
+
+.confirm-dialog {
+    @include confirm-dialog-all-features();
+
+    &__title {
+        @include confirm-dialog-title-all-features();
+    }
+
+    &__message {
+        @include confirm-dialog-message-all-features();
+    }
+
+    &__actions {
+        @include confirm-dialog-actions-all-features();
+    }
+
+    &__btn {
+        @include confirm-dialog-btn-all-features();
+    }
+}

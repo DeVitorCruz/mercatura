@@ -1,0 +1,36 @@
+<div class="search-bar">
+    <div class="search-bar__input-wrap">
+        <lib-icon 
+            [name]="'search'"
+            [size]="16"
+            class="search-bar__icon" />
+        <input 
+            type="text" 
+            class="search-bar__input" 
+            [placeholder]="placeholder()"
+            [(ngModel)]="searchTerm"
+            (ngModelChange)="onSearch()"
+            (keyup.enter)="onSearch()" />
+        @if (searchTerm) {
+            <button 
+                type="button" 
+                class="search-bar__clear"
+                (click)="clear()">
+                <lib-icon [name]="'x-lg'" [size]="12" />
+            </button>
+        }
+    </div>
+
+    @for (filter of filters(); track filter.id) {
+        <select 
+            [name]="filter.label" 
+            [id]="filter.id" 
+            class="search-bar__filter"
+            (change)="onFilterChange(filter.id, $any($event.target).value)">
+            <option value="">{{ filter.label }}</option>
+            @for (opt of filter.options; track opt.value) {
+                <option [value]="opt.value">{{ opt.label }}</option>
+            }
+        </select>
+    }
+</div>

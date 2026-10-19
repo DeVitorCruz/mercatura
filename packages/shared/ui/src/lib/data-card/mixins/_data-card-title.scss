@@ -1,0 +1,9 @@
+@mixin data-card-all-title-features() {
+    font-size: var(--mercatura-text-lg);
+    font-weight: var(--mercatura-font-weight-semibold);
+    color: var(--mercatura-text);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

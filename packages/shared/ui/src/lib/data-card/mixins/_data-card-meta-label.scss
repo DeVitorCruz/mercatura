@@ -1,0 +1,7 @@
+@mixin data-card-meta-label-all-features() {
+    font-size: .625rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--mercatura-text-muted);
+    font-weight: var(--mercatura-font-weight-semibold);
+}

@@ -1,0 +1,6 @@
+@mixin search-bar-icon-all-features() {
+    position: absolute;
+    left: var(--mercatura-spacing-3);
+    color: var(--mercatura-text-muted);
+    pointer-events: none;
+}

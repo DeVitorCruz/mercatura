@@ -1,0 +1,12 @@
+@mixin data-card-all-features() {
+    background: var(--mercatura-surface);
+    border: var(--mercatura-border, 1px solid #dee2e6);
+    border-radius: var(--mercatura-radius-lg);
+    overflow: hidden;
+    transition: var(--mercatura-transition);
+
+    &:hover {
+        box-shadow: var(--mercatura-shadow-md);
+        border-color: var(--mercatura-primary);
+    }
+}

@@ -1,0 +1,121 @@
+<div class="data-table">
+    @if (loading()) {
+        <div class="data-table__loading">Loading...</div>
+    } @else {
+        <div class="data-table__wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        @for (col of columns(); track col.key) {
+                            <th [style.width]="col.width ?? 'auto'">
+                                {{ col.label }}
+                            </th>
+                        }
+                        @if (actions().length > 0) {
+                            <th class="data-table__actions-col">Actions</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody> 
+                    @if (rows().length === 0) {
+                        <tr>
+                            <td 
+                                [attr.colspan]="columns().length + (actions().length > 0? 1 : 0)"
+                                class="data-table__empty">
+                                {{ emptyText() }}
+                            </td>
+                        </tr>
+                    } @else {
+                        @for (row of rows(); track $index) {
+                            <tr>
+                                @for (col of columns(); track col.key) {
+                                    <td>
+                                        @switch (col.type) {
+                                            @case ('badge') {
+                                                <span 
+                                                    class="badge"
+                                                    [ngClass]="col.badgeMap?.[getValue(row, col.key)] ?? 'badge--gray'">
+                                                    {{ getValue(row, col.key) }}
+                                                </span>            
+                                            }
+                                            @case ('currency') {
+                                                {{ getValue(row, col.key) | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+                                            }
+                                            @case ('date') {
+                                                {{ getValue(row, col.key) | date:'dd/MM/yyyy' }}
+                                            }
+                                            @case ('image') {
+                                                @if (getValue(row, col.key)) {
+                                                    <img 
+                                                        [src]="getValue(row, col.key)" 
+                                                        [alt]="col.label" 
+                                                        class="data-table__thumb" />
+                                                } @else {
+                                                    <div class="data-table__no-img">-</div>
+                                                }
+                                            }
+                                            @default {
+                                                {{ getValue(row, col.key) ?? '-' }}
+                                            }
+                                        }
+                                    </td>
+                                }
+                                @if (actions().length > 0) {
+                                    <td class="data-table__actions">
+                                        @for (action of actions(); track action.id) {
+                                            <button 
+                                                type="button"
+                                                class="data-table__action-btn"
+                                                [class.is-danger]="action.danger"
+                                                (click)="onAction(action.id, row)">
+                                                @if (action.icon) {
+                                                    <lib-icon
+                                                        [name]="action.icon" 
+                                                        [size]="14" />
+                                                }
+                                                {{ action.label }}
+                                            </button>
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        @if (pagination() && pagination()!.lastPage > 1) {
+            <div class="data-table__pagination">
+                <span class="data-table__pagination-info">
+                    Showing {{ (pagination()!.currentPage - 1) * pagination()!.perPage + 1 }}
+                    - {{ [pagination()!.currentPage * pagination()!.perPage, pagination()!.total] | min }}
+                    of {{ pagination()!.total }}
+                </span>
+                <div class="data-table__pagination-btns">
+                    <button 
+                        type="button"
+                        [disabled]="pagination()!.currentPage === 1"
+                        (click)="pageChange.emit(pagination()!.currentPage - 1)">
+                        ‹
+                    </button>
+                    @for (page of getPages(); track page) {
+                        <button 
+                            type="button"
+                            [class.is-active]="page === pagination()!.currentPage"
+                            click="pageChange.emit(page)">
+                            {{ page }}
+                        </button>
+                    }
+                    <button 
+                        type="button"
+                        [disabled]="pagination()!.currentPage === pagination()!.lastPage"
+                        (click)="pageChange.emit(pagination()!.currentPage + 1)">
+                        ›
+                    </button>
+                </div>
+            </div>
+        }
+    }
+</div>

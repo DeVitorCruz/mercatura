@@ -1,0 +1,24 @@
+@mixin pagination-btns-all-features() {
+    display: flex;
+    gap: var(--mercatura-spacing-1);
+
+    button {
+        width: 32px;
+        height: 32px;
+        border: var(--mercatura-border, 1px solid #dee2e6);
+        border-radius: var(--mercatura-radius);
+        background: transparent;
+        font-size: var(--mercatura-text-sm);
+        color: var(--mercatura-text);
+        cursor: pointer;
+        transition: var(--mercatura-transition);
+
+        &:hover:not(:disabled) { background: var(--mercatura-surface-alt); }
+        &:disabled { opacity: .4; cursor: not-allowed; }
+        &.is-active {
+            background: var(--mercatura-primary);
+            color: var(--mercatura-on-primary);
+            border-color: var(--mercatura-primary);
+        }
+    }
+}

@@ -1,3 +1,5 @@
+// ------ Legacy models (shop app) ----------------------
+
 export interface ProductVariant {
   id: number;
   label: string;
@@ -7,7 +9,7 @@ export interface ProductVariant {
 };
 
 export interface Product {
-  id: string | string;
+  id: string | number;
   name: string;
   slug: string;
   description?: string;
@@ -55,4 +57,66 @@ export interface ProductFilters {
 
 // alias for backward compatibility with generated components
 export type ProductFilter = ProductFilters;
+
+// ------ Platform product models (seller API) ----------------------
+export interface ProductAttribute {
+  name: string;
+  value: string;
+};
+
+export interface SellerProductVariant {
+  id?: number;
+  sku: string;
+  price: string; // comes as string from API
+  stock_quantity: number;
+  image_path: string | null;
+  attributes: ProductAttribute[];
+};
+
+export interface Seller {
+  id: number;
+  store_name: string;
+  slug: string;
+  status: string;
+  description?: string;
+};
+
+export interface SellerProduct {
+  id: number;
+  seller_id: number;
+  category_id: number;
+  name: string;
+  slug: string;
+  description: string;
+  category: import('../category/category.model').StorefrontCategory;
+  seller: Seller;
+  variants: SellerProductVariant[];
+  created_at: string;
+};
+
+export interface ProductListResponse {
+  products: SellerProduct[];
+  pagination: {
+      total: number;
+      per_page: number;
+      current_page: number;
+      last_page: number;
+  };
+};
+
+export interface CreateProductRequest {
+  name: string;
+  description: string;
+  category_id: number;
+  variants: Omit<SellerProductVariant, 'id' | 'image_path'>[];
+};
+
+export interface UpdateProductRequest {
+  name?: string;
+  description?: string;
+  category_id?: number;
+  variants?: SellerProductVariant[];
+};
+
+
 

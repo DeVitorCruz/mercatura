@@ -1,0 +1,17 @@
+@use './pagination-collections/pagination' as *;
+@use './pagination-collections/pagination-info' as *;
+@use './pagination-collections/pagination-btns' as *;
+
+@mixin data-pagination-main-all-features() {
+    &__pagination {
+        @include pagination-all-features();
+    }
+
+    &__pagination-info {
+        @include pagination-info-all-features();
+    }
+
+    &__pagination-btns {
+        @include pagination-btns-all-features();
+    }
+}

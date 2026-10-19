@@ -12,3 +12,8 @@ export * from './lib/selectable-card/selectable-card.component';
 export * from './lib/selectable-card/selectable-card-item.interface';
 export * from './lib/dropdown/dropdown.component';
 export * from './lib/dropdown/dropdown-item.interface';
+export * from './lib/data-table/data-table.component';
+export * from './lib/data-card/data-card.component';
+export * from './lib/search-bar/search-bar.component';
+export * from './lib/confirm-dialog/confirm-dialog.component';
+export * from './lib/pipes/min/min-pipe.pipe';

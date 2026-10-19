@@ -1,0 +1,9 @@
+@mixin pagination-all-features() {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--mercatura-spacing-4);
+    border-top: var(--mercatura-border, 1px solid #dee2e6);
+    flex-wrap: wrap;
+    gap: var(--mercatura-spacing-3);
+}

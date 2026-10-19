@@ -1,0 +1,7 @@
+@mixin search-bar-input-wrap-all-features() {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+}

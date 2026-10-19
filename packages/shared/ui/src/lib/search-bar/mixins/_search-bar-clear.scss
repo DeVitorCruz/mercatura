@@ -1,0 +1,13 @@
+@mixin search-bar-clear-all-features() {
+    position: absolute;
+    right: var(--mercatura-spacing-3);
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: var(--mercatura-text-muted);
+    cursor: pointer;
+    padding: 2px;
+
+    &:hover { color: var(--mercatura-text); }
+}

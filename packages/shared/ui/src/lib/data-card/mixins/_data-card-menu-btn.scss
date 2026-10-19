@@ -1,0 +1,16 @@
+@mixin data-card-menu-btn-all-features() {
+    display: flex;
+    align-items: center;
+    padding: var(--mercatura-spacing-1);
+    border: none;
+    background: transparent;
+    color: var(--mercatura-text-muted);
+    cursor: pointer;
+    border-radius: var(--mercatura-radius);
+    transition: var(--mercatura-transition);
+
+    &:hover {
+        background: var(--mercatura-surface-alt);
+        color: var(--mercatura-text);
+    }
+}

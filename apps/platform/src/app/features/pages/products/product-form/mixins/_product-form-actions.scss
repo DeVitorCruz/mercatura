@@ -1,0 +1,6 @@
+@mixin product-form-actions-all-features() {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--mercatura-spacing-3);
+    padding: var(--mercatura-spacing-1);
+}

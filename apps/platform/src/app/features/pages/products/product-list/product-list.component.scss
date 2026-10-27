@@ -1,0 +1,33 @@
+@use './mixins/product-list' as *;
+@use './mixins/product-header' as *;
+@use './mixins/product-title' as *;
+@use './mixins/product-subtitle' as *;
+@use './mixins/product-table-toolbar' as *;
+@use './mixins/product-btn' as *;
+
+:host { display: block; width: 100%; }
+
+.product-list {
+    @include product-list-all-features();
+
+    &__header {
+        @include product-header-all-features();
+    }
+
+    &__title {
+        @include product-title-all-features();
+    }
+
+    &__subtitle {
+        @include product-subtitle-all-features();
+    }
+
+    &__toolbar, 
+    &__table {
+        @include product-table-toolbar-all-features();
+    }
+}
+
+.btn {
+    @include product-btn-all-features();
+}

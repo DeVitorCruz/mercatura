@@ -1,0 +1,27 @@
+@mixin product-form-all-btn-generic-all-features() {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--mercatura-spacing-2) var(--mercatura-spacing-5);
+    border-radius: var(--mercatura-radius);
+    font-size: var(--mercatura-text-sm);
+    font-weight: var(--mercatura-font-weight-semibold);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--mercatura-transition);
+    font-family: inherit;
+
+    &--primary {
+        background: var(--platform-primary);
+        color: #fff;
+        &:hover:not(:disabled) { opacity: .9; }
+        &:disabled { opacity: .6; cursor: not-allowed; }
+    }
+
+    &--ghost {
+        background: transparent;
+        color: var(--mercatura-text);
+        border: var(--mercatura-border, 1px solid #dee2e6);
+        &:hover { background: var(--mercatura-surface-alt); }
+    }
+}

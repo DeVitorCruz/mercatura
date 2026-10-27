@@ -1,0 +1,18 @@
+@mixin attribure-row-all-features() {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: var(--mercatura-spacing-2);
+    align-items: center;
+
+    input {
+        padding: var(--mercatura-spacing-2) var(--mercatura-spacing-3);
+        border: var(--mercatura-border, 1px solid #dee2e6);
+        border-radius: var(--mercatura-radius); 
+        background: var(--mercatura-on-primary);
+        color: var(--mercatura-text);
+        font-size: var(--mercatura-text-sm);
+        font-family: inherit;
+        outline: none;
+        &:focus { border-color: var(--mercatura-primary); }
+    }
+}

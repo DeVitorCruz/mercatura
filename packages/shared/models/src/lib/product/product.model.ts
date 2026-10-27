@@ -1,3 +1,5 @@
+import { TablePagination } from '../table/table.model';
+
 // ------ Legacy models (shop app) ----------------------
 
 export interface ProductVariant {
@@ -96,12 +98,7 @@ export interface SellerProduct {
 
 export interface ProductListResponse {
   products: SellerProduct[];
-  pagination: {
-      total: number;
-      per_page: number;
-      current_page: number;
-      last_page: number;
-  };
+  pagination: TablePagination;
 };
 
 export interface CreateProductRequest {
@@ -115,7 +112,7 @@ export interface UpdateProductRequest {
   name?: string;
   description?: string;
   category_id?: number;
-  variants?: SellerProductVariant[];
+  variants?: Omit<SellerProductVariant, 'id' | 'image_path'>[];
 };
 
 

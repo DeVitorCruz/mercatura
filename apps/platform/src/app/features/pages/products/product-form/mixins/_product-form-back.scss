@@ -1,0 +1,6 @@
+@mixin product-form-back-all-features() {
+    font-size: var(--mercatura-text-sm);
+    color: var(--mercatura-text-muted);
+    text-decoration: none;
+    &:hover { color: var(--mercatura-primary); }
+}

@@ -5,6 +5,7 @@
     overflow-y: auto;
 
     @include respone('md') {
-        margin-top: 80px;
+        margin-top: var(--platform-main-top-margin, 80px);
+        margin-bottom: var(--platform-main-bottom-margin, 56px);
     }
 }

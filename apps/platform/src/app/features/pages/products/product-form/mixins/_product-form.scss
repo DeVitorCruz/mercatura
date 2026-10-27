@@ -1,0 +1,6 @@
+@mixin product-form-all-features() {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mercatura-spacing-2);
+}

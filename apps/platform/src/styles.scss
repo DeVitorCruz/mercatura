@@ -112,6 +112,68 @@
     --platform-primary: #ff8084;
     --platform-border-header: #eff0f1;
     --platform-header-avatar-btn: none;
+    --platform-main-top-margin: 0;
+    --platform-main-bottom-margin: 56px;
+}
+
+.ui-form {
+    &__label {
+        font-size: 14px;
+        font-weight: var(--platform-font-weight-md);
+        color: var(--mercatura-text);
+    }
+
+    &__input,
+    &__select {
+        border: var(--mercatura-border);
+        border-radius: var(--mercatura-radius);
+        background: var(--mercatura-on-primary, #fff);
+        color: var(--mercatura-text);
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        padding: .625rem 1rem;
+        transition: var(--mercatura-transition);
+
+        &:focus {
+            border-color: var(--mercatura-border-focus);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+            outline: none;
+        }
+
+        &:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            background: var(--mercatura-surface-alt, #f9fafb);
+        }
+    }
+
+    textarea.ui-form__input {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    &__error {
+        background: rgba(239, 68, 68, .08);
+        color: #dc2626;
+        border: 1px solid rgba(239, 68, 68, .2);
+        border-radius: var(--mercatura-radius);
+        font-size: 13px;
+    }
+
+    &__submit {
+        background: var(--mercatura-primary);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: var(--platform-font-weight-md);
+        font-family: 'Inter', sans-serif;
+        padding: .625rem 1.5rem;
+        border: none;
+        cursor: pointer;
+        transition: var(--mercatura-transition);
+
+        &:hover:not(:disabled) { opacity: .9; }
+        &:disabled { opacity: .6; cursor: not-allowed; }
+    }
 }
 
 @include auth-login-form-all-features();

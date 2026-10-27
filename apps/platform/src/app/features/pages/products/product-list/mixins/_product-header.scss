@@ -1,0 +1,6 @@
+@mixin product-header-all-features() {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--mercatura-spacing-4);
+}

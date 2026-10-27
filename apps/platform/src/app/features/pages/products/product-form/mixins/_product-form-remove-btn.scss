@@ -1,0 +1,10 @@
+@mixin product-form-remove-btn-all-features() {
+    background: transparent;
+    border: none;
+    color: var(--mercatura-primary);
+    cursor: pointer;
+    font-size: var(--mercatura-text-sm);
+    padding: 0;
+    text-align: left;
+    &:hover { text-decoration: underline; }
+}

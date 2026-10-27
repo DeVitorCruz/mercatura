@@ -1,0 +1,12 @@
+@use './attributes/attributes' as *;
+@use './attributes/attribute-row' as *;
+
+@mixin product-form-attributes-collect-all-features() {
+    &__attributes {
+        @include attributes-all-features();
+    }
+
+    &__attribute-row {
+        @include attribure-row-all-features();
+    }
+}

@@ -1,0 +1,9 @@
+@mixin product-form-card-all-features() {
+    background: var(--platform-card-bg);
+    border-radius: var(--mercatura-radius-lg);
+    padding: var(--mercatura-spacing-6);
+    box-shadow: var(--mercatura-shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--mercatura-spacing-4);
+}

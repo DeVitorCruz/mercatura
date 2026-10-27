@@ -8,19 +8,36 @@ export const PAGES: Route[] = [
         loadComponent: () =>
             import('./dashboard/overview/overview.component')
                 .then(m => m.OverviewComponent),
-    } as Route,
+    },
     {
         path: 'profile',
         children: buildProfileRoutes({
-            redirectAfterSave: '/dashboard' as string,
+            redirectAfterSave: '/dashboard',
         } as ProfileTemplateConfig),
-    } as Route,
+    },
+    { 
+        path: 'products', 
+        loadComponent: () => 
+            import('./products/product-list/product-list.component')
+                .then(m => m.ProductListComponent) 
+    },
+    {
+        path: 'products/new',
+        loadComponent: () =>
+            import('./products/product-form/product-form.component')
+                .then(m => m.ProductFormComponent),
+    },
+    {
+        path: 'products/:id/edit',
+        loadComponent: () =>
+            import('./products/product-form/product-form.component')
+                .then(m => m.ProductFormComponent),
+    },
     // ----- Placeholer pages ----------------------
-    { path: 'apps', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Apps' } } as Route,
-    { path: 'products', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Products' } } as Route,
-    { path: 'orders', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Orders' } } as Route,
-    { path: 'sales', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Sales' } } as Route,
-    { path: 'users', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Users' } } as Route,
-    { path: 'localization', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Localization' } } as Route,
-    { path: 'settings', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Settings' } } as Route,
+    { path: 'apps', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Apps' } },
+    { path: 'orders', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Orders' } },
+    { path: 'sales', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Sales' } },
+    { path: 'users', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Users' } },
+    { path: 'localization', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Localization' } },
+    { path: 'settings', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Settings' } },
 ]; 

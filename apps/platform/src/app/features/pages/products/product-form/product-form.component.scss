@@ -1,0 +1,75 @@
+@use './mixins/product-form' as *;
+@use './mixins/product-form-header' as *;
+@use './mixins/product-form-back' as *;
+@use './mixins/product-form-title' as *;
+@use './mixins/product-form-error' as *;
+@use './mixins/product-form-loading' as *;
+@use './mixins/product-form-card' as *;
+@use './mixins/product-form-card-header' as *;
+@use './mixins/product-form-card-title' as *;
+@use './mixins/lib-ui-form/lib-ui-form-main' as *;
+@use './mixins/product-form-variants-collect' as *;
+@use './mixins/product-form-attributes-collect' as *;
+@use './mixins/product-form-add-attr-btn' as *;
+@use './mixins/product-form-remove-btn' as *;
+@use './mixins/product-form-actions' as *;
+@use './mixins/product-form-all-btn-generic' as *; 
+
+:host { display: block; width: 100%; }
+
+.product-form {
+    @include product-form-all-features();
+
+    &__header {
+        @include product-form-header-all-features();
+    }
+
+    &__back {
+        @include product-form-back-all-features();
+    }
+
+    &__title {
+        @include product-form-title-all-features();
+    }
+
+    &__error {
+        @include product-form-error-all-features();
+    }
+
+    &__loading {        
+        @include product-form-loading-all-features();
+    }
+
+    &__card {
+        @include product-form-card-all-features();
+    }
+
+    &__card-header {
+        @include product-form-card-header-all-features();
+    }
+
+    &__card-title {
+        @include product-form-card-title-all-features();
+    }
+
+    @include product-form-variants-collect-all-features();
+    @include product-form-attributes-collect-all-features();
+
+    &__add-attr-btn {
+        @include product-form-add-attr-btn-all-features();
+    }
+
+    &__remove-btn {
+        @include product-form-remove-btn-all-features();
+    }
+
+    &__actions {
+        @include product-form-actions-all-features();
+    }
+}
+
+.btn {
+    @include product-form-all-btn-generic-all-features();
+}
+
+@include lib-ui-form-main-all-features();

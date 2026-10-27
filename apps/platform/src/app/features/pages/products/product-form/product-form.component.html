@@ -1,0 +1,100 @@
+<div class="product-form">
+    <div class="product-form__header">
+        <a 
+            [routerLink]="'/products'" 
+            class="product-form__back">
+            ← Back to Products
+        </a>
+        <h2 class="product-form__title">
+            {{ isEdit() ? 'Edit Product' : 'Add Product' }}
+        </h2>
+    </div>
+
+    @if (error()) {
+        <div class="product-form__error">{{ error() }}</div>
+    }
+
+    @if (loading()) {
+        <div class="product-form__loading">Loading product...</div>
+    } @else {
+        <!-- Basic info -->
+        <div class="product-form__card">
+            <h3 class="product-form__card-title">Basic Information</h3>
+            <lib-ui-form 
+                [config]="basicForm()"
+                [loading]="saving()"
+                (formSubmit)="onSubmit()" />
+        </div>
+
+        <!-- Variants -->
+        <div class="product-form__card">
+            <div class="product-form__card-header">
+                <h3 class="product-form__card-title">Variants</h3>
+                <button 
+                    type="button" 
+                    class="btn btn--ghost"
+                    (click)="addVariant()">
+                    + Add Variant
+                </button>
+            </div>
+
+            @for (variant of variants; track $index; let i = $index) {
+                <div class="product-form__variant">
+                    <div class="product-form__variant-header">
+                        <span>Variant {{ i + 1 }}</span>
+                        @if (variants.length > 1) {
+                            <button 
+                                type="button" 
+                                class="product-form__remove-btn"
+                                (click)="removeVariant(i)">
+                                Remove
+                            </button>
+                        }
+                    </div>
+
+                    <lib-ui-form [config]="getVariantForm(i)" />
+
+                    <!-- Attributes -->
+                    @if (variant.attributes && variant.attributes.length > 0) {
+                        <div class="product-form__attributes">
+                            @for (attr of variant.attributes; track $index; let j = $index) {
+                                <div class="product-form__attribute-row">
+                                    <input 
+                                        type="text" 
+                                        [(ngModel)]="attr.name"
+                                        [name]="'attr-n-' + i + '-' + j" 
+                                        placeholder="Name (e.g. Color)" />
+                                    <input 
+                                        type="text" 
+                                        [(ngModel)]="attr.value"
+                                        [name]="'attr-n-' + i + '-' + j" 
+                                        placeholder="Value (e.g. Black)" />
+                                    <button 
+                                        type="button"
+                                        class="product-form__remove-btn"
+                                        (click)="removeAttribute(i, j)">x</button>
+                                </div>
+                            }
+                        </div>
+                    }
+                    <button 
+                        type="button" 
+                        class="product-form__add-attr-btn"
+                        (click)="addAttribute(i)">
+                        + Add Attribute
+                    </button>
+                </div>
+            }
+        </div>
+        <!-- Actions -->
+        <div class="product-form__actions">
+            <a [routerLink]="'/products'" class="btn btn--ghost">Cancel</a>
+            <button 
+                type="button" 
+                class="btn btn--primary"
+                (click)="onSubmit()">
+                {{ saving() ? 'Saving...' : (isEdit() ? 'Update Product' : 'Create Product') }}
+            </button>
+        </div>
+    }
+</div>

@@ -1,0 +1,6 @@
+@mixin product-table-toolbar-all-features() {
+    background: var(--platform-card-bg);
+    border-radius: var(--mercatura-radius-lg);
+    box-shadow: var(--mercatura-shadow-sl);
+    padding: var(--mercatura-spacing-4);
+}

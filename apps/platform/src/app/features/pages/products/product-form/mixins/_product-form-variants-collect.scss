@@ -1,0 +1,12 @@
+@use './variatns-collection/variant' as *;
+@use './variatns-collection/variant-header' as *;
+
+@mixin product-form-variants-collect-all-features() {
+    &__variant {
+        @include variant-all-features();
+    }
+
+    &__variant-header {
+        @include variant-header-all-features();
+    }
+}

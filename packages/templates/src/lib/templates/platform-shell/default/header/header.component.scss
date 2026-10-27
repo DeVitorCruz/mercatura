@@ -2,6 +2,7 @@
 @use './mixin/header-left' as *;
 @use './mixin/header-content-btn' as *;
 @use './mixin/header-right' as *;
+@use './mixin/header-dropdown' as *;
 
 :host { display: block; width: 100%; }
 
@@ -47,4 +48,6 @@
     &__content-hidden {
         @include respone('lg') { display: none; }
     }
+
+    @include header-dropdown-all-features();
 }

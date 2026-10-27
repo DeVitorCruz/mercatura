@@ -1,0 +1,24 @@
+@mixin dropdown-item-all-features() {
+    display: flex;
+    align-items: center;
+    gap: var(--mercatura-spacing-3);
+    padding: var(--mercatura-spacing-2) var(--mercatura-spacing-4);
+    font-size: 14px;
+    color: var(--mercatura-text);
+    cursor: pointer;
+    transition: var(--mercatura-transition);
+    &:hover { background: var(--mercatura-surface-alt, #f5f5f5); }
+
+    &.is-danger {
+        color: var(--mercatura-danger, #dc2626);
+
+        &:hover {
+            background: rgba(220, 38, 38, .06);
+        }
+    }
+
+    lib-icon {
+        flex-shrink: 0;
+        opacity: .7;
+    }
+}

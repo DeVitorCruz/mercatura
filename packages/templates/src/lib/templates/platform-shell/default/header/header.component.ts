@@ -1,4 +1,4 @@
-import { Component, inject, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { Component, HostListener, inject, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
 import { IconComponent } from '@mercatura/ui';
 import { HeaderConfig } from './header.interface';
 import { AuthService } from '@mercatura/shop/data';
@@ -43,6 +43,13 @@ export class HeaderComponent implements OnInit {
     
   public readonly USER_MENU: DropdownItem[] = 
     USER_MENU as DropdownItem[];
+
+  @HostListener('document:click', ['$event']) 
+    onDocumentClick(event: MouseEvent): void {
+      if(!(event.target as HTMLElement).closest('.platform-header__user')) {
+        this.closeDropdown(); 
+      }
+    }
 
   public ngOnInit(): void {
     this.PROFILE.getProfile().subscribe({

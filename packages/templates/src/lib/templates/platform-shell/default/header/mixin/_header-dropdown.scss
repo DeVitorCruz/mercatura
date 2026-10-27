@@ -1,0 +1,16 @@
+@use './dropdown-collection/dropdown-item' as *;
+@use './dropdown-collection/dropdown' as *;
+
+@mixin header-dropdown-all-features() {
+    &__user {
+        position: relative;
+    }
+    
+    &__dropdown {
+        @include dropdown-all-features();
+    }
+
+    &__dropdown-item {
+        @include dropdown-item-all-features();
+    }
+}

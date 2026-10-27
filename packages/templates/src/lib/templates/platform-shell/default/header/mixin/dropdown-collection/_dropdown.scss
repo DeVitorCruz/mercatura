@@ -1,0 +1,20 @@
+@mixin dropdown-all-features() {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 200px;
+    background: var(--platform-card-bg);
+    border: 1px solid var(--platform-border-header);
+    border-radius: var(--mercatura-radius-xl);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+    list-style: none;
+    margin: 0;
+    padding: var(--mercatura-spacing-2) 0;
+    z-index: 200;
+    animation: dropdown-in .15s ease;
+
+    @keyframes dropdown-in {
+        from { opacity: 0; transform: translateY(-6px) }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}

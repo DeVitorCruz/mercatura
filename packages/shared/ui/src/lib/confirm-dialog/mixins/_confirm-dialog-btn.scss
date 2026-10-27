@@ -14,7 +14,7 @@
         background: var(--mercatura-surface-alt);
         color: var(--mercatura-text);
         border: 1px solid var(--mercatura-border);
-        &:hover:not(:disabled) { background: var(--mercatura-surface-hover); }
+        &:hover:not(:disabled) { background: var(--mercatura-surface-hover); color: var(--mercatura-on-primary); }
     }
 
     &--primary {

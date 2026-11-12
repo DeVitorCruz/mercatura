@@ -17,32 +17,29 @@ import { ProfileStateService } from '../../profile-state/profile-state.service';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent implements OnInit {
-  private readonly PROFILE_SVC: ProfileService = 
-    inject(ProfileService);
-  private readonly STATE: ProfileStateService = 
-    inject(ProfileStateService);
-  private readonly ROUTE: ActivatedRoute = 
-    inject(ActivatedRoute);
+  private readonly PROFILE_SVC = inject(ProfileService);
+  private readonly STATE = inject(ProfileStateService);
+  private readonly ROUTE = inject(ActivatedRoute);
 
-  public readonly TABS: ProfileTab[] =
+  readonly TABS: ProfileTab[] =
     this.ROUTE.snapshot.data['tabs'] ?? DEFAULT_PROFILE_TABS;
-  public readonly SHOW_AVATAR: boolean = 
+  readonly SHOW_AVATAR: boolean = 
     this.ROUTE.snapshot.data['showAvatar'] ?? true;
 
-  public readonly loading: WritableSignal<boolean> = 
+  readonly loading: WritableSignal<boolean> = 
     signal<boolean>(false);
 
   // ------ Expose state signals to template ---------------------
-  public readonly data: Signal<ProfileResponse | null> =
+  readonly data: Signal<ProfileResponse | null> =
     this.STATE.data;
-  public readonly saving: Signal<boolean> =
+  readonly saving: Signal<boolean> =
     this.STATE.saving;
-  public readonly success: Signal<boolean> = 
+  readonly success: Signal<boolean> = 
     this.STATE.success;
-  public readonly error: Signal<string | null> =
+  readonly error: Signal<string | null> =
     this.STATE.error;
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     // Register save function in state
     this.STATE.registerSaveFn((payload) => this._save(payload));
     this._load();
@@ -78,7 +75,7 @@ export class LayoutComponent implements OnInit {
     });
   }
 
-  public onAvatarChange(event: Event): void {
+  onAvatarChange(event: Event): void {
     const FILE: File = (event.target as HTMLInputElement).files?.[0]!;
     if (!FILE) return;
     this.PROFILE_SVC.updateAvatar(FILE).subscribe({

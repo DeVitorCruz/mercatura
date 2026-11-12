@@ -1,6 +1,5 @@
 import { Route } from "@angular/router";
 import { PlatformShellConfig } from "../platform-shell.interface";
-import { HeaderConfig } from "./header/header.interface";
 import { HEADER } from "../HEADER"; 
 
 export function buildPlatformShellRoutes(
@@ -16,7 +15,7 @@ export function buildPlatformShellRoutes(
             navItems: config.navItems,
             brandName: config.brandName ?? 'Mercatura',
             brandLogo: config.brandLogo ?? '',
-            headerConfig: config.headerConfig ?? HEADER as HeaderConfig,
+            headerConfig: config.headerConfig,
         },
         children: [
             {

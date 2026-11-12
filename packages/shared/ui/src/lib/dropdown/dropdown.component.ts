@@ -9,32 +9,27 @@ import { IconComponent } from '../icon/icon.component';
   styleUrl: './dropdown.component.scss',
 })
 export class DropdownComponent {
-  public readonly items: InputSignal<DropdownItem[]> =
-    input.required<DropdownItem[]>();
-  public readonly align: InputSignal<'left' | 'right'> =
-    input<'left' | 'right'>('right');
-  public readonly minWidth: InputSignal<string> = 
-    input<string>('180px');
-  public readonly itemAction: OutputEmitterRef<DropdownItem> =
-    output<DropdownItem>();
+ readonly items = input.required<DropdownItem[]>();
+ readonly align = input<'left' | 'right'>('right');
+ readonly minWidth = input<string>('180px');
+ readonly itemAction = output<DropdownItem>();
 
-  public readonly isOpen: WritableSignal<boolean> =
-    signal<boolean>(false);
+ readonly isOpen = signal<boolean>(false);
 
   constructor(private readonly el: ElementRef) {}
 
   @HostListener('document:click', ['$event'])
-  public onDocumentClick(event: MouseEvent): void {
+  onDocumentClick(event: MouseEvent): void {
     if (!this.el.nativeElement.contains(event.target)) {
       this.isOpen.set(false);
     }
   }
 
-  public toggle(): void {
+  toggle(): void {
     this.isOpen.update(v => !v);
   }
 
-  public onItemClick(item: DropdownItem): void {
+  onItemClick(item: DropdownItem): void {
     this.isOpen.set(false);
     this.itemAction.emit(item);
   }

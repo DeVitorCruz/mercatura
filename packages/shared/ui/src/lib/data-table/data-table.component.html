@@ -64,6 +64,7 @@
                                     <td class="data-table__actions">
                                         @for (action of actions(); track action.id) {
                                             <button 
+                                                *hasPermission="action.permissions!"
                                                 type="button"
                                                 class="data-table__action-btn"
                                                 [class.is-danger]="action.danger"

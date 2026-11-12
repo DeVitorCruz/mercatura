@@ -1,3 +1,5 @@
+import { DropdownItem } from "@mercatura/ui";
+
 export interface ImgPath {
     url: string;
     link: string;
@@ -6,6 +8,7 @@ export interface ImgPath {
 export interface NavIcon {
     name: string;
     size: number;
+    dropdownItems?: DropdownItem[];
 };
 
 export interface HeaderDropdownItem {

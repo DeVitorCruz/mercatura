@@ -18,46 +18,42 @@ import { RecentContactsComponent } from '../components/recent-contacts/recent-co
   styleUrl: './overview.component.scss',
 })
 export class OverviewComponent implements OnInit, OnDestroy {
-  private readonly PLATFORM: PlatformService = 
-    inject(PlatformService);
-  private readonly ROUTER: Router = inject(Router);
+  private readonly platform = inject(PlatformService);
+  private readonly router = inject(Router);
 
-  public readonly LOADING: WritableSignal<boolean> =
-    signal<boolean>(false);
-  public readonly DATA: WritableSignal<Dashboard | null> =
-    signal<Dashboard | null>(null);
-  public readonly ERROR: WritableSignal<string | null> =
-    signal<string | null>(null);
+  readonly loading = signal<boolean>(false);
+  readonly data = signal<Dashboard | null>(null);
+  readonly error = signal<string | null>(null);
 
   private pollSub?: Subscription;
 
-  public ngOnInit(): void {  
+  ngOnInit(): void {  
     this._loadDashboard();
     this._startPolling();
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.pollSub?.unsubscribe();
   }
   
   private _loadDashboard(): void {
-    this.LOADING.set(true);
-    this.PLATFORM.getDashboard().subscribe({
+    this.loading.set(true);
+    this.platform.getDashboard().subscribe({
       next: (data: Dashboard) => {
-        this.DATA.set(data);
-        this.LOADING.set(false);
+        this.data.set(data);
+        this.loading.set(false);
 
         // no tenant -> onboarding
         if (!data.tenant) {
-          this.ROUTER.navigate(['/onboarding']);
+          this.router.navigate(['/onboarding']);
         }
       },
       error: (err: any) => {
         if (err.status === 404) {
-          this.ROUTER.navigate(['/onboarding']);
+          this.router.navigate(['/onboarding']);
         } else {
-          this.ERROR.set('Failed to load dashboard.');
-          this.LOADING.set(false);
+          this.error.set('Failed to load dashboard.');
+          this.loading.set(false);
         }
       },
     });
@@ -65,14 +61,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   private _startPolling(): void {
     this.pollSub = interval(30000).pipe(
-      switchMap(() => this.PLATFORM.getDashboard())
+      switchMap(() => this.platform.getDashboard())
     ).subscribe({
-      next: (data) => this.DATA.set(data),
+      next: (data) => this.data.set(data),
     });
   }
 
-  public canCreateApp(): boolean {
-    const DATA: Dashboard | null = this.DATA();
+  canCreateApp(): boolean {
+    const DATA: Dashboard | null = this.data();
     if (!DATA) return false;
     return !isLimitReached(DATA.limits.apps);
   }

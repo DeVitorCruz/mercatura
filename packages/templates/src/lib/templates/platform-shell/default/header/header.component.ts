@@ -8,7 +8,7 @@ import { DropdownComponent } from '@mercatura/ui';
 import { ProfileService } from '@mercatura/shop/data';
 import { ProfileResponse } from '@mercatura/models';
 import { DropdownItem } from '@mercatura/ui';
-import { USER_MENU } from './USER_MENU';
+
 
 @Component({
   selector: 'lib-header',
@@ -17,33 +17,21 @@ import { USER_MENU } from './USER_MENU';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  private readonly AUTH: AuthService = 
-    inject(AuthService);
-  private readonly CACHE: TenantCacheService = 
-    inject(TenantCacheService);
-  private readonly ROUTER: Router = inject(Router);
-  private readonly PROFILE: ProfileService = 
-    inject(ProfileService);
+  private readonly auth = inject(AuthService);
+  private readonly CACHE = inject(TenantCacheService);
+  private readonly router = inject(Router);
+  private readonly PROFILE = inject(ProfileService);
 
-  public readonly sidebarOpen: InputSignal<boolean> =
-    input<boolean>(false);
-  public readonly headerConfig: InputSignal<HeaderConfig> =
-    input.required<HeaderConfig>();
-  public readonly menuToggle: OutputEmitterRef<void> =
-    output<void>();
-  public readonly logo: InputSignal<string | null> = 
-    input<string | null>(null);
-  public readonly dropdownOpen: WritableSignal<boolean> =
-    signal<boolean>(false); 
+  readonly sidebarOpen = input<boolean>(false);
+  readonly logo = input<string | null>(null);
+  readonly userMenu = input.required<DropdownItem[]>();
+  readonly headerConfig = input.required<HeaderConfig>();
+  readonly menuToggle = output<void>();
+  readonly dropdownOpen =signal<boolean>(false); 
 
-  public readonly userName: WritableSignal<string> =
-    signal<string>('');
-  public readonly avatarUrl: WritableSignal<string | null> =
-    signal<string | null>(null);
+  readonly userName = signal<string>('');
+  readonly avatarUrl = signal<string | null>(null);
     
-  public readonly USER_MENU: DropdownItem[] = 
-    USER_MENU as DropdownItem[];
-
   @HostListener('document:click', ['$event']) 
     onDocumentClick(event: MouseEvent): void {
       if(!(event.target as HTMLElement).closest('.platform-header__user')) {
@@ -51,7 +39,7 @@ export class HeaderComponent implements OnInit {
       }
     }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.PROFILE.getProfile().subscribe({
       next: (data: ProfileResponse) => {
         this.userName.set(data.user.name as string);
@@ -60,43 +48,43 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public toggleDropdown(): void {
+  toggleDropdown(): void {
     this.dropdownOpen.update(v => !v);
   }
 
-  public closeDropdown(): void {
+  closeDropdown(): void {
     this.dropdownOpen.set(false);
   }
 
-  public onMenuToggle(): void {
+  onMenuToggle(): void {
     this.menuToggle.emit();
   }
 
-  public onDropdownAction(action?: string, route?: string): void {
+  onDropdownAction(action?: string, route?: string): void {
     this.closeDropdown();
     if (action === 'logout') {
       this.CACHE.reset();
-      this.AUTH.logout().subscribe({
-        next: () => this.ROUTER.navigate(['/auth/login']),
+      this.auth.logout(route).subscribe({
+        next: () => this.router.navigate(['/auth/login']),
         error: () => {
           // clear session even if API fails
-          this.ROUTER.navigate(['/auth/login']);
+          this.router.navigate(['/auth/login']);
         }
       });
     } else if (route) {
-      this.ROUTER.navigate([route]);
+      this.router.navigate([route]);
     }
   }
 
-  public onUserAction(item: DropdownItem): void {
+  onUserAction(item: DropdownItem): void {
     if (item.action === 'logout') {
       this.CACHE.reset();
-      this.AUTH.logout().subscribe({
-        next: () => this.ROUTER.navigate(['/auth/login']),
-        error: () => this.ROUTER.navigate(['/auth/login']),
+      this.auth.logout(item.route).subscribe({
+        next: () => this.router.navigate(['/auth/login']),
+        error: () => this.router.navigate(['/auth/login']),
       });
     } else if (item.route) {
-      this.ROUTER.navigate([item.route]);
+      this.router.navigate([item.route]);
     }
   }
 }

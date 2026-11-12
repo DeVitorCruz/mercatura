@@ -1,3 +1,5 @@
+import { User } from '../user/user.model';
+
 export interface LoginRequest {
     email: string;
     password: string;
@@ -10,10 +12,9 @@ export interface RegisterRequest {
     password_confirmation: string;
 };
 
-export interface AuthUser {
-    id: number;
-    name: string;
-    email: string;
+export interface AuthUser extends User {
+    roles: string [];
+    permissions: string[];
     email_verified_at?: string;
     created_at?: string;
 };

@@ -6,3 +6,4 @@ export * from './lib/templates/wizard/wizard.interface';
 export * from './lib/templates/wizard/default/layout/layout.component';
 export * from './lib/templates/profile/profile.interface';
 export * from './lib/templates/profile/default/profile-default.template';
+export * from './lib/templates/platform-shell/default/header/header.interface'

@@ -16,6 +16,7 @@
     <mat-sidenav-content class="platform-shell__content">
         <!-- Fixed header -->
         <lib-header 
+            [userMenu]="HEADER_CONFIG.hiddenIcon.dropdownItems!"
             [headerConfig]="HEADER_CONFIG"
             [sidebarOpen]="sidebarOpen()"
             (menuToggle)="toggleSidebar()" />

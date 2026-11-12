@@ -9,6 +9,9 @@ export interface AuthTemplateConfig {
     showForgotPassword?: boolean;
     brandName?: string;
     brandLogo?: string;
+    loginPath?: string;
+    registerPath?: string;
+    authUserPath?: string;
 };
 
 export interface AuthTemplate extends TemplateInterface {

@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'lib-confirm-dialog',
@@ -7,21 +7,13 @@ import { Component, input, InputSignal, output, OutputEmitterRef } from '@angula
   styleUrl: './confirm-dialog.component.scss',
 })
 export class ConfirmDialogComponent {
-  public readonly title: InputSignal<string> =
-    input<string>('Are you sure?');
-  public readonly message: InputSignal<string> =
-    input<string>('This action cannot be undone.');
-  public readonly confirmLabel: InputSignal<string> =
-    input<string>('Confirm');
-  public readonly cancelLabel: InputSignal<string> = 
-    input<string>('Cancel');
-  public readonly danger: InputSignal<boolean> =
-    input<boolean>(false);
-  public readonly loading: InputSignal<boolean> =
-    input<boolean>(false);
+  readonly title = input<string>('Are you sure?');
+  readonly message = input<string>('This action cannot be undone.');
+  readonly confirmLabel = input<string>('Confirm');
+  readonly cancelLabel = input<string>('Cancel');
+  readonly danger = input<boolean>(false);
+  readonly loading = input<boolean>(false);
 
-  public readonly confirmed: OutputEmitterRef<void> =
-    output<void>();
-  public readonly cancelled: OutputEmitterRef<void> =
-    output<void>();
+  readonly confirmed = output<void>();
+  readonly cancelled = output<void>();
 }

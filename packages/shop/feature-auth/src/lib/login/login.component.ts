@@ -1,5 +1,5 @@
-import { Component, inject, input, InputSignal, signal, WritableSignal } from '@angular/core';
-import { FormField, FormUiComponent } from '@mercatura/ui';
+import { Component, inject, input, signal } from '@angular/core';
+import { FormUiComponent } from '@mercatura/ui';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormConfig } from '@mercatura/ui';
 import { LoginRequest } from '@mercatura/models';
@@ -14,50 +14,46 @@ import { LOGIN_FORM_FIELDS } from './LOGIN_FORM_FIELDS';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  private readonly AUTH: AuthService = inject(AuthService);
-  private readonly ROUTER: Router = inject(Router);
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
-  private readonly ROUTE: ActivatedRoute = inject(ActivatedRoute);
-
-  public readonly REDIRECT_TO: InputSignal<string> = input<string>(
-    this.ROUTE.snapshot.data['redirectTo'] ?? '/dashboard'
-  );
-
-  public readonly LOADING: WritableSignal<boolean> = signal<boolean>(false);
-  public readonly ERROR: WritableSignal<string | null> = signal<string | null>(null);
+  readonly redirectTo = input<string>(this.route.snapshot.data['redirectTo'] ?? '/dashboard');
+  readonly middlePathList = input<string | undefined>(this.route.snapshot.data['middlePathList']);
+  readonly authUserPath = input<string | undefined>(this.route.snapshot.data['authUserPath']);
+  readonly loading = signal<boolean>(false);
+  readonly error = signal<string | null>(null);
 
   private readonly CREDENTIALS: LoginRequest = {
-    email: '' as string,
-    password: '' as string,
-  } as LoginRequest;
+    email: '',
+    password: '',
+  };
 
-  public readonly FORM_CONFIG: FormConfig = {
+  readonly FORM_CONFIG: FormConfig = {
     fields: LOGIN_FORM_FIELDS.map((formField) => {
-      if (formField.id === 'email') {
-        formField.onValueChange = (v) => this.CREDENTIALS.email = v;
-      }
+      if (formField.id === 'email') formField.onValueChange = (v) => this.CREDENTIALS.email = v;
+      if (formField.id === 'password') formField.onValueChange = (v) => this.CREDENTIALS.password = v;
+      return {...formField};
+    }),
+    submitLabel: 'Sign In',
+    loadingLabel: 'Signing in...',
+  };
 
-      if (formField.id === 'password') {
-        formField.onValueChange = (v) => this.CREDENTIALS.password = v
-      }
-      return {...formField} as FormField;
-    }) as FormField[],
-    submitLabel: 'Sign In' as string,
-    loadingLabel: 'Signing in...' as string,
-  } as FormConfig;
+  onSubmit(): void {
+    this.loading.set(true);
+    this.error.set(null);
 
-  public onSubmit(): void {
-    this.LOADING.set(true);
-    this.ERROR.set(null);
-
-    this.AUTH.login(this.CREDENTIALS).subscribe({
+    this.auth.login(
+      this.CREDENTIALS,
+      this.middlePathList(),
+    ).subscribe({
       next: () => {
-        this.LOADING.set(false),
-        this.ROUTER.navigate([this.REDIRECT_TO()]);
+        this.loading.set(false),
+        this.router.navigate([this.redirectTo()]);
       },
       error: (err: any) => {
-        this.LOADING.set(false);
-        this.ERROR.set(err.error?.message ?? 'Login failed. Please try again.');
+        this.loading.set(false);
+        this.error.set(err.error?.message ?? 'Login failed. Please try again.');
       },
     });
   }

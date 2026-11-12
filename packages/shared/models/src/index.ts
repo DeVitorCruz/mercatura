@@ -5,6 +5,7 @@ export * from './lib/order/order.model';
 export * from './lib/wishlist/wishlist.model';
 export * from './lib/auth/auth.model';
 export * from './lib/user/user-address.model';
+export * from './lib/user/user.model';
 export * from './lib/theme/theme.model';
 export * from './lib/template/template.model';
 export * from './lib/slide/slide-item.model';

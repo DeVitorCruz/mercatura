@@ -1,25 +1,56 @@
-import { HeaderConfig, ImgPath, NavIcon } from "./default/header/header.interface";
-import { HeaderUserConfig } from "./default/header/header.interface";
+import { HeaderConfig } from "./default/header/header.interface";
 import { HEADER_USER } from "./HEADER_USER";
 
 export const HEADER: HeaderConfig = {
     logo: {
-        url: 'assets/logo/multikart-logo.png' as string,
-        link: '/dashboard' as string,
-    } as ImgPath,
+        url: 'assets/logo/multikart-logo.png',
+        link: '/dashboard',
+    },
     sidebarIcon: {
-        name: 'menu-button-wide' as string,
-        size: 20 as number,
-    } as NavIcon,
+        name: 'menu-button-wide',
+        size: 20,
+    },
     icons: [
         {
-            name: 'bell' as string,
-            size: 20 as number,
-        } as NavIcon,
-    ] as NavIcon[],
+            name: 'bell',
+            size: 20,
+        },
+    ],
     hiddenIcon: {
-        name: 'three-dots' as string,
-        size: 22 as number,
-    } as NavIcon,
-    user: HEADER_USER as HeaderUserConfig | undefined,
-} as HeaderConfig;
+        name: 'three-dots',
+        size: 22,
+        dropdownItems: [
+            {
+                id:  'profile',
+                label:  'Profile',
+                icon:  'person',
+                route:  '/profile',
+                divider: false,
+                danger: false,
+            },
+            {
+                id:  'settings',
+                label:  'Settings',
+                icon:  'gear',
+                route:  '/settings',
+                divider: false,
+                danger: false,
+            },
+            {
+                id:  'divider',
+                label:  '',
+                divider: true,
+                danger: false,
+            },
+            {
+                id:  'logout',
+                label:  'Logout',
+                icon:  'box-arrow-right',
+                action:  'logout',
+                divider: false,
+                danger: true,
+            },
+        ],
+    },
+    user: HEADER_USER,
+};

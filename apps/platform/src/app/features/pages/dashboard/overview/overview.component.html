@@ -1,14 +1,14 @@
-@if (LOADING()) {
+@if (loading()) {
     <div class="overview-loading">
         <span>Loading dashboard...</span>
     </div>
 }
 
-@if (ERROR()) {
-    <div class="overview-error">{{ ERROR() }}</div>
+@if (error()) {
+    <div class="overview-error">{{ error() }}</div>
 }
 
-@if (DATA(); as data) {
+@if (data(); as data) {
 
     <!-- Trial banner -->
     <app-trial-banner 

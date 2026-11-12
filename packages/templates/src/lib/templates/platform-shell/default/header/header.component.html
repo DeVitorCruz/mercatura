@@ -73,7 +73,7 @@
                         
                         <!-- User dropdown -->
                         <lib-dropdown 
-                            [items]="USER_MENU"
+                            [items]="userMenu()"
                             [align]="'right'"
                             [minWidth]="'200px'"
                             (itemAction)="onUserAction($event)">

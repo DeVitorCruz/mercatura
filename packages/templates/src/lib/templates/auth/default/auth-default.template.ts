@@ -33,6 +33,7 @@ export function buildAuthDefaultRoutes(
                             .then(m => m.LoginComponent),
                     data: {
                         redirectTo: config.loginRedirectTo ?? '/dashboard',
+                        middlePathList: config.loginPath,
                     },
                 },
                 {
@@ -42,6 +43,7 @@ export function buildAuthDefaultRoutes(
                             .then(m => m.RegisterComponent),
                     data: {
                         redirectTo: config.registerRedirectTo ?? '/dashboard',
+                        middlePathList: config.registerPath,
                     },
                 }      
             ],

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormUiComponent } from '@mercatura/ui';
 import { FormConfig } from '@mercatura/ui';
 import { BASIC_FORM } from './form-config/BASIC_FORM';
@@ -8,6 +8,7 @@ import { CreateProductRequest, SellerProductVariant } from '@mercatura/models';
 import { FormSelectOption } from '@mercatura/ui';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-product-form',
   imports: [FormUiComponent, RouterLink, FormsModule],
@@ -15,47 +16,33 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './product-form.component.scss',
 })
 export class ProductFormComponent implements OnInit {
-  private readonly PRODUCT_SVC: ProductManagementService = 
-    inject(ProductManagementService);
-  private readonly ROUTE: ActivatedRoute = 
-    inject(ActivatedRoute);
-  private readonly ROUTER: Router = inject(Router);
+  private readonly productSvc = inject(ProductManagementService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
 
-  public readonly isEdit: WritableSignal<boolean> =
-    signal<boolean>(false);
-  public readonly loading: WritableSignal<boolean> =
-    signal<boolean>(false);
-  public readonly saving: WritableSignal<boolean> =
-    signal<boolean>(false);
-  public readonly error: WritableSignal<string | null> =
-    signal<string| null>(null);
+  readonly isEdit = signal<boolean>(false);
+  readonly loading = signal<boolean>(false);
+  readonly saving = signal<boolean>(false);
+  readonly error = signal<string | null>(null);
 
   // --- Basic info form ------------------------------
   private basicValues: Record<string , any> = {};
 
   // --- Basic info form ------------------------------
-  public readonly basicForm: WritableSignal<FormConfig> =
-    signal<FormConfig>({
-      ...BASIC_FORM,
-      fields: BASIC_FORM.fields.map((field) => {
-
-        if (field.id === 'name') 
-          field['onValueChange'] = v => this.basicValues['name'] = v;
-        if (field.id === 'description')
-          field['onValueChange'] = v => this.basicValues['description'] = v;
-        if (field.id === 'category_id')
-          field['onValueChange'] = v => this.basicValues['category_id'] = v;
-
-        return {...field};
-      })
-    });
+  readonly basicForm = signal<FormConfig>({ ...BASIC_FORM, fields: BASIC_FORM.fields.map((field) => {
+      if (field.id === 'name') field['onValueChange'] = v => this.basicValues['name'] = v;
+      if (field.id === 'description') field['onValueChange'] = v => this.basicValues['description'] = v;
+      if (field.id === 'category_id') field['onValueChange'] = v => this.basicValues['category_id'] = v;
+      return {...field};
+    })
+  });
 
   // --- Variants ------------------------------   
-  public variants: Partial<SellerProductVariant>[] = [
+  variants: Partial<SellerProductVariant>[] = [
     { sku: '', price: '0.00', stock_quantity: 0, attributes: [], },
   ];
 
-  public getVariantForm(index: number): FormConfig {
+  getVariantForm(index: number): FormConfig {
     const V: Partial<SellerProductVariant> = 
       this.variants[index];
     return {
@@ -81,15 +68,15 @@ export class ProductFormComponent implements OnInit {
         },
       ],
       columns: 2,
-    } as FormConfig;
+    };
   }
 
   private productId?: number;
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this._loadCategories();
     const ID: string = 
-      this.ROUTE.snapshot.paramMap.get('id')!;
+      this.route.snapshot.paramMap.get('id')!;
     if (ID) {
       this.isEdit.set(true);
       this.productId = Number(ID);
@@ -98,7 +85,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   private _loadCategories(): void {
-    this.PRODUCT_SVC.getCategories().subscribe({
+    this.productSvc.getCategories().subscribe({
       next: res => {
         const OPTIONS: FormSelectOption[] = 
           res.categories.filter(c => c.status === 'approved')
@@ -119,7 +106,7 @@ export class ProductFormComponent implements OnInit {
 
   private _loadProduct(id: number): void {
     this.loading.set(true);
-    this.PRODUCT_SVC.getProductById(id).subscribe({
+    this.productSvc.getProductById(id).subscribe({
       next: product => {
         this.basicValues = {
           name: product.name,
@@ -149,7 +136,7 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
-  public addVariant(): void {
+  addVariant(): void {
     this.variants = [
       ...this.variants,
       { 
@@ -159,24 +146,24 @@ export class ProductFormComponent implements OnInit {
     ];
   }
 
-  public removeVariant(index: number): void {
+  removeVariant(index: number): void {
     if (this.variants.length === 1) return;
     this.variants = this.variants.filter((_, i) => i !== index);
   }
 
-  public addAttribute(i: number): void {
+  addAttribute(i: number): void {
     this.variants[i].attributes = [
       ...(this.variants[i].attributes ?? []),
       { name: '', value: '' }
     ];
   }
 
-  public removeAttribute(i: number, j: number): void {
+  removeAttribute(i: number, j: number): void {
     this.variants[i].attributes = 
       this.variants[i].attributes!.filter((_, k) => k !== j);
   }
 
-  public onSubmit(): void {
+  onSubmit(): void {
     if (!this.basicValues['name'] || !this.basicValues['category_id']) {
       this.error.set('Please fill all required fields.');
       return;
@@ -198,13 +185,13 @@ export class ProductFormComponent implements OnInit {
     };
 
     const REQUEST$ = this.isEdit()
-      ? this.PRODUCT_SVC.updateProduct(this.productId!, PAYLOAD) 
-      : this.PRODUCT_SVC.createProduct(PAYLOAD);
+      ? this.productSvc.updateProduct(this.productId!, PAYLOAD) 
+      : this.productSvc.createProduct(PAYLOAD);
     
     REQUEST$.subscribe({
       next: () => {
         this.saving.set(false);
-        this.ROUTER.navigate(['/products']);
+        this.router.navigate(['/products']);
       },
       error: (err: any) => {
         this.saving.set(false);

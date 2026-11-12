@@ -1,4 +1,5 @@
 import { Route } from "@angular/router";
+import { permissionGuard } from "@mercatura/shop/data";
 import { buildProfileRoutes } from "@mercatura/templates";
 import { ProfileTemplateConfig } from "@mercatura/templates";
 
@@ -23,15 +24,25 @@ export const PAGES: Route[] = [
     },
     {
         path: 'products/new',
+        canActivate: [permissionGuard],
         loadComponent: () =>
             import('./products/product-form/product-form.component')
                 .then(m => m.ProductFormComponent),
+        data: {
+            permissions: ['products.create'],
+            redirectTo: '/dashboard',
+        },
     },
     {
         path: 'products/:id/edit',
+        canActivate: [permissionGuard],
         loadComponent: () =>
             import('./products/product-form/product-form.component')
                 .then(m => m.ProductFormComponent),
+        data: {
+            permissions: ['products.edit-own', 'products.edit-any'],
+            redirectTo: '/dashboard',
+        },
     },
     // ----- Placeholer pages ----------------------
     { path: 'apps', loadComponent: () => import('./placeholder/placeholder.component').then(m => m.PlaceholderComponent), data: { title: 'Apps' } },

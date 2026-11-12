@@ -7,4 +7,4 @@ export const BASIC_FORM: FormConfig = {
     loadingLabel: 'Saving...',
     columns: 1,
     customClassName: 'basic-form',
-} as FormConfig;
+};

@@ -7,8 +7,10 @@
                 {{ pagination()?.total ?? 0 }} products total
             </p>
         </div>
-        <a [routerLink]="'/products/new'" class="btn btn--primary">
-            + Add Product
+        <a 
+            *hasPermission="'products.create'"
+            [routerLink]="'/products/new'" 
+            class="btn btn--primary"> + Add Product
         </a>
     </div>
 
@@ -26,7 +28,7 @@
         <lib-data-table 
             [columns]="COLUMNS"
             [rows]="products()"
-            [actions]="ACTIONS"
+            [actions]="actions()"
             [pagination]="pagination()"
             [loading]="loading()"
             [emptyText]="'No products yet. Add your frist product.'"

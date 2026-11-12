@@ -1,4 +1,4 @@
-import { computed, inject, Service, Signal, signal, WritableSignal } from '@angular/core';
+import { computed, inject, Service, signal, } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { ApiService } from '../api/api.service';
 import { StorageService } from '../storage/storage.service';
@@ -8,72 +8,88 @@ import {
     LoginRequest,
     RegisterRequest,
 } from '@mercatura/models';
+import { PermissionService } from '../permission/permission.service';
 
 @Service()
 export class AuthService extends ApiService {
-    private readonly STORAGE: StorageService = 
-        inject(StorageService);
+    readonly storage = inject(StorageService);
+    readonly permissions = inject(PermissionService);
 
     private readonly TOKEN_KEY: string = 'auth_token';
     private readonly USER_KEY: string = 'auth_user';
 
-    private readonly TOKEN: WritableSignal<string | null> = 
-        signal<string | null>(null);
-    private readonly USER: WritableSignal<AuthUser | null> = 
-        signal<AuthUser | null>(null);
+    private readonly _token = signal<string | null>(null);
+    private readonly _user = signal<AuthUser | null>(null);
 
-    public readonly token: Signal<string | null> = 
-        computed(() => this.TOKEN());
-    public readonly user: Signal<AuthUser | null> = 
-        computed(() => this.USER());
-    public readonly isAuthenticated: Signal<boolean> = 
-        computed(() => !!this.TOKEN());
+    readonly token = computed<string | null>(() => this._token());
+    readonly user = computed<AuthUser | null>(() => this._user());
+    readonly isAuthenticated = computed<boolean>(() => !!this._token());
 
     constructor() {
         super();
         this._loadFromStorage();
     }
 
-    public login(credentials: LoginRequest): Observable<AuthResponse> {
-        return this.post<AuthResponse>('login', credentials).pipe(
+    login(credentials: LoginRequest, router?: string): Observable<AuthResponse> {
+        let path: string = router ?? 'login';
+        return this.post<AuthResponse>(path, credentials).pipe(
             tap(response => this._setSession(response))
         );   
     }
 
-    public register(data: RegisterRequest): Observable<AuthResponse> {
-        return this.post<AuthResponse>('register', data).pipe(
+    register(data: RegisterRequest, router?: string): Observable<AuthResponse> {
+        let path: string = router ?? 'register';
+        return this.post<AuthResponse>(path, data).pipe(
             tap(response => this._setSession(response))
         );
     }
 
-    public logout(): Observable<{ message: string }> {
-        return this.post<{ message: string }>('logout', {}).pipe(
+    logout(router?: string): Observable<{ message: string }> {
+        let path: string = router ?? 'logout';
+        return this.post<{ message: string }>(path, {}).pipe(
             tap(() => this._clearSession())
         );
     }
 
+    getToken(): string | null {
+        return this._token();
+    }
+
+    loadProfile(router?: string): Observable<AuthUser> {
+        let path: string = router ?? 'me';
+        return this.get<AuthUser>(path).pipe(
+            tap(user => {
+                this._user.set(user);
+                this.storage.setItem(this.USER_KEY, JSON.stringify(user));
+                this.permissions.set(user.permissions, user.roles);
+            })
+        );
+    }
+
     private _setSession(response: AuthResponse): void {
-        this.TOKEN.set(response.access_token);
-        this.USER.set(response.user);
-        this.STORAGE.setItem(this.TOKEN_KEY, response.access_token);
-        this.STORAGE.setItem(this.USER_KEY, JSON.stringify(response.user));
+        this._token.set(response.access_token);
+        this._user.set(response.user);
+        this.storage.setItem(this.TOKEN_KEY, response.access_token);
+        this.storage.setItem(this.USER_KEY, JSON.stringify(response.user));
+        this.permissions.set(response.user.permissions, response.user.roles);
     }
 
     private _clearSession(): void {
-        this.TOKEN.set(null);
-        this.USER.set(null);
-        this.STORAGE.removeItem(this.TOKEN_KEY);
-        this.STORAGE.removeItem(this.USER_KEY);
+        this._token.set(null);
+        this._user.set(null);
+        this.storage.removeItem(this.TOKEN_KEY);
+        this.storage.removeItem(this.USER_KEY);
+        this.permissions.clear();
     }
 
     private _loadFromStorage(): void {
-        const TOKEN: string = this.STORAGE.getItem(this.TOKEN_KEY)!;
-        const USER: string = this.STORAGE.getItem(this.USER_KEY)!;
-        if (TOKEN) this.TOKEN.set(TOKEN);
-        if (USER) this.USER.set(JSON.parse(USER));
-    }
-
-    public getToken(): string | null {
-        return this.TOKEN();
+        const TOKEN: string = this.storage.getItem(this.TOKEN_KEY)!;
+        const USER: string = this.storage.getItem(this.USER_KEY)!;
+        if (TOKEN) this._token.set(TOKEN);
+        if (USER) {
+            const AUTH_USER: AuthUser = JSON.parse(USER);
+            this._user.set(AUTH_USER);
+            this.permissions.set(AUTH_USER.permissions, AUTH_USER.roles);
+        };
     }
 }
